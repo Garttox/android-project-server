@@ -31,15 +31,15 @@ class SignInFormFactory
 	public function create(callable $onSuccess)
 	{
 		$form = $this->factory->create();
-		$form->addText('username', 'Jméno:')
+		$form->addText('username', 'Username:')
 			->setRequired('Please enter your username.');
 
-		$form->addPassword('password', 'Heslo:')
+		$form->addPassword('password', 'Password:')
 			->setRequired('Please enter your password.');
 
-		$form->addCheckbox('remember', 'Zapamatovat');
+		$form->addCheckbox('remember', 'Keep me signed in');
 
-		$form->addSubmit('send', 'Přihlásit se');
+		$form->addSubmit('send', 'Sign in');
 
 		$form->onSuccess[] = function (Form $form, $values) use ($onSuccess) {
 			try {
