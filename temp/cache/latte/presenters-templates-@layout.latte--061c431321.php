@@ -106,10 +106,11 @@ class Template061c431321 extends Latte\Runtime\Template
                 <div class="row">
                     <div class="col-md-3">
 <?php
-		if ($user->loggedIn) {
-			?>                            <p><a class="btn btn-light disabled" tabindex="-1" role="button" aria-disabled="true" href="<?php
-			echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:in")) ?>">Přihlásit se</a>
-                            <a class="btn btn-light" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:out")) ?>">Odhlásit</a></p>
+		if ($user->isLoggedIn()) {
+?>
+                            
+                            <p>Jste přihlášen jako <?php echo LR\Filters::escapeHtmlText($user->getIdentity()->username) /* line 35 */ ?> <a class="btn btn-light" href="<?php
+			echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:out")) ?>">Odhlásit</a></p>
 
 <?php
 		}

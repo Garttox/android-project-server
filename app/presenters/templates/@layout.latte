@@ -30,9 +30,9 @@
             <div class="container-fluid bg-primary text-white footer">
                 <div class="row">
                     <div class="col-md-3">
-                        {if $user->loggedIn}
-                            <p><a n:href="Sign:in" class="btn btn-light disabled" tabindex="-1" role="button" aria-disabled="true">Přihlásit se</a>
-                            <a n:href="Sign:out" class="btn btn-light">Odhlásit</a></p>
+                        {if $user->isLoggedIn()}
+                            
+                            <p>Jste přihlášen jako {$user->getIdentity()->username} <a n:href="Sign:out" class="btn btn-light">Odhlásit</a></p>
 
                         {else}
                             <p><a n:href="Sign:in" class="btn btn-light">Přihlásit se</a></p>
