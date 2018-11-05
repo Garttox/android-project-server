@@ -36,8 +36,9 @@ class Container_cafdc987bb extends Nette\DI\Container
 			'App\Forms\FormFactory' => [1 => ['24_App_Forms_FormFactory']],
 			'App\Forms\SignInFormFactory' => [1 => ['25_App_Forms_SignInFormFactory']],
 			'App\Forms\SignUpFormFactory' => [1 => ['26_App_Forms_SignUpFormFactory']],
-			'Nette\Security\IAuthenticator' => [1 => ['27_App_Model_UserManager']],
-			'App\Model\UserManager' => [1 => ['27_App_Model_UserManager']],
+			'App\Model\TourManager' => [1 => ['27_App_Model_TourManager']],
+			'Nette\Security\IAuthenticator' => [1 => ['28_App_Model_UserManager']],
+			'App\Model\UserManager' => [1 => ['28_App_Model_UserManager']],
 			'App\Presenters\BasePresenter' => [
 				1 => ['application.1', 'application.3', 'application.4', 'application.5'],
 			],
@@ -76,7 +77,8 @@ class Container_cafdc987bb extends Nette\DI\Container
 			'24_App_Forms_FormFactory' => 'App\Forms\FormFactory',
 			'25_App_Forms_SignInFormFactory' => 'App\Forms\SignInFormFactory',
 			'26_App_Forms_SignUpFormFactory' => 'App\Forms\SignUpFormFactory',
-			'27_App_Model_UserManager' => 'App\Model\UserManager',
+			'27_App_Model_TourManager' => 'App\Model\TourManager',
+			'28_App_Model_UserManager' => 'App\Model\UserManager',
 			'application.1' => 'App\Presenters\Error4xxPresenter',
 			'application.2' => 'App\Presenters\ErrorPresenter',
 			'application.3' => 'App\Presenters\HomepagePresenter',
@@ -184,12 +186,19 @@ class Container_cafdc987bb extends Nette\DI\Container
 	public function createService__26_App_Forms_SignUpFormFactory(): App\Forms\SignUpFormFactory
 	{
 		$service = new App\Forms\SignUpFormFactory($this->getService('24_App_Forms_FormFactory'),
-			$this->getService('27_App_Model_UserManager'));
+			$this->getService('28_App_Model_UserManager'));
 		return $service;
 	}
 
 
-	public function createService__27_App_Model_UserManager(): App\Model\UserManager
+	public function createService__27_App_Model_TourManager(): App\Model\TourManager
+	{
+		$service = new App\Model\TourManager($this->getService('database.default.context'));
+		return $service;
+	}
+
+
+	public function createService__28_App_Model_UserManager(): App\Model\UserManager
 	{
 		$service = new App\Model\UserManager($this->getService('database.default.context'));
 		return $service;
@@ -229,7 +238,7 @@ class Container_cafdc987bb extends Nette\DI\Container
 
 	public function createServiceApplication__4(): App\Presenters\ListPresenter
 	{
-		$service = new App\Presenters\ListPresenter;
+		$service = new App\Presenters\ListPresenter($this->getService('27_App_Model_TourManager'));
 		$service->injectPrimary($this, $this->getService('application.presenterFactory'),
 			$this->getService('routing.router'), $this->getService('http.request'),
 			$this->getService('http.response'), $this->getService('session.session'),
@@ -432,7 +441,7 @@ class Container_cafdc987bb extends Nette\DI\Container
 
 	public function createServiceSecurity__user(): Nette\Security\User
 	{
-		$service = new Nette\Security\User($this->getService('security.userStorage'), $this->getService('27_App_Model_UserManager'));
+		$service = new Nette\Security\User($this->getService('security.userStorage'), $this->getService('28_App_Model_UserManager'));
 		$this->getService('tracy.bar')->addPanel(new Nette\Bridges\SecurityTracy\UserPanel($service));
 		return $service;
 	}

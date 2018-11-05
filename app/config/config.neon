@@ -25,6 +25,7 @@ database:
 
 services:
 	- App\Model\UserManager
+	- App\Model\TourManager
 	- App\Forms\FormFactory
 	- App\Forms\SignInFormFactory
 	- App\Forms\SignUpFormFactory
