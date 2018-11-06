@@ -18,9 +18,13 @@ class ListPresenter extends BasePresenter
             $data = $this->tourManager->readAllTours();
             foreach($data as $tour){
                 $author =$this->tourManager->readTourAuthor($tour->users_id);
-                $x =array_merge(array('title'=>$tour->title), array('author'=> $author));
+                $x =array('title'=>$tour->title,'published' =>$tour->published, 'author'=> $author);
                 array_push($value,$x);
             }
             $this->template->data = $value;
+        }
+        
+        protected function createComponentTourForm(){
+            
         }
 }
