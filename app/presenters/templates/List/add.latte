@@ -1,20 +1,6 @@
 {block content}
-    <table class="table table-bordered">
-        {foreach $data as $row}
-            {if $row['published'] == "yes"}
-                <tr>
-                    <td>{$row['title']}</td>
-                    <td>{$row['author']}</td>
-                </tr>
-            {elseif $row['published'] == 'no' && $user->isInRole('admin')}    
-                <tr>
-                    <td>{$row['title']}</td>
-                    <td>{$row['author']}</td>
-                    <td>{$row['published']}</td>
-                </tr>
-            {/if}
-        {/foreach}
-    </table>
-
+    
+    {import '../components/bootstrap-form.latte'}
+    {include bootstrap-form tourForm}
     
 {/block}

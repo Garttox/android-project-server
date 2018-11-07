@@ -56,5 +56,13 @@ class TourManager
             $points= $this->database->table(self::TOUR_TABLE_NAME)->get($id);
             return $points->related(self::POINT_TABLE_NAME, self::POINT_TOUR_ID);
         }
-
+        
+        public function insertTour($id,$title){
+            $this->database->table(self::TOUR_TABLE_NAME)->insert(array(
+                'users_id'=>$id,
+                'title'=>$title,
+                'published'=>'wip'
+            ));
+        }
+        
 }

@@ -17,6 +17,21 @@ return array (
       'file' => 'D:\\stranky\\www\\android-project-server\\app\\forms\\SignUpFormFactory.php',
       'time' => 1541016123,
     ),
+    'App\\Model\\TourManager' => 
+    array (
+      'file' => 'D:\\stranky\\www\\android-project-server\\app\\model\\TourManager.php',
+      'time' => 1541627377,
+    ),
+    'App\\Model\\UserManager' => 
+    array (
+      'file' => 'D:\\stranky\\www\\android-project-server\\app\\model\\UserManager.php',
+      'time' => 1541443011,
+    ),
+    'App\\Model\\DuplicateNameException' => 
+    array (
+      'file' => 'D:\\stranky\\www\\android-project-server\\app\\model\\UserManager.php',
+      'time' => 1541443011,
+    ),
     'App\\Presenters\\BasePresenter' => 
     array (
       'file' => 'D:\\stranky\\www\\android-project-server\\app\\presenters\\BasePresenter.php',
@@ -47,29 +62,22 @@ return array (
       'file' => 'D:\\stranky\\www\\android-project-server\\app\\router\\RouterFactory.php',
       'time' => 1541013527,
     ),
-    'App\\Model\\UserManager' => 
+    'App\\Acl\\Acl' => 
     array (
-      'file' => 'D:\\stranky\\www\\android-project-server\\app\\model\\UserManager.php',
-      'time' => 1541443011,
-    ),
-    'App\\Model\\DuplicateNameException' => 
-    array (
-      'file' => 'D:\\stranky\\www\\android-project-server\\app\\model\\UserManager.php',
-      'time' => 1541443011,
-    ),
-    'App\\Model\\TourManager' => 
-    array (
-      'file' => 'D:\\stranky\\www\\android-project-server\\app\\model\\TourManager.php',
-      'time' => 1541450518,
+      'file' => 'D:\\stranky\\www\\android-project-server\\app\\acl\\Acl.php',
+      'time' => 1541628939,
     ),
     'App\\Presenters\\ListPresenter' => 
     array (
       'file' => 'D:\\stranky\\www\\android-project-server\\app\\presenters\\ListPresenter.php',
-      'time' => 1541533675,
+      'time' => 1541629011,
     ),
   ),
   1 => 
   array (
-    'Nette\\Environment' => 3,
+    'Nette\\Environment' => 6,
+    'App\\Presenters\\UI\\Form' => 1,
+    'App\\Presenters\\Form' => 1,
+    'App\\Presenters\\ForbiddenRequestException' => 1,
   ),
 );

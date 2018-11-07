@@ -2,6 +2,7 @@
 
 namespace App\Presenters;
 use App\Model\TourManager;
+use Nette\Application\UI\Form;
 
 class ListPresenter extends BasePresenter
 {
@@ -14,6 +15,9 @@ class ListPresenter extends BasePresenter
 	}
     
 	public function renderDefault(){
+            if (!$this->getUser()->isAllowed('List', 'default')) {
+                $this->redirect('Homepage:');
+            }
             $value=array();
             $data = $this->tourManager->readAllTours();
             foreach($data as $tour){
@@ -25,6 +29,16 @@ class ListPresenter extends BasePresenter
         }
         
         protected function createComponentTourForm(){
-            
+            $form = new Form;
+            $form->addText("title","Název:");
+            $form->addSubmit('submit', 'Vytvořit');
+            $form->onSuccess[] = array($this, 'tourFormSucceeded');
+            return $form;
         }
+        
+        public function tourFormSucceeded(Form $form, $values){
+            $this->tourManager->insertTour($this->getUser()->getId(), $values['title']);
+            $this->redirect('List:');
+    }
+        
 }
