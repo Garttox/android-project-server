@@ -12,15 +12,52 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{$basePath}/css/style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	{block head}{/block}
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        {block head}{/block}
 </head>
+
+<nav class="navbar navbar-expand-sm bg-primary text-white">
+		<!-- Brand -->
+		<a class="navbar-brand text-white" n:href="Homepage:default"><i class="far fa-circle"></i></a>
+
+		<!-- Links -->
+		<ul class="navbar-nav">
+    		<li class="nav-item">
+    			<a class="nav-link text-white" n:href="Homepage:default">Domů</a>
+    		</li>
+			<li class="nav-item">
+    			<a class="nav-link text-white" n:href="Homepage:howItWorks">Jak na to?</a>
+    		</li>
+    		<li class="nav-item">
+    			<a class="nav-link text-white" n:href="Homepage:faq">FAQ</a>
+    		</li>
+    		<li class="nav-item">
+    			<a class="nav-link text-white" n:href="Homepage:download">Ke Stažení</a>
+    		</li>	
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                {if $user->isLoggedIn()}
+                            
+                    <li class="nav-item text-right">
+                        Jste přihlášen jako {$user->getIdentity()->username} <a n:href="Sign:out" class="btn btn-primary login-button">Odhlásit</a>
+                    </li>
+
+                {else}
+                    <li class="nav-item text-right">
+                        <a n:href="Sign:in" class="btn btn-primary login-button">Přihlásit se</a>
+                    </li>
+                {/if}
+                </ul>
+	</nav>
 
 <body>
         {block header}
-            <div class="jumbotron text-center bg-primary text-white">
-                <h1>Opava Tour</h1>
-                <br>
-                <p>by Michal Trlica & Richard Míček</p>
+            <div class="jumbotron jumbotron-fluid text-center bg-primary text-white">
+                <div class="container-fluid">
+                    <h1>Opava Tour</h1>
+                    <br>
+                    <p>by Michal Trlica & Richard Míček</p>
+                </div>
             </div>
         {/block}
 	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
@@ -28,17 +65,7 @@
 	{include content}
         {block footer}
             <div class="container-fluid bg-primary text-white footer">
-                <div class="row">
-                    <div class="col-md-3">
-                        {if $user->isLoggedIn()}
-                            
-                            <p>Jste přihlášen jako {$user->getIdentity()->username} <a n:href="Sign:out" class="btn btn-light">Odhlásit</a></p>
-
-                        {else}
-                            <p><a n:href="Sign:in" class="btn btn-light">Přihlásit se</a></p>
-                        {/if}
-                    </div>
-                    <div class="col-md-3 offset-md-2">
+                    <div class="text-center">
                         <p>Michal Trlica & Richard Míček &copy 2018</p>
                     </div>
                 </div>
