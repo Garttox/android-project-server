@@ -28,6 +28,12 @@ class ListPresenter extends BasePresenter
             $this->template->data = $value;
         }
         
+        public function renderAdd(){
+            if (!$this->getUser()->isAllowed('List', 'add')) {
+                $this->redirect('Homepage:');
+            }
+        }
+        
         protected function createComponentTourForm(){
             $form = new Form;
             $form->addText("title","Název:");
