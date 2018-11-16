@@ -17,9 +17,6 @@ class Template35392f9c0b extends Latte\Runtime\Template
 	function main()
 	{
 		extract($this->params);
-?>
-
-<?php
 		if ($this->getParentName()) return get_defined_vars();
 		$this->renderBlock('content', get_defined_vars());
 ?>
@@ -40,7 +37,10 @@ class Template35392f9c0b extends Latte\Runtime\Template
 
 	function blockContent($_args)
 	{
-?>    <div class="container text-center">
+		extract($_args);
+?>
+
+    <div class="container text-center">
         <h2>Vítejte na stránkách OpavaTour&trade;</h2>
         <hr>
         <div class="row">
@@ -60,14 +60,18 @@ class Template35392f9c0b extends Latte\Runtime\Template
                 <h3>O tvůrcích</h3>
                 <hr>
                 <p><strong>Richard Míček - Hlavní vývojář aplikace, tvůrce projektu</strong><hr></p>
-                <p class="text-justify">Student Informačních a komunikačních 
+                <p class="text-justify">
+                    <img src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 26 */ ?>/images/0.jpeg" class="floated">
+                    Student Informačních a komunikačních 
                     technologií na Střední Škole Průmyslové a Umělecké v Opavě.
                     O programování se zajímá od 8. třídy základní školy, kdy 
                     začal jeho zájem o jazyk Java. Tento jazyk nadále zůstává 
                     jeho oblíbeným, a i aplikace OpavaTour&trade; je napsána v Javě.</p>
                 <hr>
                 <p><strong>Michal Trlica - Hlavní vývojář webu, spolutvůrce projektu</strong><hr></p>
-                <p class="text-justify">Student Informačních a komunikačních 
+                <p class="text-justify">
+                    <img src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 35 */ ?>/images/0.jpeg" class="floated">
+                    Student Informačních a komunikačních 
                     technologií na Střední Škole Průmyslové a Umělecké v Opavě.</p>
             </div>
         </div>

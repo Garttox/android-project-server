@@ -18,7 +18,7 @@
 
 <nav class="navbar navbar-expand-sm bg-primary text-white">
 		<!-- Brand -->
-		<a class="navbar-brand text-white" n:href="Homepage:default"><i class="far fa-circle"></i></a>
+		<a class="navbar-brand text-white" n:href="Homepage:default"><img src="{$basePath}/images/0.jpeg" class="icon"></a>
 
 		<!-- Links -->
 		<ul class="navbar-nav">
@@ -85,12 +85,12 @@
 
 <body>
         {block header}
-            <div class="jumbotron jumbotron-fluid text-center bg-primary text-white">
+            <header class="jumbotron jumbotron fluid bg-primary text-center text-white">
                 <div class="container-fluid">
                     <h1>OpavaTour&trade;</h1>
                     <p><i>Prohlídka Opavy, jednoduše</i></p>
                 </div>
-            </div>
+            </header>
         {/block}
 	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
 	    {include content}

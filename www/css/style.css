@@ -13,4 +13,21 @@
     border-color: white !important;
 }
 
+.floated{
+    float: left;
+    width: 150px;
+    background: red;
+    margin-right: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
 
+.icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.jumbotron{
+    background: url(../images/bg.jpg) 10px 20px/2000px 300px;
+}

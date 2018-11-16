@@ -51,7 +51,8 @@ class Templatec00e80d68f extends Latte\Runtime\Template
 
 <nav class="navbar navbar-expand-sm bg-primary text-white">
 		<!-- Brand -->
-		<a class="navbar-brand text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:default")) ?>"><i class="far fa-circle"></i></a>
+		<a class="navbar-brand text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:default")) ?>"><img src="<?php
+		echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 21 */ ?>/images/0.jpeg" class="icon"></a>
 
 		<!-- Links -->
 		<ul class="navbar-nav">
@@ -173,12 +174,12 @@ class Templatec00e80d68f extends Latte\Runtime\Template
 
 	function blockHeader($_args)
 	{
-?>            <div class="jumbotron jumbotron-fluid text-center bg-primary text-white">
+?>            <header class="jumbotron jumbotron fluid bg-primary text-center text-white">
                 <div class="container-fluid">
                     <h1>OpavaTour&trade;</h1>
                     <p><i>Prohlídka Opavy, jednoduše</i></p>
                 </div>
-            </div>
+            </header>
 <?php
 	}
 
