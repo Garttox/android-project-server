@@ -93,14 +93,10 @@
             </div>
         {/block}
 	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
-        
-	{include content}
+	    {include content}
         {block footer}
-            <div class="container-fluid bg-primary text-white footer">
-                    <div class="text-center">
-                        <p>Michal Trlica & Richard Míček &copy 2018</p>
-                    </div>
-                </div>
+            <div class="footer bg-primary">
+                This footer will always be positioned at the bottom of the page, but <strong>not fixed</strong>.
             </div>
         {/block}
 	{block scripts}

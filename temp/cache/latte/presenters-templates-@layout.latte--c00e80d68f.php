@@ -1,9 +1,9 @@
 <?php
-// source: D:\stranky\www\android-project-server\app\presenters/templates/@layout.latte
+// source: /home/ubuntu/workspace/android-project-server/app/presenters/templates/@layout.latte
 
 use Latte\Runtime as LR;
 
-class Template80d0efda2d extends Latte\Runtime\Template
+class Templatec00e80d68f extends Latte\Runtime\Template
 {
 	public $blocks = [
 		'head' => 'blockHead',
@@ -145,9 +145,6 @@ class Template80d0efda2d extends Latte\Runtime\Template
 <?php
 			$iterations++;
 		}
-?>
-        
-<?php
 		$this->renderBlock('content', $this->params, 'html');
 		$this->renderBlock('footer', get_defined_vars());
 		$this->renderBlock('scripts', get_defined_vars());
@@ -188,11 +185,8 @@ class Template80d0efda2d extends Latte\Runtime\Template
 
 	function blockFooter($_args)
 	{
-?>            <div class="container-fluid bg-primary text-white footer">
-                    <div class="text-center">
-                        <p>Michal Trlica & Richard Míček &copy 2018</p>
-                    </div>
-                </div>
+?>            <div class="footer bg-primary">
+                This footer will always be positioned at the bottom of the page, but <strong>not fixed</strong>.
             </div>
 <?php
 	}
@@ -204,7 +198,7 @@ class Template80d0efda2d extends Latte\Runtime\Template
 ?>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
-	<!--<script src="<?php echo LR\Filters::escapeHtmlComment($basePath) /* line 109 */ ?>/js/main.js"></script>-->
+	<!--<script src="<?php echo LR\Filters::escapeHtmlComment($basePath) /* line 105 */ ?>/js/main.js"></script>-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <?php

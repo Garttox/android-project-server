@@ -1,9 +1,9 @@
 <?php
-// source: D:\stranky\www\android-project-server\app\presenters/templates/Sign/in.latte
+// source: /home/ubuntu/workspace/android-project-server/app/presenters/templates/Sign/in.latte
 
 use Latte\Runtime as LR;
 
-class Template204c965d84 extends Latte\Runtime\Template
+class Template31c3f39c22 extends Latte\Runtime\Template
 {
 	public $blocks = [
 		'content' => 'blockContent',

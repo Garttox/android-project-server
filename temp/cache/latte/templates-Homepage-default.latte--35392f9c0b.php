@@ -1,8 +1,46 @@
-{* This is the welcome page, you can delete it *}
+<?php
+// source: /home/ubuntu/workspace/android-project-server/app/presenters/templates/Homepage/default.latte
 
-{block content}
+use Latte\Runtime as LR;
 
-    <div class="container text-center">
+class Template35392f9c0b extends Latte\Runtime\Template
+{
+	public $blocks = [
+		'content' => 'blockContent',
+	];
+
+	public $blockTypes = [
+		'content' => 'html',
+	];
+
+
+	function main()
+	{
+		extract($this->params);
+?>
+
+<?php
+		if ($this->getParentName()) return get_defined_vars();
+		$this->renderBlock('content', get_defined_vars());
+?>
+
+<!--  -->
+<?php
+		return get_defined_vars();
+	}
+
+
+	function prepare()
+	{
+		extract($this->params);
+		Nette\Bridges\ApplicationLatte\UIRuntime::initialize($this, $this->parentName, $this->blocks);
+		
+	}
+
+
+	function blockContent($_args)
+	{
+?>    <div class="container text-center">
         <h2>Vítejte na stránkách OpavaTour&trade;</h2>
         <hr>
         <div class="row">
@@ -38,6 +76,7 @@
         
     </div>
 
-{/block}
+<?php
+	}
 
-<!--  -->
+}
