@@ -11,6 +11,7 @@
 
 .login-button {
     border-color: white !important;
+    margin-left: 5px;
 }
 
 .floated{
@@ -26,8 +27,4 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-}
-
-.jumbotron{
-    background: url(../images/bg.jpg) 10px 20px/2000px 300px;
 }

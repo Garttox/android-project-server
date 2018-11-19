@@ -5,7 +5,7 @@ return array (
     'App\\Acl\\Acl' => 
     array (
       'file' => 'D:\\www\\aa\\app\\acl\\Acl.php',
-      'time' => 1542023486,
+      'time' => 1542626966,
     ),
     'App\\Forms\\FormFactory' => 
     array (
@@ -37,6 +37,11 @@ return array (
       'file' => 'D:\\www\\aa\\app\\model\\UserManager.php',
       'time' => 1542023486,
     ),
+    'App\\Presenters\\ApiPresenter' => 
+    array (
+      'file' => 'D:\\www\\aa\\app\\presenters\\ApiPresenter.php',
+      'time' => 1542626966,
+    ),
     'App\\Presenters\\BasePresenter' => 
     array (
       'file' => 'D:\\www\\aa\\app\\presenters\\BasePresenter.php',
@@ -60,12 +65,12 @@ return array (
     'App\\Presenters\\ListPresenter' => 
     array (
       'file' => 'D:\\www\\aa\\app\\presenters\\ListPresenter.php',
-      'time' => 1542023486,
+      'time' => 1542626966,
     ),
     'App\\Presenters\\SignPresenter' => 
     array (
       'file' => 'D:\\www\\aa\\app\\presenters\\SignPresenter.php',
-      'time' => 1542023486,
+      'time' => 1542626966,
     ),
     'App\\RouterFactory' => 
     array (
