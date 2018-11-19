@@ -1,15 +1,14 @@
 <?php
-// source: D:\stranky\www\android-project-server\app/config/config.neon 
-// source: D:\stranky\www\android-project-server\app/config/config.local.neon 
+// source: /home/ubuntu/workspace/android-project-server/app/config/config.neon 
+// source: /home/ubuntu/workspace/android-project-server/app/config/config.local.neon 
 
-class Container_cafdc987bb extends Nette\DI\Container
+class Container_31e2b93507 extends Nette\DI\Container
 {
 	protected $meta = [
 		'types' => [
 			'Nette\Application\Application' => [1 => ['application.application']],
 			'Nette\Application\IPresenterFactory' => [1 => ['application.presenterFactory']],
 			'Nette\Application\LinkGenerator' => [1 => ['application.linkGenerator']],
-			'Nette\Caching\Storages\IJournal' => [1 => ['cache.journal']],
 			'Nette\Caching\IStorage' => [1 => ['cache.storage']],
 			'Nette\Database\Connection' => [1 => ['database.default.connection']],
 			'Nette\Database\IStructure' => [1 => ['database.default.structure']],
@@ -36,17 +35,17 @@ class Container_cafdc987bb extends Nette\DI\Container
 			'Nette\Security\Permission' => [1 => ['authorizator']],
 			'Nette\Security\IAuthorizator' => [1 => ['authorizator']],
 			'App\Acl\Acl' => [1 => ['authorizator']],
-			'App\Forms\FormFactory' => [1 => ['25_App_Forms_FormFactory']],
-			'App\Forms\SignInFormFactory' => [1 => ['26_App_Forms_SignInFormFactory']],
-			'App\Forms\SignUpFormFactory' => [1 => ['27_App_Forms_SignUpFormFactory']],
-			'App\Model\TourManager' => [1 => ['28_App_Model_TourManager']],
-			'Nette\Security\IAuthenticator' => [1 => ['29_App_Model_UserManager']],
-			'App\Model\UserManager' => [1 => ['29_App_Model_UserManager']],
+			'App\Forms\FormFactory' => [1 => ['24_App_Forms_FormFactory']],
+			'App\Forms\SignInFormFactory' => [1 => ['25_App_Forms_SignInFormFactory']],
+			'App\Forms\SignUpFormFactory' => [1 => ['26_App_Forms_SignUpFormFactory']],
+			'App\Model\TourManager' => [1 => ['27_App_Model_TourManager']],
+			'Nette\Security\IAuthenticator' => [1 => ['28_App_Model_UserManager']],
+			'App\Model\UserManager' => [1 => ['28_App_Model_UserManager']],
 			'App\Presenters\BasePresenter' => [
 				1 => [
 					'application.1',
 					'application.2',
-					'application.4',
+					'application.3',
 					'application.5',
 					'application.6',
 				],
@@ -55,7 +54,7 @@ class Container_cafdc987bb extends Nette\DI\Container
 				[
 					'application.1',
 					'application.2',
-					'application.4',
+					'application.3',
 					'application.5',
 					'application.6',
 				],
@@ -64,7 +63,7 @@ class Container_cafdc987bb extends Nette\DI\Container
 				[
 					'application.1',
 					'application.2',
-					'application.4',
+					'application.3',
 					'application.5',
 					'application.6',
 				],
@@ -73,7 +72,7 @@ class Container_cafdc987bb extends Nette\DI\Container
 				[
 					'application.1',
 					'application.2',
-					'application.4',
+					'application.3',
 					'application.5',
 					'application.6',
 				],
@@ -82,7 +81,7 @@ class Container_cafdc987bb extends Nette\DI\Container
 				[
 					'application.1',
 					'application.2',
-					'application.4',
+					'application.3',
 					'application.5',
 					'application.6',
 				],
@@ -91,7 +90,7 @@ class Container_cafdc987bb extends Nette\DI\Container
 				[
 					'application.1',
 					'application.2',
-					'application.4',
+					'application.3',
 					'application.5',
 					'application.6',
 				],
@@ -100,7 +99,7 @@ class Container_cafdc987bb extends Nette\DI\Container
 				[
 					'application.1',
 					'application.2',
-					'application.4',
+					'application.3',
 					'application.5',
 					'application.6',
 				],
@@ -109,7 +108,7 @@ class Container_cafdc987bb extends Nette\DI\Container
 				[
 					'application.1',
 					'application.2',
-					'application.4',
+					'application.3',
 					'application.5',
 					'application.6',
 				],
@@ -118,7 +117,7 @@ class Container_cafdc987bb extends Nette\DI\Container
 				[
 					'application.1',
 					'application.2',
-					'application.4',
+					'application.3',
 					'application.5',
 					'application.6',
 				],
@@ -127,7 +126,7 @@ class Container_cafdc987bb extends Nette\DI\Container
 				[
 					'application.1',
 					'application.2',
-					'application.4',
+					'application.3',
 					'application.5',
 					'application.6',
 				],
@@ -136,7 +135,7 @@ class Container_cafdc987bb extends Nette\DI\Container
 				[
 					'application.1',
 					'application.2',
-					'application.4',
+					'application.3',
 					'application.5',
 					'application.6',
 				],
@@ -145,7 +144,7 @@ class Container_cafdc987bb extends Nette\DI\Container
 				[
 					'application.1',
 					'application.2',
-					'application.4',
+					'application.3',
 					'application.5',
 					'application.6',
 				],
@@ -162,35 +161,34 @@ class Container_cafdc987bb extends Nette\DI\Container
 					'application.8',
 				],
 			],
-			'App\Presenters\ApiPresenter' => [1 => ['application.1']],
-			'App\Presenters\Error4xxPresenter' => [1 => ['application.2']],
-			'App\Presenters\ErrorPresenter' => [1 => ['application.3']],
-			'App\Presenters\HomepagePresenter' => [1 => ['application.4']],
+			'App\Presenters\Error4xxPresenter' => [1 => ['application.1']],
+			'App\Presenters\HomepagePresenter' => [1 => ['application.2']],
+			'App\Presenters\SignPresenter' => [1 => ['application.3']],
+			'App\Presenters\ErrorPresenter' => [1 => ['application.4']],
 			'App\Presenters\ListPresenter' => [1 => ['application.5']],
-			'App\Presenters\SignPresenter' => [1 => ['application.6']],
+			'App\Presenters\ApiPresenter' => [1 => ['application.6']],
 			'NetteModule\ErrorPresenter' => [1 => ['application.7']],
 			'NetteModule\MicroPresenter' => [1 => ['application.8']],
 			'Nette\DI\Container' => [1 => ['container']],
 		],
 		'services' => [
-			'25_App_Forms_FormFactory' => 'App\Forms\FormFactory',
-			'26_App_Forms_SignInFormFactory' => 'App\Forms\SignInFormFactory',
-			'27_App_Forms_SignUpFormFactory' => 'App\Forms\SignUpFormFactory',
-			'28_App_Model_TourManager' => 'App\Model\TourManager',
-			'29_App_Model_UserManager' => 'App\Model\UserManager',
-			'application.1' => 'App\Presenters\ApiPresenter',
-			'application.2' => 'App\Presenters\Error4xxPresenter',
-			'application.3' => 'App\Presenters\ErrorPresenter',
-			'application.4' => 'App\Presenters\HomepagePresenter',
+			'24_App_Forms_FormFactory' => 'App\Forms\FormFactory',
+			'25_App_Forms_SignInFormFactory' => 'App\Forms\SignInFormFactory',
+			'26_App_Forms_SignUpFormFactory' => 'App\Forms\SignUpFormFactory',
+			'27_App_Model_TourManager' => 'App\Model\TourManager',
+			'28_App_Model_UserManager' => 'App\Model\UserManager',
+			'application.1' => 'App\Presenters\Error4xxPresenter',
+			'application.2' => 'App\Presenters\HomepagePresenter',
+			'application.3' => 'App\Presenters\SignPresenter',
+			'application.4' => 'App\Presenters\ErrorPresenter',
 			'application.5' => 'App\Presenters\ListPresenter',
-			'application.6' => 'App\Presenters\SignPresenter',
+			'application.6' => 'App\Presenters\ApiPresenter',
 			'application.7' => 'NetteModule\ErrorPresenter',
 			'application.8' => 'NetteModule\MicroPresenter',
 			'application.application' => 'Nette\Application\Application',
 			'application.linkGenerator' => 'Nette\Application\LinkGenerator',
 			'application.presenterFactory' => 'Nette\Application\IPresenterFactory',
 			'authorizator' => 'App\Acl\Acl',
-			'cache.journal' => 'Nette\Caching\Storages\IJournal',
 			'cache.storage' => 'Nette\Caching\IStorage',
 			'container' => 'Nette\DI\Container',
 			'database.default.connection' => 'Nette\Database\Connection',
@@ -224,12 +222,12 @@ class Container_cafdc987bb extends Nette\DI\Container
 				'application.8' => true,
 			],
 			'nette.presenter' => [
-				'application.1' => 'App\Presenters\ApiPresenter',
-				'application.2' => 'App\Presenters\Error4xxPresenter',
-				'application.3' => 'App\Presenters\ErrorPresenter',
-				'application.4' => 'App\Presenters\HomepagePresenter',
+				'application.1' => 'App\Presenters\Error4xxPresenter',
+				'application.2' => 'App\Presenters\HomepagePresenter',
+				'application.3' => 'App\Presenters\SignPresenter',
+				'application.4' => 'App\Presenters\ErrorPresenter',
 				'application.5' => 'App\Presenters\ListPresenter',
-				'application.6' => 'App\Presenters\SignPresenter',
+				'application.6' => 'App\Presenters\ApiPresenter',
 				'application.7' => 'NetteModule\ErrorPresenter',
 				'application.8' => 'NetteModule\MicroPresenter',
 			],
@@ -240,7 +238,6 @@ class Container_cafdc987bb extends Nette\DI\Container
 			'database.default' => 'database.default.connection',
 			'httpRequest' => 'http.request',
 			'httpResponse' => 'http.response',
-			'nette.cacheJournal' => 'cache.journal',
 			'nette.database.default' => 'database.default',
 			'nette.database.default.context' => 'database.default.context',
 			'nette.httpContext' => 'http.context',
@@ -261,117 +258,117 @@ class Container_cafdc987bb extends Nette\DI\Container
 	{
 		$this->parameters = $params;
 		$this->parameters += [
-			'appDir' => 'D:\stranky\www\android-project-server\app',
-			'wwwDir' => 'D:\stranky\www\android-project-server\www',
-			'debugMode' => true,
-			'productionMode' => false,
+			'appDir' => '/home/ubuntu/workspace/android-project-server/app',
+			'wwwDir' => '/home/ubuntu/workspace/android-project-server/www',
+			'debugMode' => false,
+			'productionMode' => true,
 			'consoleMode' => false,
-			'tempDir' => 'D:\stranky\www\android-project-server\app/../temp',
+			'tempDir' => '/home/ubuntu/workspace/android-project-server/app/../temp',
 		];
 	}
 
 
-	public function createService__25_App_Forms_FormFactory(): App\Forms\FormFactory
+	public function createService__24_App_Forms_FormFactory(): App\Forms\FormFactory
 	{
 		$service = new App\Forms\FormFactory;
 		return $service;
 	}
 
 
-	public function createService__26_App_Forms_SignInFormFactory(): App\Forms\SignInFormFactory
+	public function createService__25_App_Forms_SignInFormFactory(): App\Forms\SignInFormFactory
 	{
-		$service = new App\Forms\SignInFormFactory($this->getService('25_App_Forms_FormFactory'),
+		$service = new App\Forms\SignInFormFactory($this->getService('24_App_Forms_FormFactory'),
 			$this->getService('security.user'));
 		return $service;
 	}
 
 
-	public function createService__27_App_Forms_SignUpFormFactory(): App\Forms\SignUpFormFactory
+	public function createService__26_App_Forms_SignUpFormFactory(): App\Forms\SignUpFormFactory
 	{
-		$service = new App\Forms\SignUpFormFactory($this->getService('25_App_Forms_FormFactory'),
-			$this->getService('29_App_Model_UserManager'));
+		$service = new App\Forms\SignUpFormFactory($this->getService('24_App_Forms_FormFactory'),
+			$this->getService('28_App_Model_UserManager'));
 		return $service;
 	}
 
 
-	public function createService__28_App_Model_TourManager(): App\Model\TourManager
+	public function createService__27_App_Model_TourManager(): App\Model\TourManager
 	{
 		$service = new App\Model\TourManager($this->getService('database.default.context'));
 		return $service;
 	}
 
 
-	public function createService__29_App_Model_UserManager(): App\Model\UserManager
+	public function createService__28_App_Model_UserManager(): App\Model\UserManager
 	{
 		$service = new App\Model\UserManager($this->getService('database.default.context'));
 		return $service;
 	}
 
 
-	public function createServiceApplication__1(): App\Presenters\ApiPresenter
-	{
-		$service = new App\Presenters\ApiPresenter($this->getService('28_App_Model_TourManager'));
-		$service->injectPrimary($this, $this->getService('application.presenterFactory'),
-			$this->getService('routing.router'), $this->getService('http.request'),
-			$this->getService('http.response'), $this->getService('session.session'),
-			$this->getService('security.user'), $this->getService('latte.templateFactory'));
-		$service->invalidLinkMode = 5;
-		return $service;
-	}
-
-
-	public function createServiceApplication__2(): App\Presenters\Error4xxPresenter
+	public function createServiceApplication__1(): App\Presenters\Error4xxPresenter
 	{
 		$service = new App\Presenters\Error4xxPresenter;
 		$service->injectPrimary($this, $this->getService('application.presenterFactory'),
 			$this->getService('routing.router'), $this->getService('http.request'),
 			$this->getService('http.response'), $this->getService('session.session'),
 			$this->getService('security.user'), $this->getService('latte.templateFactory'));
-		$service->invalidLinkMode = 5;
+		$service->invalidLinkMode = 1;
 		return $service;
 	}
 
 
-	public function createServiceApplication__3(): App\Presenters\ErrorPresenter
-	{
-		$service = new App\Presenters\ErrorPresenter($this->getService('tracy.logger'));
-		return $service;
-	}
-
-
-	public function createServiceApplication__4(): App\Presenters\HomepagePresenter
+	public function createServiceApplication__2(): App\Presenters\HomepagePresenter
 	{
 		$service = new App\Presenters\HomepagePresenter;
 		$service->injectPrimary($this, $this->getService('application.presenterFactory'),
 			$this->getService('routing.router'), $this->getService('http.request'),
 			$this->getService('http.response'), $this->getService('session.session'),
 			$this->getService('security.user'), $this->getService('latte.templateFactory'));
-		$service->invalidLinkMode = 5;
+		$service->invalidLinkMode = 1;
+		return $service;
+	}
+
+
+	public function createServiceApplication__3(): App\Presenters\SignPresenter
+	{
+		$service = new App\Presenters\SignPresenter($this->getService('25_App_Forms_SignInFormFactory'),
+			$this->getService('26_App_Forms_SignUpFormFactory'));
+		$service->injectPrimary($this, $this->getService('application.presenterFactory'),
+			$this->getService('routing.router'), $this->getService('http.request'),
+			$this->getService('http.response'), $this->getService('session.session'),
+			$this->getService('security.user'), $this->getService('latte.templateFactory'));
+		$service->invalidLinkMode = 1;
+		return $service;
+	}
+
+
+	public function createServiceApplication__4(): App\Presenters\ErrorPresenter
+	{
+		$service = new App\Presenters\ErrorPresenter($this->getService('tracy.logger'));
 		return $service;
 	}
 
 
 	public function createServiceApplication__5(): App\Presenters\ListPresenter
 	{
-		$service = new App\Presenters\ListPresenter($this->getService('28_App_Model_TourManager'));
+		$service = new App\Presenters\ListPresenter($this->getService('27_App_Model_TourManager'));
 		$service->injectPrimary($this, $this->getService('application.presenterFactory'),
 			$this->getService('routing.router'), $this->getService('http.request'),
 			$this->getService('http.response'), $this->getService('session.session'),
 			$this->getService('security.user'), $this->getService('latte.templateFactory'));
-		$service->invalidLinkMode = 5;
+		$service->invalidLinkMode = 1;
 		return $service;
 	}
 
 
-	public function createServiceApplication__6(): App\Presenters\SignPresenter
+	public function createServiceApplication__6(): App\Presenters\ApiPresenter
 	{
-		$service = new App\Presenters\SignPresenter($this->getService('26_App_Forms_SignInFormFactory'),
-			$this->getService('27_App_Forms_SignUpFormFactory'));
+		$service = new App\Presenters\ApiPresenter($this->getService('27_App_Model_TourManager'));
 		$service->injectPrimary($this, $this->getService('application.presenterFactory'),
 			$this->getService('routing.router'), $this->getService('http.request'),
 			$this->getService('http.response'), $this->getService('session.session'),
 			$this->getService('security.user'), $this->getService('latte.templateFactory'));
-		$service->invalidLinkMode = 5;
+		$service->invalidLinkMode = 1;
 		return $service;
 	}
 
@@ -396,11 +393,9 @@ class Container_cafdc987bb extends Nette\DI\Container
 		$service = new Nette\Application\Application($this->getService('application.presenterFactory'),
 			$this->getService('routing.router'), $this->getService('http.request'),
 			$this->getService('http.response'));
-		$service->catchExceptions = false;
+		$service->catchExceptions = true;
 		$service->errorPresenter = 'Error';
 		Nette\Bridges\ApplicationTracy\RoutingPanel::initializePanel($service);
-		$this->getService('tracy.bar')->addPanel(new Nette\Bridges\ApplicationTracy\RoutingPanel($this->getService('routing.router'),
-			$this->getService('http.request'), $this->getService('application.presenterFactory')));
 		return $service;
 	}
 
@@ -415,7 +410,7 @@ class Container_cafdc987bb extends Nette\DI\Container
 
 	public function createServiceApplication__presenterFactory(): Nette\Application\IPresenterFactory
 	{
-		$service = new Nette\Application\PresenterFactory(new Nette\Bridges\ApplicationDI\PresenterFactoryCallback($this, 5, 'D:\stranky\www\android-project-server\app/../temp/cache/Nette%5CBridges%5CApplicationDI%5CApplicationExtension'));
+		$service = new Nette\Application\PresenterFactory(new Nette\Bridges\ApplicationDI\PresenterFactoryCallback($this, 1, null));
 		$service->setMapping(['*' => 'App\*Module\Presenters\*Presenter']);
 		return $service;
 	}
@@ -428,17 +423,9 @@ class Container_cafdc987bb extends Nette\DI\Container
 	}
 
 
-	public function createServiceCache__journal(): Nette\Caching\Storages\IJournal
-	{
-		$service = new Nette\Caching\Storages\SQLiteJournal('D:\stranky\www\android-project-server\app/../temp/cache/journal.s3db');
-		return $service;
-	}
-
-
 	public function createServiceCache__storage(): Nette\Caching\IStorage
 	{
-		$service = new Nette\Caching\Storages\FileStorage('D:\stranky\www\android-project-server\app/../temp/cache',
-			$this->getService('cache.journal'));
+		$service = new Nette\Caching\Storages\FileStorage('/home/ubuntu/workspace/android-project-server/app/../temp/cache');
 		return $service;
 	}
 
@@ -454,7 +441,6 @@ class Container_cafdc987bb extends Nette\DI\Container
 		$service = new Nette\Database\Connection('mysql:host=127.0.0.1;dbname=opavatour', 'root',
 			null, ['lazy' => true]);
 		$this->getService('tracy.blueScreen')->addPanel('Nette\Bridges\DatabaseTracy\ConnectionPanel::renderException');
-		Nette\Database\Helpers::createDebugPanel($service, true, 'default');
 		return $service;
 	}
 
@@ -519,7 +505,7 @@ class Container_cafdc987bb extends Nette\DI\Container
 			private $container;
 
 
-			public function __construct(Container_cafdc987bb $container)
+			public function __construct(Container_31e2b93507 $container)
 			{
 				$this->container = $container;
 			}
@@ -528,8 +514,8 @@ class Container_cafdc987bb extends Nette\DI\Container
 			public function create(): Latte\Engine
 			{
 				$service = new Latte\Engine;
-				$service->setTempDirectory('D:\stranky\www\android-project-server\app/../temp/cache/latte');
-				$service->setAutoRefresh(true);
+				$service->setTempDirectory('/home/ubuntu/workspace/android-project-server/app/../temp/cache/latte');
+				$service->setAutoRefresh(false);
 				$service->setContentType('html');
 				Nette\Utils\Html::$xhtml = false;
 				return $service;
@@ -563,9 +549,8 @@ class Container_cafdc987bb extends Nette\DI\Container
 
 	public function createServiceSecurity__user(): Nette\Security\User
 	{
-		$service = new Nette\Security\User($this->getService('security.userStorage'), $this->getService('29_App_Model_UserManager'),
+		$service = new Nette\Security\User($this->getService('security.userStorage'), $this->getService('28_App_Model_UserManager'),
 			$this->getService('authorizator'));
-		$this->getService('tracy.bar')->addPanel(new Nette\Bridges\SecurityTracy\UserPanel($service));
 		return $service;
 	}
 
@@ -608,13 +593,11 @@ class Container_cafdc987bb extends Nette\DI\Container
 
 	public function initialize()
 	{
-		$this->getService('tracy.bar')->addPanel(new Nette\Bridges\DITracy\ContainerPanel($this));
 		$this->getService('http.response')->setHeader('X-Powered-By', 'Nette Framework');
 		$this->getService('http.response')->setHeader('Content-Type', 'text/html; charset=utf-8');
 		$this->getService('http.response')->setHeader('X-Frame-Options', 'SAMEORIGIN');
 		$this->getService('session.session')->exists() && $this->getService('session.session')->start();
 		Tracy\Debugger::$editorMapping = [];
 		Tracy\Debugger::setLogger($this->getService('tracy.logger'));
-		if ($tmp = $this->getByType("Nette\Http\Session", false)) { $tmp->start(); Tracy\Debugger::dispatch(); };
 	}
 }

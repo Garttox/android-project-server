@@ -1,8 +1,8 @@
 <?php
-// source: D:\stranky\www\android-project-server\app/config/config.neon 
-// source: D:\stranky\www\android-project-server\app/config/config.local.neon 
+// source: C:\xampp\htdocs\android-project-server\app/config/config.neon 
+// source: C:\xampp\htdocs\android-project-server\app/config/config.local.neon 
 
-class Container_cafdc987bb extends Nette\DI\Container
+class Container_4e444f86b0 extends Nette\DI\Container
 {
 	protected $meta = [
 		'types' => [
@@ -43,113 +43,19 @@ class Container_cafdc987bb extends Nette\DI\Container
 			'Nette\Security\IAuthenticator' => [1 => ['29_App_Model_UserManager']],
 			'App\Model\UserManager' => [1 => ['29_App_Model_UserManager']],
 			'App\Presenters\BasePresenter' => [
-				1 => [
-					'application.1',
-					'application.2',
-					'application.4',
-					'application.5',
-					'application.6',
-				],
+				1 => ['application.1', 'application.3', 'application.4', 'application.5'],
 			],
-			'Nette\Application\UI\Presenter' => [
-				[
-					'application.1',
-					'application.2',
-					'application.4',
-					'application.5',
-					'application.6',
-				],
-			],
-			'Nette\Application\UI\Control' => [
-				[
-					'application.1',
-					'application.2',
-					'application.4',
-					'application.5',
-					'application.6',
-				],
-			],
-			'Nette\Application\UI\Component' => [
-				[
-					'application.1',
-					'application.2',
-					'application.4',
-					'application.5',
-					'application.6',
-				],
-			],
-			'Nette\ComponentModel\Container' => [
-				[
-					'application.1',
-					'application.2',
-					'application.4',
-					'application.5',
-					'application.6',
-				],
-			],
-			'Nette\ComponentModel\Component' => [
-				[
-					'application.1',
-					'application.2',
-					'application.4',
-					'application.5',
-					'application.6',
-				],
-			],
-			'Nette\Application\UI\IRenderable' => [
-				[
-					'application.1',
-					'application.2',
-					'application.4',
-					'application.5',
-					'application.6',
-				],
-			],
-			'Nette\ComponentModel\IContainer' => [
-				[
-					'application.1',
-					'application.2',
-					'application.4',
-					'application.5',
-					'application.6',
-				],
-			],
-			'Nette\ComponentModel\IComponent' => [
-				[
-					'application.1',
-					'application.2',
-					'application.4',
-					'application.5',
-					'application.6',
-				],
-			],
-			'Nette\Application\UI\ISignalReceiver' => [
-				[
-					'application.1',
-					'application.2',
-					'application.4',
-					'application.5',
-					'application.6',
-				],
-			],
-			'Nette\Application\UI\IStatePersistent' => [
-				[
-					'application.1',
-					'application.2',
-					'application.4',
-					'application.5',
-					'application.6',
-				],
-			],
-			'ArrayAccess' => [
-				[
-					'application.1',
-					'application.2',
-					'application.4',
-					'application.5',
-					'application.6',
-				],
-			],
+			'Nette\Application\UI\Presenter' => [['application.1', 'application.3', 'application.4', 'application.5']],
+			'Nette\Application\UI\Control' => [['application.1', 'application.3', 'application.4', 'application.5']],
+			'Nette\Application\UI\Component' => [['application.1', 'application.3', 'application.4', 'application.5']],
+			'Nette\ComponentModel\Container' => [['application.1', 'application.3', 'application.4', 'application.5']],
+			'Nette\ComponentModel\Component' => [['application.1', 'application.3', 'application.4', 'application.5']],
+			'Nette\Application\UI\IRenderable' => [['application.1', 'application.3', 'application.4', 'application.5']],
+			'Nette\ComponentModel\IContainer' => [['application.1', 'application.3', 'application.4', 'application.5']],
+			'Nette\ComponentModel\IComponent' => [['application.1', 'application.3', 'application.4', 'application.5']],
+			'Nette\Application\UI\ISignalReceiver' => [['application.1', 'application.3', 'application.4', 'application.5']],
+			'Nette\Application\UI\IStatePersistent' => [['application.1', 'application.3', 'application.4', 'application.5']],
+			'ArrayAccess' => [['application.1', 'application.3', 'application.4', 'application.5']],
 			'Nette\Application\IPresenter' => [
 				[
 					'application.1',
@@ -159,17 +65,15 @@ class Container_cafdc987bb extends Nette\DI\Container
 					'application.5',
 					'application.6',
 					'application.7',
-					'application.8',
 				],
 			],
-			'App\Presenters\ApiPresenter' => [1 => ['application.1']],
-			'App\Presenters\Error4xxPresenter' => [1 => ['application.2']],
-			'App\Presenters\ErrorPresenter' => [1 => ['application.3']],
-			'App\Presenters\HomepagePresenter' => [1 => ['application.4']],
-			'App\Presenters\ListPresenter' => [1 => ['application.5']],
-			'App\Presenters\SignPresenter' => [1 => ['application.6']],
-			'NetteModule\ErrorPresenter' => [1 => ['application.7']],
-			'NetteModule\MicroPresenter' => [1 => ['application.8']],
+			'App\Presenters\Error4xxPresenter' => [1 => ['application.1']],
+			'App\Presenters\ErrorPresenter' => [1 => ['application.2']],
+			'App\Presenters\HomepagePresenter' => [1 => ['application.3']],
+			'App\Presenters\ListPresenter' => [1 => ['application.4']],
+			'App\Presenters\SignPresenter' => [1 => ['application.5']],
+			'NetteModule\ErrorPresenter' => [1 => ['application.6']],
+			'NetteModule\MicroPresenter' => [1 => ['application.7']],
 			'Nette\DI\Container' => [1 => ['container']],
 		],
 		'services' => [
@@ -178,14 +82,13 @@ class Container_cafdc987bb extends Nette\DI\Container
 			'27_App_Forms_SignUpFormFactory' => 'App\Forms\SignUpFormFactory',
 			'28_App_Model_TourManager' => 'App\Model\TourManager',
 			'29_App_Model_UserManager' => 'App\Model\UserManager',
-			'application.1' => 'App\Presenters\ApiPresenter',
-			'application.2' => 'App\Presenters\Error4xxPresenter',
-			'application.3' => 'App\Presenters\ErrorPresenter',
-			'application.4' => 'App\Presenters\HomepagePresenter',
-			'application.5' => 'App\Presenters\ListPresenter',
-			'application.6' => 'App\Presenters\SignPresenter',
-			'application.7' => 'NetteModule\ErrorPresenter',
-			'application.8' => 'NetteModule\MicroPresenter',
+			'application.1' => 'App\Presenters\Error4xxPresenter',
+			'application.2' => 'App\Presenters\ErrorPresenter',
+			'application.3' => 'App\Presenters\HomepagePresenter',
+			'application.4' => 'App\Presenters\ListPresenter',
+			'application.5' => 'App\Presenters\SignPresenter',
+			'application.6' => 'NetteModule\ErrorPresenter',
+			'application.7' => 'NetteModule\MicroPresenter',
 			'application.application' => 'Nette\Application\Application',
 			'application.linkGenerator' => 'Nette\Application\LinkGenerator',
 			'application.presenterFactory' => 'Nette\Application\IPresenterFactory',
@@ -221,17 +124,15 @@ class Container_cafdc987bb extends Nette\DI\Container
 				'application.5' => true,
 				'application.6' => true,
 				'application.7' => true,
-				'application.8' => true,
 			],
 			'nette.presenter' => [
-				'application.1' => 'App\Presenters\ApiPresenter',
-				'application.2' => 'App\Presenters\Error4xxPresenter',
-				'application.3' => 'App\Presenters\ErrorPresenter',
-				'application.4' => 'App\Presenters\HomepagePresenter',
-				'application.5' => 'App\Presenters\ListPresenter',
-				'application.6' => 'App\Presenters\SignPresenter',
-				'application.7' => 'NetteModule\ErrorPresenter',
-				'application.8' => 'NetteModule\MicroPresenter',
+				'application.1' => 'App\Presenters\Error4xxPresenter',
+				'application.2' => 'App\Presenters\ErrorPresenter',
+				'application.3' => 'App\Presenters\HomepagePresenter',
+				'application.4' => 'App\Presenters\ListPresenter',
+				'application.5' => 'App\Presenters\SignPresenter',
+				'application.6' => 'NetteModule\ErrorPresenter',
+				'application.7' => 'NetteModule\MicroPresenter',
 			],
 		],
 		'aliases' => [
@@ -261,24 +162,30 @@ class Container_cafdc987bb extends Nette\DI\Container
 	{
 		$this->parameters = $params;
 		$this->parameters += [
-			'appDir' => 'D:\stranky\www\android-project-server\app',
-			'wwwDir' => 'D:\stranky\www\android-project-server\www',
+			'appDir' => 'C:\xampp\htdocs\android-project-server\app',
+			'wwwDir' => 'C:\xampp\htdocs\android-project-server\www',
 			'debugMode' => true,
 			'productionMode' => false,
 			'consoleMode' => false,
-			'tempDir' => 'D:\stranky\www\android-project-server\app/../temp',
+			'tempDir' => 'C:\xampp\htdocs\android-project-server\app/../temp',
 		];
 	}
 
 
-	public function createService__25_App_Forms_FormFactory(): App\Forms\FormFactory
+	/**
+	 * @return App\Forms\FormFactory
+	 */
+	public function createService__25_App_Forms_FormFactory()
 	{
 		$service = new App\Forms\FormFactory;
 		return $service;
 	}
 
 
-	public function createService__26_App_Forms_SignInFormFactory(): App\Forms\SignInFormFactory
+	/**
+	 * @return App\Forms\SignInFormFactory
+	 */
+	public function createService__26_App_Forms_SignInFormFactory()
 	{
 		$service = new App\Forms\SignInFormFactory($this->getService('25_App_Forms_FormFactory'),
 			$this->getService('security.user'));
@@ -286,7 +193,10 @@ class Container_cafdc987bb extends Nette\DI\Container
 	}
 
 
-	public function createService__27_App_Forms_SignUpFormFactory(): App\Forms\SignUpFormFactory
+	/**
+	 * @return App\Forms\SignUpFormFactory
+	 */
+	public function createService__27_App_Forms_SignUpFormFactory()
 	{
 		$service = new App\Forms\SignUpFormFactory($this->getService('25_App_Forms_FormFactory'),
 			$this->getService('29_App_Model_UserManager'));
@@ -294,33 +204,30 @@ class Container_cafdc987bb extends Nette\DI\Container
 	}
 
 
-	public function createService__28_App_Model_TourManager(): App\Model\TourManager
+	/**
+	 * @return App\Model\TourManager
+	 */
+	public function createService__28_App_Model_TourManager()
 	{
 		$service = new App\Model\TourManager($this->getService('database.default.context'));
 		return $service;
 	}
 
 
-	public function createService__29_App_Model_UserManager(): App\Model\UserManager
+	/**
+	 * @return App\Model\UserManager
+	 */
+	public function createService__29_App_Model_UserManager()
 	{
 		$service = new App\Model\UserManager($this->getService('database.default.context'));
 		return $service;
 	}
 
 
-	public function createServiceApplication__1(): App\Presenters\ApiPresenter
-	{
-		$service = new App\Presenters\ApiPresenter($this->getService('28_App_Model_TourManager'));
-		$service->injectPrimary($this, $this->getService('application.presenterFactory'),
-			$this->getService('routing.router'), $this->getService('http.request'),
-			$this->getService('http.response'), $this->getService('session.session'),
-			$this->getService('security.user'), $this->getService('latte.templateFactory'));
-		$service->invalidLinkMode = 5;
-		return $service;
-	}
-
-
-	public function createServiceApplication__2(): App\Presenters\Error4xxPresenter
+	/**
+	 * @return App\Presenters\Error4xxPresenter
+	 */
+	public function createServiceApplication__1()
 	{
 		$service = new App\Presenters\Error4xxPresenter;
 		$service->injectPrimary($this, $this->getService('application.presenterFactory'),
@@ -332,14 +239,20 @@ class Container_cafdc987bb extends Nette\DI\Container
 	}
 
 
-	public function createServiceApplication__3(): App\Presenters\ErrorPresenter
+	/**
+	 * @return App\Presenters\ErrorPresenter
+	 */
+	public function createServiceApplication__2()
 	{
 		$service = new App\Presenters\ErrorPresenter($this->getService('tracy.logger'));
 		return $service;
 	}
 
 
-	public function createServiceApplication__4(): App\Presenters\HomepagePresenter
+	/**
+	 * @return App\Presenters\HomepagePresenter
+	 */
+	public function createServiceApplication__3()
 	{
 		$service = new App\Presenters\HomepagePresenter;
 		$service->injectPrimary($this, $this->getService('application.presenterFactory'),
@@ -351,7 +264,10 @@ class Container_cafdc987bb extends Nette\DI\Container
 	}
 
 
-	public function createServiceApplication__5(): App\Presenters\ListPresenter
+	/**
+	 * @return App\Presenters\ListPresenter
+	 */
+	public function createServiceApplication__4()
 	{
 		$service = new App\Presenters\ListPresenter($this->getService('28_App_Model_TourManager'));
 		$service->injectPrimary($this, $this->getService('application.presenterFactory'),
@@ -363,7 +279,10 @@ class Container_cafdc987bb extends Nette\DI\Container
 	}
 
 
-	public function createServiceApplication__6(): App\Presenters\SignPresenter
+	/**
+	 * @return App\Presenters\SignPresenter
+	 */
+	public function createServiceApplication__5()
 	{
 		$service = new App\Presenters\SignPresenter($this->getService('26_App_Forms_SignInFormFactory'),
 			$this->getService('27_App_Forms_SignUpFormFactory'));
@@ -376,14 +295,20 @@ class Container_cafdc987bb extends Nette\DI\Container
 	}
 
 
-	public function createServiceApplication__7(): NetteModule\ErrorPresenter
+	/**
+	 * @return NetteModule\ErrorPresenter
+	 */
+	public function createServiceApplication__6()
 	{
 		$service = new NetteModule\ErrorPresenter($this->getService('tracy.logger'));
 		return $service;
 	}
 
 
-	public function createServiceApplication__8(): NetteModule\MicroPresenter
+	/**
+	 * @return NetteModule\MicroPresenter
+	 */
+	public function createServiceApplication__7()
 	{
 		$service = new NetteModule\MicroPresenter($this, $this->getService('http.request'),
 			$this->getService('routing.router'));
@@ -391,7 +316,10 @@ class Container_cafdc987bb extends Nette\DI\Container
 	}
 
 
-	public function createServiceApplication__application(): Nette\Application\Application
+	/**
+	 * @return Nette\Application\Application
+	 */
+	public function createServiceApplication__application()
 	{
 		$service = new Nette\Application\Application($this->getService('application.presenterFactory'),
 			$this->getService('routing.router'), $this->getService('http.request'),
@@ -405,7 +333,10 @@ class Container_cafdc987bb extends Nette\DI\Container
 	}
 
 
-	public function createServiceApplication__linkGenerator(): Nette\Application\LinkGenerator
+	/**
+	 * @return Nette\Application\LinkGenerator
+	 */
+	public function createServiceApplication__linkGenerator()
 	{
 		$service = new Nette\Application\LinkGenerator($this->getService('routing.router'),
 			$this->getService('http.request')->getUrl(), $this->getService('application.presenterFactory'));
@@ -413,43 +344,61 @@ class Container_cafdc987bb extends Nette\DI\Container
 	}
 
 
-	public function createServiceApplication__presenterFactory(): Nette\Application\IPresenterFactory
+	/**
+	 * @return Nette\Application\IPresenterFactory
+	 */
+	public function createServiceApplication__presenterFactory()
 	{
-		$service = new Nette\Application\PresenterFactory(new Nette\Bridges\ApplicationDI\PresenterFactoryCallback($this, 5, 'D:\stranky\www\android-project-server\app/../temp/cache/Nette%5CBridges%5CApplicationDI%5CApplicationExtension'));
+		$service = new Nette\Application\PresenterFactory(new Nette\Bridges\ApplicationDI\PresenterFactoryCallback($this, 5, 'C:\xampp\htdocs\android-project-server\app/../temp/cache/Nette%5CBridges%5CApplicationDI%5CApplicationExtension'));
 		$service->setMapping(['*' => 'App\*Module\Presenters\*Presenter']);
 		return $service;
 	}
 
 
-	public function createServiceAuthorizator(): App\Acl\Acl
+	/**
+	 * @return App\Acl\Acl
+	 */
+	public function createServiceAuthorizator()
 	{
 		$service = new App\Acl\Acl;
 		return $service;
 	}
 
 
-	public function createServiceCache__journal(): Nette\Caching\Storages\IJournal
+	/**
+	 * @return Nette\Caching\Storages\IJournal
+	 */
+	public function createServiceCache__journal()
 	{
-		$service = new Nette\Caching\Storages\SQLiteJournal('D:\stranky\www\android-project-server\app/../temp/cache/journal.s3db');
+		$service = new Nette\Caching\Storages\SQLiteJournal('C:\xampp\htdocs\android-project-server\app/../temp/cache/journal.s3db');
 		return $service;
 	}
 
 
-	public function createServiceCache__storage(): Nette\Caching\IStorage
+	/**
+	 * @return Nette\Caching\IStorage
+	 */
+	public function createServiceCache__storage()
 	{
-		$service = new Nette\Caching\Storages\FileStorage('D:\stranky\www\android-project-server\app/../temp/cache',
+		$service = new Nette\Caching\Storages\FileStorage('C:\xampp\htdocs\android-project-server\app/../temp/cache',
 			$this->getService('cache.journal'));
 		return $service;
 	}
 
 
-	public function createServiceContainer(): Nette\DI\Container
+	/**
+	 * @return Nette\DI\Container
+	 */
+	public function createServiceContainer()
 	{
 		return $this;
 	}
 
 
-	public function createServiceDatabase__default__connection(): Nette\Database\Connection
+	/**
+	 * @return Nette\Database\Connection
+	 */
+	public function createServiceDatabase__default__connection()
 	{
 		$service = new Nette\Database\Connection('mysql:host=127.0.0.1;dbname=opavatour', 'root',
 			null, ['lazy' => true]);
@@ -459,7 +408,10 @@ class Container_cafdc987bb extends Nette\DI\Container
 	}
 
 
-	public function createServiceDatabase__default__context(): Nette\Database\Context
+	/**
+	 * @return Nette\Database\Context
+	 */
+	public function createServiceDatabase__default__context()
 	{
 		$service = new Nette\Database\Context($this->getService('database.default.connection'),
 			$this->getService('database.default.structure'), $this->getService('database.default.conventions'),
@@ -468,14 +420,20 @@ class Container_cafdc987bb extends Nette\DI\Container
 	}
 
 
-	public function createServiceDatabase__default__conventions(): Nette\Database\Conventions\DiscoveredConventions
+	/**
+	 * @return Nette\Database\Conventions\DiscoveredConventions
+	 */
+	public function createServiceDatabase__default__conventions()
 	{
 		$service = new Nette\Database\Conventions\DiscoveredConventions($this->getService('database.default.structure'));
 		return $service;
 	}
 
 
-	public function createServiceDatabase__default__structure(): Nette\Database\Structure
+	/**
+	 * @return Nette\Database\Structure
+	 */
+	public function createServiceDatabase__default__structure()
 	{
 		$service = new Nette\Database\Structure($this->getService('database.default.connection'),
 			$this->getService('cache.storage'));
@@ -483,7 +441,10 @@ class Container_cafdc987bb extends Nette\DI\Container
 	}
 
 
-	public function createServiceHttp__context(): Nette\Http\Context
+	/**
+	 * @return Nette\Http\Context
+	 */
+	public function createServiceHttp__context()
 	{
 		$service = new Nette\Http\Context($this->getService('http.request'), $this->getService('http.response'));
 		trigger_error('Service http.context is deprecated.', 16384);
@@ -491,14 +452,23 @@ class Container_cafdc987bb extends Nette\DI\Container
 	}
 
 
-	public function createServiceHttp__request(): Nette\Http\Request
+	/**
+	 * @return Nette\Http\Request
+	 */
+	public function createServiceHttp__request()
 	{
 		$service = $this->getService('http.requestFactory')->createHttpRequest();
+		if (!$service instanceof Nette\Http\Request) {
+			throw new Nette\UnexpectedValueException('Unable to create service \'http.request\', value returned by factory is not Nette\Http\Request type.');
+		}
 		return $service;
 	}
 
 
-	public function createServiceHttp__requestFactory(): Nette\Http\RequestFactory
+	/**
+	 * @return Nette\Http\RequestFactory
+	 */
+	public function createServiceHttp__requestFactory()
 	{
 		$service = new Nette\Http\RequestFactory;
 		$service->setProxy([]);
@@ -506,39 +476,29 @@ class Container_cafdc987bb extends Nette\DI\Container
 	}
 
 
-	public function createServiceHttp__response(): Nette\Http\Response
+	/**
+	 * @return Nette\Http\Response
+	 */
+	public function createServiceHttp__response()
 	{
 		$service = new Nette\Http\Response;
 		return $service;
 	}
 
 
-	public function createServiceLatte__latteFactory(): Nette\Bridges\ApplicationLatte\ILatteFactory
+	/**
+	 * @return Nette\Bridges\ApplicationLatte\ILatteFactory
+	 */
+	public function createServiceLatte__latteFactory()
 	{
-		return new class ($this) implements Nette\Bridges\ApplicationLatte\ILatteFactory {
-			private $container;
-
-
-			public function __construct(Container_cafdc987bb $container)
-			{
-				$this->container = $container;
-			}
-
-
-			public function create(): Latte\Engine
-			{
-				$service = new Latte\Engine;
-				$service->setTempDirectory('D:\stranky\www\android-project-server\app/../temp/cache/latte');
-				$service->setAutoRefresh(true);
-				$service->setContentType('html');
-				Nette\Utils\Html::$xhtml = false;
-				return $service;
-			}
-		};
+		return new Container_4e444f86b0_Nette_Bridges_ApplicationLatte_ILatteFactoryImpl_latte_latteFactory($this);
 	}
 
 
-	public function createServiceLatte__templateFactory(): Nette\Application\UI\ITemplateFactory
+	/**
+	 * @return Nette\Application\UI\ITemplateFactory
+	 */
+	public function createServiceLatte__templateFactory()
 	{
 		$service = new Nette\Bridges\ApplicationLatte\TemplateFactory($this->getService('latte.latteFactory'),
 			$this->getService('http.request'), $this->getService('security.user'),
@@ -547,21 +507,33 @@ class Container_cafdc987bb extends Nette\DI\Container
 	}
 
 
-	public function createServiceMail__mailer(): Nette\Mail\IMailer
+	/**
+	 * @return Nette\Mail\IMailer
+	 */
+	public function createServiceMail__mailer()
 	{
 		$service = new Nette\Mail\SendmailMailer;
 		return $service;
 	}
 
 
-	public function createServiceRouting__router(): Nette\Application\IRouter
+	/**
+	 * @return Nette\Application\IRouter
+	 */
+	public function createServiceRouting__router()
 	{
 		$service = App\RouterFactory::createRouter();
+		if (!$service instanceof Nette\Application\IRouter) {
+			throw new Nette\UnexpectedValueException('Unable to create service \'routing.router\', value returned by factory is not Nette\Application\IRouter type.');
+		}
 		return $service;
 	}
 
 
-	public function createServiceSecurity__user(): Nette\Security\User
+	/**
+	 * @return Nette\Security\User
+	 */
+	public function createServiceSecurity__user()
 	{
 		$service = new Nette\Security\User($this->getService('security.userStorage'), $this->getService('29_App_Model_UserManager'),
 			$this->getService('authorizator'));
@@ -570,14 +542,20 @@ class Container_cafdc987bb extends Nette\DI\Container
 	}
 
 
-	public function createServiceSecurity__userStorage(): Nette\Security\IUserStorage
+	/**
+	 * @return Nette\Security\IUserStorage
+	 */
+	public function createServiceSecurity__userStorage()
 	{
 		$service = new Nette\Http\UserStorage($this->getService('session.session'));
 		return $service;
 	}
 
 
-	public function createServiceSession__session(): Nette\Http\Session
+	/**
+	 * @return Nette\Http\Session
+	 */
+	public function createServiceSession__session()
 	{
 		$service = new Nette\Http\Session($this->getService('http.request'), $this->getService('http.response'));
 		$service->setExpiration('14 days');
@@ -585,23 +563,41 @@ class Container_cafdc987bb extends Nette\DI\Container
 	}
 
 
-	public function createServiceTracy__bar(): Tracy\Bar
+	/**
+	 * @return Tracy\Bar
+	 */
+	public function createServiceTracy__bar()
 	{
 		$service = Tracy\Debugger::getBar();
+		if (!$service instanceof Tracy\Bar) {
+			throw new Nette\UnexpectedValueException('Unable to create service \'tracy.bar\', value returned by factory is not Tracy\Bar type.');
+		}
 		return $service;
 	}
 
 
-	public function createServiceTracy__blueScreen(): Tracy\BlueScreen
+	/**
+	 * @return Tracy\BlueScreen
+	 */
+	public function createServiceTracy__blueScreen()
 	{
 		$service = Tracy\Debugger::getBlueScreen();
+		if (!$service instanceof Tracy\BlueScreen) {
+			throw new Nette\UnexpectedValueException('Unable to create service \'tracy.blueScreen\', value returned by factory is not Tracy\BlueScreen type.');
+		}
 		return $service;
 	}
 
 
-	public function createServiceTracy__logger(): Tracy\ILogger
+	/**
+	 * @return Tracy\ILogger
+	 */
+	public function createServiceTracy__logger()
 	{
 		$service = Tracy\Debugger::getLogger();
+		if (!$service instanceof Tracy\ILogger) {
+			throw new Nette\UnexpectedValueException('Unable to create service \'tracy.logger\', value returned by factory is not Tracy\ILogger type.');
+		}
 		return $service;
 	}
 
@@ -616,5 +612,29 @@ class Container_cafdc987bb extends Nette\DI\Container
 		Tracy\Debugger::$editorMapping = [];
 		Tracy\Debugger::setLogger($this->getService('tracy.logger'));
 		if ($tmp = $this->getByType("Nette\Http\Session", false)) { $tmp->start(); Tracy\Debugger::dispatch(); };
+	}
+}
+
+
+
+class Container_4e444f86b0_Nette_Bridges_ApplicationLatte_ILatteFactoryImpl_latte_latteFactory implements Nette\Bridges\ApplicationLatte\ILatteFactory
+{
+	private $container;
+
+
+	public function __construct(Container_4e444f86b0 $container)
+	{
+		$this->container = $container;
+	}
+
+
+	public function create()
+	{
+		$service = new Latte\Engine;
+		$service->setTempDirectory('C:\xampp\htdocs\android-project-server\app/../temp/cache/latte');
+		$service->setAutoRefresh(true);
+		$service->setContentType('html');
+		Nette\Utils\Html::$xhtml = false;
+		return $service;
 	}
 }
