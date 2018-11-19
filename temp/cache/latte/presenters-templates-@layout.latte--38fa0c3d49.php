@@ -49,67 +49,92 @@ class Template38fa0c3d49 extends Latte\Runtime\Template
 ?>
 </head>
 
-<nav class="navbar navbar-expand-sm bg-primary text-white visible-md">
+<nav class="navbar bg-primary text-white">
 		<!-- Brand -->
-		<a class="navbar-brand text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:default")) ?>"><i class="far fa-circle"></i></a>
-
-		<!-- Links -->
-		<ul class="navbar-nav">
-    		<li class="nav-item">
-    			<a class="nav-link text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:default")) ?>"><i class="fas fa-home"></i> Domů</a>
-    		</li>
-			<li class="nav-item">
-    			<a class="nav-link text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:howItWorks")) ?>"><i class="fas fa-book"></i> Jak na to?</a>
-    		</li>
-    		<li class="nav-item">
-    			<a class="nav-link text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:faq")) ?>"><i class="fas fa-question-circle"></i> FAQ</a>
-    		</li>	
-                </ul>
+		<a class="navbar-brand text-white d-none d-md-inline" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:default")) ?>"><i class="far fa-circle"></i></a>
                 
-                <!-- Dropdown -->
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-    			<a href="https://play.google.com/store" class="btn btn-primary login-button"><i class="fas fa-download"></i> Stáhnout</a>
-                    </li>
+                <!-- Mobil -->
+                <div class="d-md-none">
 <?php
 		if ($user->isLoggedIn()) {
-?>
-                            <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle bg-primary text-white" href="#" id="navbardrop" data-toggle="dropdown"><i class="fas fa-user"></i> <?php
-			echo LR\Filters::escapeHtmlText($user->getIdentity()->username) /* line 43 */ ?></a>
-                                    <div class="dropdown-menu dropdown-menu-right bg-primary text-center">
-                                        <hr>
+			?>                    <a class="nav-link dropdown-toggle bg-primary text-white" href="#" id="navbardrop" data-toggle="dropdown"><i class="fas fa-user"></i> <?php
+			echo LR\Filters::escapeHtmlText($user->getIdentity()->username) /* line 26 */ ?></a>
+                    <div class="dropdown-menu dropdown-menu-right bg-primary text-center">
+                        <hr>
 <?php
 			if ($user->isAllowed('List', 'default')) {
-				?>                                        <a class="dropdown-item" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:default")) ?>">Seznam Stezek</a>
-                                        <hr>
+				?>                        <a class="dropdown-item" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:default")) ?>">Seznam Stezek</a>
+                        <hr>
 <?php
 			}
 			if ($user->isAllowed('List', 'add')) {
-				?>                                        <a class="dropdown-item" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:add")) ?>">Přidat Stezku</a>
-                                        <hr>
+				?>                        <a class="dropdown-item" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:add")) ?>">Přidat Stezku</a>
+                        <hr>
 <?php
 			}
-			?>        				<a class="dropdown-item" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:default")) ?>">Smazat stezku</a>
-                                        <hr>
-                                        <a class="dropdown-item" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:out")) ?>"><i class="fas fa-sign-out-alt"></i> Odhlásit</a>
-                                        <hr>
-                                    </div>
-                            </li>
+			?>                        <a class="dropdown-item" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:default")) ?>">Smazat stezku</a>
+                        <hr>
+                        <a class="dropdown-item" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:out")) ?>"><i class="fas fa-sign-out-alt"></i> Odhlásit</a>
+                        <hr>
+                    </div>
 <?php
 		}
 		else {
 ?>
-                        <li class="nav-item">
-                            <a class="btn btn-primary login-button" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:in")) ?>"><i class="fas fa-sign-in-alt"></i> Přihlásit se</a>
-                        </li>     
-                        <li class="nav-item">
-                            <a class="btn btn-primary login-button" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:up")) ?>"><i class="fas fa-user-plus"></i> Registrace</a>
-                        </li> 
+                    <a class="nav-link dropdown-toggle bg-primary text-white" href="#" id="navbardrop" data-toggle="dropdown"><i class="fas fa-bars"></i></a>
+                    <div class="dropdown-menu dropdown-menu-left bg-primary text-center">
+                        <hr>
+                        <a class="btn btn-primary login-button" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:in")) ?>"><i class="fas fa-sign-in-alt"></i> Přihlásit se</a>
+                        <hr>
+                        <a class="btn btn-primary login-button" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:up")) ?>"><i class="fas fa-user-plus"></i> Registrace</a>
+                        <hr>
+                        <a href="https://play.google.com/store" class="btn btn-primary login-button"><i class="fas fa-download"></i> Stáhnout</a>
+                        <hr>
+                    </div>
 <?php
 		}
 ?>
-                </ul>
+                </div>
+                <!-- Konec Mobil -->
+                
+                <a class="nav-link text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:default")) ?>"><i class="fas fa-home"></i> Domů</a>
+                <a class="nav-link text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:howItWorks")) ?>"><i class="fas fa-book"></i> Jak na to?</a>
+                <a class="nav-link text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:faq")) ?>"><i class="fas fa-question-circle"></i> FAQ</a>
+                <a href="https://play.google.com/store" class="btn btn-primary login-button d-none d-md-inline"><i class="fas fa-download"></i> Stáhnout</a>
+                
+                <!-- Dropdown -->
+                <div class="navbar-nav ml-auto d-none d-md-inline">
+<?php
+		if ($user->isLoggedIn()) {
+			?>                    <a class="nav-link dropdown-toggle bg-primary text-white" href="#" id="navbardrop" data-toggle="dropdown"><i class="fas fa-user"></i> <?php
+			echo LR\Filters::escapeHtmlText($user->getIdentity()->username) /* line 65 */ ?></a>
+                    <div class="dropdown-menu dropdown-menu-right bg-primary text-center">
+                        <hr>
+<?php
+			if ($user->isAllowed('List', 'default')) {
+				?>                        <a class="dropdown-item" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:default")) ?>">Seznam Stezek</a>
+                        <hr>
+<?php
+			}
+			if ($user->isAllowed('List', 'add')) {
+				?>                        <a class="dropdown-item" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:add")) ?>">Přidat Stezku</a>
+                        <hr>
+<?php
+			}
+			?>                        <a class="dropdown-item" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:default")) ?>">Smazat stezku</a>
+                        <hr>
+                        <a class="dropdown-item" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:out")) ?>"><i class="fas fa-sign-out-alt"></i> Odhlásit</a>
+                        <hr>
+                    </div>
+<?php
+		}
+		else {
+			?>                    <a class="btn btn-primary login-button" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:in")) ?>"><i class="fas fa-sign-in-alt"></i> Přihlásit se</a>  
+                    <a class="btn btn-primary login-button" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:up")) ?>"><i class="fas fa-user-plus"></i> Registrace</a>
+<?php
+		}
+?>
+                </div>
 	</nav>
 
 <body>
@@ -118,7 +143,7 @@ class Template38fa0c3d49 extends Latte\Runtime\Template
 		$iterations = 0;
 		foreach ($flashes as $flash) {
 			?>	<div<?php if ($_tmp = array_filter(['flash', $flash->type])) echo ' class="', LR\Filters::escapeHtmlAttr(implode(" ", array_unique($_tmp))), '"' ?>><?php
-			echo LR\Filters::escapeHtmlText($flash->message) /* line 80 */ ?></div>
+			echo LR\Filters::escapeHtmlText($flash->message) /* line 97 */ ?></div>
 <?php
 			$iterations++;
 		}
@@ -240,7 +265,7 @@ ddddhhhhddddhhhhddddddhhhhhhhhdddddhhdddddhhhhhhhhhhhhhhhhhhhhhhhhddhhhhhyyhhddd
 	function prepare()
 	{
 		extract($this->params);
-		if (isset($this->params['flash'])) trigger_error('Variable $flash overwritten in foreach on line 80');
+		if (isset($this->params['flash'])) trigger_error('Variable $flash overwritten in foreach on line 97');
 		Nette\Bridges\ApplicationLatte\UIRuntime::initialize($this, $this->parentName, $this->blocks);
 		
 	}
@@ -279,7 +304,7 @@ ddddhhhhddddhhhhddddddhhhhhhhhdddddhhdddddhhhhhhhhhhhhhhhhhhhhhhhhddhhhhhyyhhddd
 ?>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
-	<!--<script src="<?php echo LR\Filters::escapeHtmlComment($basePath) /* line 90 */ ?>/js/main.js"></script>-->
+	<!--<script src="<?php echo LR\Filters::escapeHtmlComment($basePath) /* line 107 */ ?>/js/main.js"></script>-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <?php
