@@ -28,3 +28,26 @@
     height: 40px;
     border-radius: 50%;
 }
+
+.collapse {
+    display: block;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.menuhr {
+    border: 1px solid white;
+    width: 100%;
+}
+
+.dropdown-menu {
+    padding-top: 15px!important;
+    padding-bottom: 15px!important;
+}
+
+.dropdown .dropdown-menu .dropdown-item:active, .dropdown .dropdown-menu .dropdown-item:hover{
+    background-color: #006fe8 !important;
+}
