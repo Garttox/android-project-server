@@ -1,40 +1,48 @@
 {block content}
     <div class="container">
-        <h1>
-            <ul>
-                <li>
-                    Zelí
-                </li>
-                <li>
-                    Brambory
-                </li>
-                <li>
-                    Mléko
-                </li>
-                <li>
-                    Chleba
-                </li>
-            </ul>
-        </h1>
-    </div>
-
-    <table class="table table-bordered">
-        {foreach $data as $row}
-            {if $row['published'] == "yes"}
-                <tr>
-                    <td>{$row['title']}</td>
-                    <td>{$row['author']}</td>
-                </tr>
-            {elseif $row['published'] == 'no' && $user->isInRole('admin')}    
-                <tr>
-                    <td>{$row['title']}</td>
-                    <td>{$row['author']}</td>
-                    <td>{$row['published']}</td>
-                </tr>
-            {/if}
-        {/foreach}
-    </table>
-    {}
-
-    
+        <table class="table table-hover text-center">
+            <thead class="thead-dark">
+                <th>ID</th>
+                <th>Název</th>
+                <th>Autor</th>
+                <th>Možnosti</th>
+            </thead>
+            <tbody>
+            {foreach $data as $row}
+                {if $row['author'] == $user->getIdentity()->username}
+                    <tr class="table-info">
+                {else}
+                    <tr>
+                {/if}
+                        <td class="align-middle">{$row['id']}</td>
+                        <td class="align-middle">{$row['title']}</td>
+                        <td class="align-middle">{$row['author']}</td>
+                        <td class="align-middle">
+                        {if $user->isInRole('admin')}
+                            {if $row['published'] == 'yes'}
+                                <a class="btn btn-success" href="#"><i class="fas fa-check"></i> Zveřejnit</a>
+                            
+                            {elseif $row['published'] == 'no'}
+                                <a class="btn btn-danger" href="#"><i class="fas fa-times"></i> Stáhnout</a>
+                            {/if}
+                        {elseif $row['author'] != $user->getIdentity()->username}
+                            <i>Nejste autorem této stezky, nemůžete provádět úpravy.</i>
+                        {/if}
+                        {if $user->isInRole('admin') || ($user->isInRole('editor') && $row['author'] == $user->getIdentity()->username)}
+                            <a class="btn btn-warning" href="#"><i class="fas fa-edit"></i> Upravit</a>
+                        {/if}
+                        
+                            <a class="navbar-toggler btn btn-primary" data-toggle="collapse" data-target="#navbar{$row['id']}">
+                                Více
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class="collapse navbar-collapse" id="navbar{$row['id']}">
+                            <th colspan="2">HAHA</th>
+                            <td colspan="2">HAHA</td>
+                    </tr>
+            {/foreach}
+            </tbody>
+        </table>
+    </div>   
 {/block}

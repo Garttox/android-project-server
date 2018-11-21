@@ -21,8 +21,8 @@ class ListPresenter extends BasePresenter
             $value=array();
             $data = $this->tourManager->readAllTours();
             foreach($data as $tour){
-                $author =$this->tourManager->readTourAuthor($tour->users_id);
-                $x =array('title'=>$tour->title,'published' =>$tour->published, 'author'=> $author);
+                $author =$this->tourManager->readTourAuthor($tour->id);
+                $x =array('id'=>$tour->id, 'title'=>$tour->title,'published' =>$tour->published, 'author'=> $author);
                 array_push($value,$x);
             }
             $this->template->data = $value;

@@ -61,7 +61,7 @@ class Templatea1e4fd796e extends Latte\Runtime\Template
                 <hr>
                 <p><strong>Richard Míček - Hlavní vývojář aplikace, tvůrce projektu</strong><hr></p>
                 <p class="text-justify">
-                    <img src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 26 */ ?>/images/0.jpeg" class="floated">
+                    <img src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 26 */ ?>/images/richard.webp" class="floated">
                     Student Informačních a komunikačních 
                     technologií na Střední Škole Průmyslové a Umělecké v Opavě.
                     O programování se zajímá od 8. třídy základní školy, kdy 
@@ -70,7 +70,7 @@ class Templatea1e4fd796e extends Latte\Runtime\Template
                 <hr>
                 <p><strong>Michal Trlica - Hlavní vývojář webu, spolutvůrce projektu</strong><hr></p>
                 <p class="text-justify">
-                    <img src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 35 */ ?>/images/0.jpeg" class="floated">
+                    <img src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 35 */ ?>/images/michal.webp" class="floated">
                     Student Informačních a komunikačních 
                     technologií na Střední Škole Průmyslové a Umělecké v Opavě.</p>
             </div>

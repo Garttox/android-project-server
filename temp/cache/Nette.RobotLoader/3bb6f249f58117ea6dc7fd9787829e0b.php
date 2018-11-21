@@ -2,11 +2,6 @@
 return array (
   0 => 
   array (
-    'App\\Acl\\Acl' => 
-    array (
-      'file' => 'D:\\www\\aa\\app\\acl\\Acl.php',
-      'time' => 1542626966,
-    ),
     'App\\Forms\\FormFactory' => 
     array (
       'file' => 'D:\\www\\aa\\app\\forms\\FormFactory.php',
@@ -20,11 +15,6 @@ return array (
     'App\\Forms\\SignUpFormFactory' => 
     array (
       'file' => 'D:\\www\\aa\\app\\forms\\SignUpFormFactory.php',
-      'time' => 1542023486,
-    ),
-    'App\\Model\\TourManager' => 
-    array (
-      'file' => 'D:\\www\\aa\\app\\model\\TourManager.php',
       'time' => 1542023486,
     ),
     'App\\Model\\UserManager' => 
@@ -62,11 +52,6 @@ return array (
       'file' => 'D:\\www\\aa\\app\\presenters\\HomepagePresenter.php',
       'time' => 1542023486,
     ),
-    'App\\Presenters\\ListPresenter' => 
-    array (
-      'file' => 'D:\\www\\aa\\app\\presenters\\ListPresenter.php',
-      'time' => 1542626966,
-    ),
     'App\\Presenters\\SignPresenter' => 
     array (
       'file' => 'D:\\www\\aa\\app\\presenters\\SignPresenter.php',
@@ -76,6 +61,21 @@ return array (
     array (
       'file' => 'D:\\www\\aa\\app\\router\\RouterFactory.php',
       'time' => 1542023486,
+    ),
+    'App\\Acl\\Acl' => 
+    array (
+      'file' => 'D:\\www\\aa\\app\\acl\\Acl.php',
+      'time' => 1542796719,
+    ),
+    'App\\Model\\TourManager' => 
+    array (
+      'file' => 'D:\\www\\aa\\app\\model\\TourManager.php',
+      'time' => 1542799256,
+    ),
+    'App\\Presenters\\ListPresenter' => 
+    array (
+      'file' => 'D:\\www\\aa\\app\\presenters\\ListPresenter.php',
+      'time' => 1542800773,
     ),
   ),
   1 => 
