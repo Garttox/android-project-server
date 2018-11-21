@@ -18,6 +18,8 @@ class Acl extends Permission {
         // privileges
         $this->allow(Permission::ALL, 'Homepage', Permission::ALL);
         $this->allow(['editor','admin'], 'List', Permission::ALL);
+        
+        $this->deny('editor', 'List', 'add');
        
     }
 }
