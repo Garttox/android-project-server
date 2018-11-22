@@ -23,8 +23,8 @@ class TourManager
 		POINT_TABLE_NAME = 'point',
 		POINT_ID = 'id',
                 POINT_ORDER = 'order',
-		POINT_COORDINATE_E = 'coordinateE',
-		POINT_COORDINATE_N = 'coordinateN',
+		POINT_COORDINATE_E = 'longitude',
+		POINT_COORDINATE_N = 'latitude',
                 POINT_TEXT = 'text',
                 POINT_FOTO = 'fotoURL',
                 POINT_NAME = 'name',
@@ -54,7 +54,11 @@ class TourManager
         
         public function readAllTourPoints($id){
             $points= $this->database->table(self::TOUR_TABLE_NAME)->get($id);
-            return $points->related(self::POINT_TABLE_NAME, self::POINT_TOUR_ID);
+            return $points->related(self::POINT_TABLE_NAME, self::POINT_TOUR_ID)->order(self::POINT_ORDER)->fetchAll();
+        }
+        
+        public function readPoint($id){
+            return $this->database->table(self::POINT_TABLE_NAME)->get($id);
         }
         
         public function insertTour($id,$title){

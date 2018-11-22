@@ -451,7 +451,7 @@ class Container_cafdc987bb extends Nette\DI\Container
 
 	public function createServiceDatabase__default__connection(): Nette\Database\Connection
 	{
-		$service = new Nette\Database\Connection('mysql:host=127.0.0.1;dbname=opavatour', 'root',
+		$service = new Nette\Database\Connection('mysql:host=127.0.0.1;dbname=OpavaTour', 'root',
 			null, ['lazy' => true]);
 		$this->getService('tracy.blueScreen')->addPanel('Nette\Bridges\DatabaseTracy\ConnectionPanel::renderException');
 		Nette\Database\Helpers::createDebugPanel($service, true, 'default');
