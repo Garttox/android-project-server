@@ -5,7 +5,7 @@
 - **Databázový server pro ukládání a získávání informací**
 - **Administrátorský přístup**
 - **Komunikace s databází skrze API**
-- *Uživatelská registrace, zobrazení navštívených míst**
+- *Uživatelská registrace, zobrazení navštívených míst*
 ## Zdroje 
 - [Google](https://www.google.cz/)
 - [Nette](https://nette.org/en/)
