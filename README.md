@@ -10,5 +10,7 @@
 - [Google](https://www.google.cz/)
 - [Nette](https://nette.org/en/)
 - [Mgr. Marek Lučný](http://lucny.sspu-opava.cz/)
+## Aplikace
+- https://github.com/Drag0n0idus/OpavaTour
 ### Konzultující učitel
 **_Mgr. Marek Lučný_**
