@@ -1,9 +1,9 @@
 <?php
-// source: C:\xampp\htdocs\android-project-server\app\presenters/templates/Sign/in.latte
+// source: /home/ubuntu/workspace/android-project-server/app/presenters/templates/Sign/up.latte
 
 use Latte\Runtime as LR;
 
-class Template64c7e24b12 extends Latte\Runtime\Template
+class Template2d10e58101 extends Latte\Runtime\Template
 {
 	public $blocks = [
 		'content' => 'blockContent',
@@ -37,35 +37,24 @@ class Template64c7e24b12 extends Latte\Runtime\Template
 	{
 		extract($_args);
 ?>
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 offset-md-2">
+<div class="container text-center">
 <?php
 		$this->renderBlock('title', get_defined_vars());
 ?>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4 offset-md-2">
+
 <?php
-		/* line 10 */ $_tmp = $this->global->uiControl->getComponent("signInForm");
-		if ($_tmp instanceof Nette\Application\UI\IRenderable) $_tmp->redrawControl(null, false);
-		$_tmp->render();
+		$this->renderBlock('bootstrap-up-form', ['signUpForm'] + $this->params, 'html');
 ?>
-        </div>
-    </div>
-</div>
 
-
-
-<?php
+<p><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("in")) ?>">Already have an account? Log in.</a></p>
+</div><?php
 	}
 
 
 	function blockTitle($_args)
 	{
 		extract($_args);
-?>            <h1>Přihlásit se</h1>
+?><h1>Sign Up</h1>
 <?php
 	}
 

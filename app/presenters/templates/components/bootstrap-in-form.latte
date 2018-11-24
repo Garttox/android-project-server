@@ -1,25 +1,9 @@
-{define form $formName}
-	<form n:name=$formName>
-	<ul class=error n:if="$form->ownErrors">
-		<li n:foreach="$form->ownErrors as $error">{$error}</li>
-	</ul>
-
-	<table>
-	<tr n:foreach="$form->controls as $input"
-		n:if="!$input->getOption(rendered) && $input->getOption(type) !== hidden"
-		n:class="$input->required ? required">
-
-		<th>{label $input}</th>
-		<td>{input $input} <span class=error n:ifcontent>{$input->error}</span></td>
-	</tr>
-	</table>
-	</form>
+{define bootstrap-head}
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 {/define}
 
-
-{* for Bootstrap v3 *}
-{define bootstrap-form $formName}
-	<form n:name=$formName class=form-horizontal>
+{define bootstrap-form $form}
+	<form n:name=$form class=form-horizontal>
 	<ul class=error n:if="$form->ownErrors">
 		<li n:foreach="$form->ownErrors as $error">{$error}</li>
 	</ul>
@@ -28,7 +12,7 @@
 		n:if="!$input->getOption(rendered) && $input->getOption(type) !== hidden"
 		n:class="form-group, $input->required ? required, $input->error ? has-error">
 
-		<div class="control-label">{label $input}</div>
+		<div class="control-label col-md-2">{label $input}</div>
 
 		<div>
 			{if $input->getOption(type) in [text, select, textarea]}
@@ -43,7 +27,7 @@
 				{input $input}
 			{/if}
 
-			<span class=help-block n:ifcontent>{$input->error ?: $input->getOption(description)}</span>
+			<span class=has-error n:ifcontent>{$input->error}</span>
 		</div>
 	</div>
 	</form>

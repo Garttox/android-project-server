@@ -12,7 +12,7 @@
 		n:if="!$input->getOption(rendered) && $input->getOption(type) !== hidden"
 		n:class="form-group, $input->required ? required, $input->error ? has-error">
 
-		<div class="control-label">{label $input}</div>
+		<div class="control-label col-md-2">{label $input}</div>
 
 		<div>
 			{if $input->getOption(type) in [text, select, textarea]}
@@ -32,3 +32,5 @@
 	</div>
 	</form>
 {/define}
+
+
