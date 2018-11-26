@@ -28,8 +28,14 @@ class ListPresenter extends BasePresenter
             $this->template->data = $value;
         }
         
-        public function renderAdd(){
-            if (!$this->getUser()->isAllowed('List', 'add')) {
+        public function renderAddTour(){
+            if (!$this->getUser()->isAllowed('List', 'addTour')) {
+                $this->redirect('Homepage:');
+            }
+        }
+        
+        public function renderAddPoints($id){
+            if (!$this->getUser()->isAllowed('List', 'addPoints')) {
                 $this->redirect('Homepage:');
             }
         }
@@ -43,7 +49,7 @@ class ListPresenter extends BasePresenter
         }
         
         public function tourFormSucceeded(Form $form, $values){
-            $this->tourManager->insertTour($this->getUser()->getId(), $values['title']);
+            $this->tourManager->insertTour($values['title'],$this->getUser()->getId());
             $this->redirect('List:');
     }
         

@@ -61,11 +61,20 @@ class TourManager
             return $this->database->table(self::POINT_TABLE_NAME)->get($id);
         }
         
-        public function insertTour($id,$title){
+        public function insertTour($title,$author_id){
             $this->database->table(self::TOUR_TABLE_NAME)->insert(array(
-                'users_id'=>$id,
                 'title'=>$title,
-                'published'=>'wip'
+                'published'=>'wip',
+                'users_id'=>$author_id
+            ));
+        }
+        
+        public function insertPoint($name,$long,$lat,$order,$tour_id){
+            $this->database->table(self::POINT_TABLE_NAME)->insert(array(
+                'name'=>$title,
+                'latitude'=>$lat,
+                'longitude'=>$long,
+                'order'=>$order
             ));
         }
         

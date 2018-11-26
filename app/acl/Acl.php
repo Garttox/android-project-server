@@ -17,9 +17,8 @@ class Acl extends Permission {
         $this->addResource('List');
         // privileges
         $this->allow(Permission::ALL, 'Homepage', Permission::ALL);
-        $this->allow(['editor','admin'], 'List', Permission::ALL);
+        $this->allow('admin', 'List', Permission::ALL);
+        $this->allow('editor', 'List', 'default');
         
-        $this->deny('editor', 'List', 'add');
-       
     }
 }

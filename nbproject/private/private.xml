@@ -3,15 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/stranky/www/android-project-server/app/acl/Acl.php</file>
-            <file>file:/D:/stranky/www/android-project-server/app/model/UserManager.php</file>
-            <file>file:/D:/stranky/www/android-project-server/app/presenters/templates/Api/tour.latte</file>
-            <file>file:/D:/stranky/www/android-project-server/app/presenters/SignPresenter.php</file>
-            <file>file:/D:/stranky/www/android-project-server/app/presenters/templates/Homepage/default.latte</file>
-            <file>file:/D:/stranky/www/android-project-server/app/model/TourManager.php</file>
-            <file>file:/D:/stranky/www/android-project-server/app/presenters/ApiPresenter.php</file>
-            <file>file:/D:/stranky/www/android-project-server/app/presenters/templates/@layout.latte</file>
-            <file>file:/D:/stranky/www/android-project-server/app/presenters/ListPresenter.php</file>
+            <file>file:/D:/www/aa/app/presenters/templates/List/default.latte</file>
+            <file>file:/D:/www/aa/app/presenters/templates/List/addPoints.latte</file>
+            <file>file:/D:/www/aa/app/presenters/templates/List/addTour.latte</file>
+            <file>file:/D:/www/aa/app/model/TourManager.php</file>
+            <file>file:/D:/www/aa/app/presenters/templates/components/bootstrap-form.latte</file>
+            <file>file:/D:/www/aa/app/presenters/templates/@layout.latte</file>
+            <file>file:/D:/www/aa/app/presenters/templates/components/bootstrap-up-form.latte</file>
+            <file>file:/D:/www/aa/app/presenters/ListPresenter.php</file>
+            <file>file:/D:/www/aa/app/presenters/templates/Sign/in.latte</file>
+            <file>file:/D:/www/aa/app/presenters/templates/Sign/up.latte</file>
+            <file>file:/D:/www/aa/app/acl/Acl.php</file>
         </group>
     </open-files>
 </project-private>

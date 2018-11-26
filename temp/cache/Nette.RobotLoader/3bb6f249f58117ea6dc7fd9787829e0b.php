@@ -27,11 +27,6 @@ return array (
       'file' => 'D:\\www\\aa\\app\\model\\UserManager.php',
       'time' => 1542023486,
     ),
-    'App\\Presenters\\ApiPresenter' => 
-    array (
-      'file' => 'D:\\www\\aa\\app\\presenters\\ApiPresenter.php',
-      'time' => 1542626966,
-    ),
     'App\\Presenters\\BasePresenter' => 
     array (
       'file' => 'D:\\www\\aa\\app\\presenters\\BasePresenter.php',
@@ -62,20 +57,25 @@ return array (
       'file' => 'D:\\www\\aa\\app\\router\\RouterFactory.php',
       'time' => 1542023486,
     ),
-    'App\\Acl\\Acl' => 
+    'App\\Presenters\\ApiPresenter' => 
     array (
-      'file' => 'D:\\www\\aa\\app\\acl\\Acl.php',
-      'time' => 1542796719,
+      'file' => 'D:\\www\\aa\\app\\presenters\\ApiPresenter.php',
+      'time' => 1543232236,
     ),
     'App\\Model\\TourManager' => 
     array (
       'file' => 'D:\\www\\aa\\app\\model\\TourManager.php',
-      'time' => 1542799256,
+      'time' => 1543232912,
     ),
     'App\\Presenters\\ListPresenter' => 
     array (
       'file' => 'D:\\www\\aa\\app\\presenters\\ListPresenter.php',
-      'time' => 1542800773,
+      'time' => 1543233596,
+    ),
+    'App\\Acl\\Acl' => 
+    array (
+      'file' => 'D:\\www\\aa\\app\\acl\\Acl.php',
+      'time' => 1543233694,
     ),
   ),
   1 => 
