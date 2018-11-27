@@ -1,18 +1,18 @@
 <?php
-// source: C:\xampp\htdocs\android-project-server\app\presenters\templates\components\bootstrap-in-form.latte
+// source: /home/michal/www/android-project-server/app/presenters/templates/components/bootstrap-up-form.latte
 
 use Latte\Runtime as LR;
 
-class Template1b8a5286bc extends Latte\Runtime\Template
+class Templateb16f77747d extends Latte\Runtime\Template
 {
 	public $blocks = [
 		'bootstrap-head' => 'blockBootstrap_head',
-		'bootstrap-in-form' => 'blockBootstrap_in_form',
+		'bootstrap-up-form' => 'blockBootstrap_up_form',
 	];
 
 	public $blockTypes = [
 		'bootstrap-head' => 'html',
-		'bootstrap-in-form' => 'html',
+		'bootstrap-up-form' => 'html',
 	];
 
 
@@ -40,7 +40,7 @@ class Template1b8a5286bc extends Latte\Runtime\Template
 	}
 
 
-	function blockBootstrap_in_form($_args)
+	function blockBootstrap_up_form($_args)
 	{
 		extract($this->params);
 		list($form) = $_args + [NULL, ];
@@ -60,12 +60,18 @@ class Template1b8a5286bc extends Latte\Runtime\Template
 		</div>
 		<div class="form-group row">
 			<?php
-		if ($_label = end($this->global->formsStack)["password"]->getLabel()) echo $_label->addAttributes(['class' => "col-md-2 offset-md-3 col-form-label"]);
-		echo end($this->global->formsStack)["password"]->getControl()->addAttributes(['class' => "form-control col-md-4"]) /* line 12 */ ?>
+		if ($_label = end($this->global->formsStack)["email"]->getLabel()) echo $_label->addAttributes(['class' => "col-md-2 offset-md-3 col-form-label"]);
+		echo end($this->global->formsStack)["email"]->getControl()->addAttributes(['class' => "form-control col-md-4"]) /* line 12 */ ?>
 
 		</div>
 		<div class="form-group row">
-			<?php echo end($this->global->formsStack)["send"]->getControl()->addAttributes(['class' => "btn btn-primary offset-md-5"]) /* line 15 */ ?>
+			<?php
+		if ($_label = end($this->global->formsStack)["password"]->getLabel()) echo $_label->addAttributes(['class' => "col-md-2 offset-md-3 col-form-label"]);
+		echo end($this->global->formsStack)["password"]->getControl()->addAttributes(['class' => "form-control col-md-4"]) /* line 15 */ ?>
+
+		</div>
+		<div class="form-group row">
+			<?php echo end($this->global->formsStack)["send"]->getControl()->addAttributes(['class' => "btn btn-primary offset-md-5"]) /* line 18 */ ?>
 
 		</div>
 <?php

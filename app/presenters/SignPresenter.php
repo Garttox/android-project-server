@@ -24,6 +24,28 @@ class SignPresenter extends BasePresenter
 		$this->signUpFactory = $signUpFactory;
 	}
 
+	public function renderIn() {
+		if($this->getUser()->isAllowed()){
+			$this->redirect('Sign:in');
+		}
+		else {
+			$this->redirect('Homepage:default');
+		}
+	}
+
+	public function renderUp() {
+		if($this->getUser()->isAllowed()){
+			$this->redirect('Sign:up');
+		}
+		else {
+			$this->redirect('Homepage:default');
+		}
+	}
+
+	public function renderPls() {
+
+	}
+
 
 	/**
 	 * Sign-in form factory.

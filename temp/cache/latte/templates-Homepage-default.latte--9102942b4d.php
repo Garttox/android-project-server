@@ -21,7 +21,6 @@ class Template9102942b4d extends Latte\Runtime\Template
 		$this->renderBlock('content', get_defined_vars());
 ?>
 
-<!--  -->
 <?php
 		return get_defined_vars();
 	}
@@ -41,7 +40,6 @@ class Template9102942b4d extends Latte\Runtime\Template
 ?>
 
     <div class="container text-center">
-        <h2>Vítejte na stránkách OpavaTour&trade;</h2>
         <hr>
         <div class="row">
             <div class="col-md-6 col-sm-12">
@@ -61,7 +59,7 @@ class Template9102942b4d extends Latte\Runtime\Template
                 <hr>
                 <p><strong>Richard Míček - Hlavní vývojář aplikace, tvůrce projektu</strong><hr></p>
                 <p class="text-justify">
-                    <img src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 26 */ ?>/images/richard.webp" class="floated">
+                    <img src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 25 */ ?>/images/richard.webp" class="floated">
                     Student Informačních a komunikačních 
                     technologií na Střední Škole Průmyslové a Umělecké v Opavě.
                     O programování se zajímá od 8. třídy základní školy, kdy 
@@ -70,7 +68,7 @@ class Template9102942b4d extends Latte\Runtime\Template
                 <hr>
                 <p><strong>Michal Trlica - Hlavní vývojář webu, spolutvůrce projektu</strong><hr></p>
                 <p class="text-justify">
-                    <img src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 35 */ ?>/images/michal.webp" class="floated">
+                    <img src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 34 */ ?>/images/michal.webp" class="floated">
                     Student Informačních a komunikačních 
                     technologií na Střední Škole Průmyslové a Umělecké v Opavě.</p>
             </div>

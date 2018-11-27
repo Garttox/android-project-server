@@ -1,18 +1,16 @@
 <?php
-// source: C:\xampp\htdocs\android-project-server\app\presenters/templates/Sign/up.latte
+// source: /home/michal/www/android-project-server/app/presenters/templates/Sign/pls.latte
 
 use Latte\Runtime as LR;
 
-class Template0dee11558e extends Latte\Runtime\Template
+class Templatec0f9e4c061 extends Latte\Runtime\Template
 {
 	public $blocks = [
 		'content' => 'blockContent',
-		'title' => 'blockTitle',
 	];
 
 	public $blockTypes = [
 		'content' => 'html',
-		'title' => 'html',
 	];
 
 
@@ -28,7 +26,7 @@ class Template0dee11558e extends Latte\Runtime\Template
 	function prepare()
 	{
 		extract($this->params);
-		$this->createTemplate('../components/bootstrap-up-form.latte', $this->params, "import")->render();
+		$this->createTemplate('../components/bootstrap-in-form.latte', $this->params, "import")->render();
 		Nette\Bridges\ApplicationLatte\UIRuntime::initialize($this, $this->parentName, $this->blocks);
 		
 	}
@@ -39,9 +37,25 @@ class Template0dee11558e extends Latte\Runtime\Template
 		extract($_args);
 ?>
 <div class="container">
+<h1 class="text-center">Sign In</h1>
+<hr>
+
 <?php
-		$this->renderBlock('title', get_defined_vars());
+		$this->renderBlock('bootstrap-in-form', ['signInForm'] + $this->params, 'html');
 ?>
+
+
+<?php
+		if ($user->isInRole('admin')) {
+			?><p class="offset-md-5 sign"><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("up")) ?>">Don't have an account? Sign up.</a></p>
+<?php
+		}
+?>
+
+<?php
+		$this->createTemplate('../components/bootstrap-up-form.latte', $this->params, "import")->render();
+?>
+<h1 class="text-center">Sign Up</h1>
 <hr>
 
 <?php
@@ -49,14 +63,9 @@ class Template0dee11558e extends Latte\Runtime\Template
 ?>
 
 <p class="offset-md-5 sign"><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("in")) ?>">Already have an account? Log in.</a></p>
-</div><?php
-	}
+</div>
 
 
-	function blockTitle($_args)
-	{
-		extract($_args);
-?><h1 class="text-center">Sign Up</h1>
 <?php
 	}
 

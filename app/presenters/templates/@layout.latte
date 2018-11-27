@@ -48,9 +48,16 @@
                         <div class="dropdown-menu dropdown-menu-right bg-primary text-center">
                             {if $user->isAllowed('List', 'default')}
                             <a class="dropdown-item text-white" n:href="List:default"> Seznam Stezek</a>
-                            <hr> {/if} {if $user->isAllowed('List', 'addTour')}
+                            <hr> 
+                            {/if} 
+                            {if $user->isAllowed('List', 'addTour')}
                             <a class="dropdown-item text-white" n:href="List:addTour"> Přidat Stezku</a>
-                            <hr> {/if}
+                            <hr> 
+                            {/if}
+                            {if $user->isAllowed('Sign', 'up')}
+                            <a class="dropdown-item text-white" n:href="Sign:up"> Přidat Editora</a>
+                            <hr> 
+                            {/if}
                             <a n:href="Sign:out" class="btn btn-primary login-button"><i class="fas fa-sign-in-alt"></i> Odhlásit se</a>
                         </div>
                     </li>

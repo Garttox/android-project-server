@@ -16,9 +16,9 @@ session:
 
 
 database:
-	dsn: 'mysql:host=127.0.0.1;dbname=OpavaTour'
+	dsn: 'mysql:host=localhost;dbname=OpavaTour'
 	user: root
-	password:
+	password: 
 	options:
 		lazy: yes
 

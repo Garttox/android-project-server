@@ -2,15 +2,10 @@
 return array (
   0 => 
   array (
-    'App\\Acl\\Acl' => 
-    array (
-      'file' => '/home/michal/www/android-project-server/app/acl/Acl.php',
-      'time' => 1543307613,
-    ),
     'App\\Model\\TourManager' => 
     array (
       'file' => '/home/michal/www/android-project-server/app/model/TourManager.php',
-      'time' => 1543307613,
+      'time' => 1543312793,
     ),
     'App\\Model\\UserManager' => 
     array (
@@ -55,7 +50,7 @@ return array (
     'App\\Presenters\\SignPresenter' => 
     array (
       'file' => '/home/michal/www/android-project-server/app/presenters/SignPresenter.php',
-      'time' => 1543307613,
+      'time' => 1543319773,
     ),
     'App\\Presenters\\ApiPresenter' => 
     array (
@@ -77,6 +72,19 @@ return array (
       'file' => '/home/michal/www/android-project-server/app/presenters/ErrorPresenter.php',
       'time' => 1543307613,
     ),
+    'App\\Presenters\\AdminPresenter' => 
+    array (
+      'file' => '/home/michal/www/android-project-server/app/presenters/AdminPresenter.php',
+      'time' => 1543320684,
+    ),
+    'App\\Acl\\Acl' => 
+    array (
+      'file' => '/home/michal/www/android-project-server/app/acl/Acl.php',
+      'time' => 1543320808,
+    ),
   ),
-  1 => NULL,
+  1 => 
+  array (
+    'Nette\\Environment' => 3,
+  ),
 );

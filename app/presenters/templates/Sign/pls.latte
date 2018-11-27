@@ -1,0 +1,27 @@
+{import '../components/bootstrap-in-form.latte'}
+{block content}
+<div class="container">
+<h1 class="text-center">Sign In</h1>
+<hr>
+
+{include bootstrap-in-form signInForm}
+
+
+{if $user->isInRole('admin')}
+<p class="offset-md-5 sign"><a n:href="up">Don't have an account? Sign up.</a></p>
+{/if}
+
+{import '../components/bootstrap-up-form.latte'}
+<h1 class="text-center">Sign Up</h1>
+<hr>
+
+{include bootstrap-up-form signUpForm}
+
+<p class="offset-md-5 sign"><a n:href="in">Already have an account? Log in.</a></p>
+</div>
+
+
+{* OR
+{import '../components/form.latte'}
+{include form signInForm}
+*}
