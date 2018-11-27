@@ -1,15 +1,15 @@
+{import '../components/bootstrap-in-form.latte'}
 {block content}
 <div class="container">
-    <div class="row">
-        <div class="col-md-4 offset-md-2">
-            <h1 n:block=title>Přihlásit se</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4 offset-md-2">
-            {control signInForm}
-        </div>
-    </div>
+<h1 n:block=title class="text-center">Sign In</h1>
+<hr>
+
+{include bootstrap-in-form signInForm}
+
+
+{if $user->isInRole('admin')}
+<p class="offset-md-5 sign"><a n:href="up">Don't have an account? Sign up.</a></p>
+{/if}
 </div>
 
 

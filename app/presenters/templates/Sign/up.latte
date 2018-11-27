@@ -1,8 +1,10 @@
+{import '../components/bootstrap-up-form.latte'}
 {block content}
-<div class="container text-center">
-<h1 n:block=title>Sign Up</h1>
+<div class="container">
+<h1 n:block=title class="text-center">Sign Up</h1>
+<hr>
 
 {include bootstrap-up-form signUpForm}
 
-<p><a n:href="in">Already have an account? Log in.</a></p>
+<p class="offset-md-5 sign"><a n:href="in">Already have an account? Log in.</a></p>
 </div>
