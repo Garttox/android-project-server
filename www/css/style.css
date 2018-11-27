@@ -62,3 +62,27 @@ label {
 .dropdown .dropdown-menu .dropdown-item:active, .dropdown .dropdown-menu .dropdown-item:hover{
     background-color: #006fe8 !important;
 }
+
+.right {
+    float: right;
+    margin-left: 10px;
+    width: 50px !important;
+}
+
+.left {
+    float: left;
+}
+
+.rightText {
+    float: right;
+    margin-left: 10px;
+}
+
+.card-header {
+    height: 60px;
+    line-height: 35px;
+}
+
+.collapse {
+    margin-top: 0px !important;
+}

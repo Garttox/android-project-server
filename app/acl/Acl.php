@@ -21,7 +21,10 @@ class Acl extends Permission {
         $this->allow('admin', 'List', Permission::ALL);
         $this->allow('editor', 'List', 'default');
         $this->allow('admin', 'Sign', Permission::ALL);
-        $this->allow('admin', 'Admin', 'default');
-        
+        $this->allow('editor', 'Sign', 'in');
+        $this->allow('guest', 'Sign', 'in');
+        $this->allow('admin', 'Admin', Permission::ALL);
+        $this->allow('editor', 'Admin', 'default');
+
     }
 }

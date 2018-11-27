@@ -25,19 +25,13 @@ class SignPresenter extends BasePresenter
 	}
 
 	public function renderIn() {
-		if($this->getUser()->isAllowed()){
-			$this->redirect('Sign:in');
-		}
-		else {
+		if(!$this->getUser()->isAllowed('Sign', 'in') || $this->getUser()->isLoggedIn()){
 			$this->redirect('Homepage:default');
 		}
 	}
 
 	public function renderUp() {
-		if($this->getUser()->isAllowed()){
-			$this->redirect('Sign:up');
-		}
-		else {
+		if(!$this->getUser()->isAllowed('Sign', 'up')){
 			$this->redirect('Homepage:default');
 		}
 	}
