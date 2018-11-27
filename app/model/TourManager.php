@@ -78,4 +78,12 @@ class TourManager
             ));
         }
         
+        public function setTourPublished($id){
+            $this->database->table(self::TOUR_TABLE_NAME)->where('id',$id)->update(['published'=>'yes']);
+        }
+
+        public function setTourNotPublished($id){
+            $this->database->table(self::TOUR_TABLE_NAME)->where('id',$id)->update(['published'=>'no']);
+        }
+
 }
