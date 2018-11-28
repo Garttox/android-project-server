@@ -6,7 +6,7 @@ use Nette;
 
 
 /**
- * Users management.
+ * Tours management.
  */
 class TourManager
 {

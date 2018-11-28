@@ -2,6 +2,7 @@
 
 namespace App\Presenters;
 use App\Model\TourManager;
+use App\Model\UserManager;
 use Nette\Application\UI\Form;
 
 class ListPresenter extends BasePresenter

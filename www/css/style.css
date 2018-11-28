@@ -67,7 +67,7 @@ label {
 .right {
     float: right;
     margin-left: 10px;
-    width: 50px !important;
+    
 }
 
 .left {
@@ -86,4 +86,16 @@ label {
 
 .collapse {
     margin-top: 0px !important;
+}
+
+.list-button {
+    border-color: black !important;
+}
+
+.legend {
+    width: 100px !important;
+}
+
+.bg-own {
+    background-color: rgba(23, 162, 184, 0.5) !important;
 }
