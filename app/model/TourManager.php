@@ -69,9 +69,20 @@ class TourManager
             ));
         }
         
+        public function renameTour($id, $title){
+            $this->database->table(self::TOUR_TABLE_NAME)->where('id',$id)->update(['title'=>$title]);
+        }
+
+        public function updatePoint($id,$name,$long,$lat){
+            $this->database->table(self::POINT_TABLE_NAME)->where('id',$id)->update(['name'=>$name,
+            'latitude'=>$lat,
+            'longitude'=>$long
+            ]);
+        }
+
         public function insertPoint($name,$long,$lat,$order,$tour_id){
             $this->database->table(self::POINT_TABLE_NAME)->insert(array(
-                'name'=>$title,
+                'name'=>$name,
                 'latitude'=>$lat,
                 'longitude'=>$long,
                 'order'=>$order
@@ -84,6 +95,14 @@ class TourManager
 
         public function setTourNotPublished($id){
             $this->database->table(self::TOUR_TABLE_NAME)->where('id',$id)->update(['published'=>'no']);
+        }
+
+        public function getTourByName($tour_name){
+            return $this->database->table(self::TOUR_TABLE_NAME)->where('title',$tour_name)->fetch();
+        }
+
+        public function getToursByAuthor($author_id){
+            return $this->database->table(self::TOUR_TABLE_NAME)->where('users_id',$author_id)->fetchAll();
         }
 
 }
