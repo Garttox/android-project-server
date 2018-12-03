@@ -59,7 +59,7 @@ class Template343055180e extends Latte\Runtime\Template
 		$iterations = 0;
 		foreach ($flashes as $flash) {
 			?>        <div<?php if ($_tmp = array_filter(['flash', $flash->type])) echo ' class="', LR\Filters::escapeHtmlAttr(implode(" ", array_unique($_tmp))), '"' ?>><?php
-			echo LR\Filters::escapeHtmlText($flash->message) /* line 102 */ ?></div>
+			echo LR\Filters::escapeHtmlText($flash->message) /* line 101 */ ?></div>
 <?php
 			$iterations++;
 		}
@@ -187,7 +187,7 @@ ddddhhhhddddhhhhddddddhhhhhhhhdddddhhdddddhhhhhhhhhhhhhhhhhhhhhhhhddhhhhhyyhhddd
 	function prepare()
 	{
 		extract($this->params);
-		if (isset($this->params['flash'])) trigger_error('Variable $flash overwritten in foreach on line 102');
+		if (isset($this->params['flash'])) trigger_error('Variable $flash overwritten in foreach on line 101');
 		Nette\Bridges\ApplicationLatte\UIRuntime::initialize($this, $this->parentName, $this->blocks);
 		
 	}
@@ -287,8 +287,7 @@ ddddhhhhddddhhhhddddddhhhhhhhhdddddhhdddddhhhhhhhhhhhhhhhhhhhhhhhhddhhhhhyyhhddd
             </nav>
             <!-- End Mobile Navbar -->
             <div class="jumbotron jumbotron-fluid bg-primary container-fluid">
-                <h1>OpavaTour&trade;</h1>
-                <p><i>Prohlídka Opavy, jednoduše</i></p>
+                <h1 class="display-1">OpavaTour&trade;</h1>
             </div>
         </header>
 <?php
@@ -310,11 +309,13 @@ ddddhhhhddddhhhhddddddhhhhhhhhdddddhhdddddhhhhhhhhhhhhhhhhhhhhhhhhddhhhhhyyhhddd
 ?>
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
-        <!--<script src="<?php echo LR\Filters::escapeHtmlComment($basePath) /* line 113 */ ?>/js/main.js"></script>-->
+        <!--<script src="<?php echo LR\Filters::escapeHtmlComment($basePath) /* line 112 */ ?>/js/main.js"></script>-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
             crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
+        <script src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 117 */ ?>/js/nette.ajax.js"></script> 
+        <script src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 118 */ ?>/js/main.js"></script>
 <?php
 	}
 

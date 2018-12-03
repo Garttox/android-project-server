@@ -6,8 +6,10 @@
         </div>
     </div>
 <div class="accordion" id="accordion">
-    {foreach $data as $row}
-    <div class="card">
+    <div n:snippet="listContainer">
+    {foreach $data as $id => $row}
+    <div n:snippet="row-$id" class="card">
+        <a n:href="update! $row['id']" class="ajax">aa</a>
         {if $row['author'] == $user->getIdentity()->username}
         <div class="card-header bg-own" id="heading{$row['id']}">
         {else}
@@ -50,7 +52,9 @@
             <p>Duis duis duis tempor et elit eiusmod irure do eu minim sint. Id aliqua nostrud et eu excepteur ad dolore commodo incididunt aliqua commodo id non. Exercitation voluptate laborum elit commodo mollit pariatur. Ad aliquip excepteur voluptate laboris excepteur. Aliquip in mollit ipsum excepteur. Qui ad ad veniam mollit consequat incididunt non id laborum fugiat consectetur officia proident.</p>
         </div>
     </div>
+    </div>
     {/foreach}
+    </div>
 </div>
 </div>
 {/block}

@@ -388,7 +388,8 @@ class Container_219215b8e6 extends Nette\DI\Container
 
 	public function createServiceApplication__6(): App\Presenters\ListPresenter
 	{
-		$service = new App\Presenters\ListPresenter($this->getService('28_App_Model_TourManager'));
+		$service = new App\Presenters\ListPresenter($this->getService('28_App_Model_TourManager'),
+			$this->getService('29_App_Model_UserManager'));
 		$service->injectPrimary($this, $this->getService('application.presenterFactory'),
 			$this->getService('routing.router'), $this->getService('http.request'),
 			$this->getService('http.response'), $this->getService('session.session'),

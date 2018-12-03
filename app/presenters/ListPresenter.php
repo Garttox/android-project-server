@@ -8,30 +8,49 @@ use Nette\Application\UI\Form;
 class ListPresenter extends BasePresenter
 {
     
-        private $tourManager;
-        private $userManager;
+    private $tourManager;
+    private $userManager;
+    private $data;
 
-
-
-        public function __construct(TourManager $tourManager, UserManager $userManager){
-            $this->tourManager = $tourManager;
-            $this->userManager = $userManager;
-	    }
+    public function __construct(TourManager $tourManager, UserManager $userManager){
+        $this->tourManager = $tourManager;
+        $this->userManager = $userManager;
+	}
     
+    public function getListData(){
+        $value=array();
+        $data = $this->tourManager->readAllTours();
+        foreach($data as $tour){
+            $author =$this->tourManager->readTourAuthor($tour->id);
+            $x =array('id'=>$tour->id, 'title'=>$tour->title,'published' =>$tour->published, 'author'=> $author);
+            array_push($value,$x);
+        }
+        return $value;
+    }
+
 	public function renderDefault(){
             if (!$this->getUser()->isAllowed('List', 'default')) {
                 $this->redirect('Homepage:');
             }
-            $value=array();
-            $data = $this->tourManager->readAllTours();
-            foreach($data as $tour){
-                $author =$this->tourManager->readTourAuthor($tour->id);
-                $x =array('id'=>$tour->id, 'title'=>$tour->title,'published' =>$tour->published, 'author'=> $author);
-                array_push($value,$x);
+            if(!isset($this->template->data)) {
+                $this->data=$this->getListData();
+                $this->template->data = $this->data;
             }
-            $this->template->data = $value;
         }
-        
+
+        public function handleUpdate($id){
+            $this->template->data = $this->isAjax()
+            ? []
+            : $this->data;
+            //$this->template->data[$id]=$this->tourManager->readTour($this->data[$id]["id"]);
+            //$this->tourManager->renameTour($this->template->data[$id]["id"],"AJAX");
+            //$this->template->data[$id] = $this->tourManager->readTour($this->template->data[$id]["id"]);
+            
+            
+            
+            $this->redrawControl('listContainer');
+        }
+
         public function renderAddTour(){
             if (!$this->getUser()->isAllowed('List', 'addTour')) {
                 $this->redirect('Homepage:');
@@ -44,6 +63,23 @@ class ListPresenter extends BasePresenter
             }
         }
         
+        public function renderEditTour(){
+
+        }
+
+        public function actionEditTour($id){
+            $tour = $this->tourManager->readTour($id);
+            if(!$tour) {
+                $this->error('Příspěvek nebyl nalezen');
+            }
+            else if($this->getUser()->getIdentity()->getId() != $tour->users_id){
+                $this->error('Nemáte oprávění editovat tuto stezku');
+            }
+            else{
+                $this['tourForm']->setDefaults($tour->toArray());
+            }
+        }
+
         protected function createComponentTourForm(){
             $form = new Form;
             $form->addText("title","Název:");
@@ -53,7 +89,15 @@ class ListPresenter extends BasePresenter
         }
         
         public function tourFormSucceeded(Form $form, $values){
-            $this->tourManager->insertTour($values['title'],$this->getUser()->getId());
+            $tour_id = $this->getParameter('id');
+
+            if($tour_id){
+                $tour = $this->tourManager->readTour($tour_id);
+                $tour->update($values);
+            }
+            else{
+                $this->tourManager->insertTour($values['title'],$this->getUser()->getId());
+            }
             $this->redirect('List:');
         }
 
