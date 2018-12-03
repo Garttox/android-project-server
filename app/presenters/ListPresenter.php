@@ -10,20 +10,26 @@ class ListPresenter extends BasePresenter
     
     private $tourManager;
     private $userManager;
-    private $data;
 
     public function __construct(TourManager $tourManager, UserManager $userManager){
         $this->tourManager = $tourManager;
         $this->userManager = $userManager;
 	}
     
-    public function getListData(){
+    public function getListData($id = -1){
         $value=array();
-        $data = $this->tourManager->readAllTours();
-        foreach($data as $tour){
+        if($id <0){
+            $data = $this->tourManager->readAllTours();
+            foreach($data as $tour){
+                $author =$this->tourManager->readTourAuthor($tour->id);
+                $x =array('id'=>$tour->id, 'title'=>$tour->title,'published' =>$tour->published, 'author'=> $author, 'qr' => $this->generateQRcodeURL($tour->id));
+                array_push($value,$x);
+            }
+        }
+        else{
+            $tour = $this->tourManager->readTour($id);
             $author =$this->tourManager->readTourAuthor($tour->id);
-            $x =array('id'=>$tour->id, 'title'=>$tour->title,'published' =>$tour->published, 'author'=> $author);
-            array_push($value,$x);
+            $value=array('id'=>$tour->id, 'title'=>$tour->title,'published' =>$tour->published, 'author'=> $author, 'qr' => $this->generateQRcodeURL($tour->id));
         }
         return $value;
     }
@@ -33,24 +39,30 @@ class ListPresenter extends BasePresenter
                 $this->redirect('Homepage:');
             }
             if(!isset($this->template->data)) {
-                $this->data=$this->getListData();
-                $this->template->data = $this->data;
+                $this->template->data = $this->getListData();
             }
         }
 
-        public function handleUpdate($id){
+        public function handlePublish($id){
+            $data = $this->getListData();
             $this->template->data = $this->isAjax()
             ? []
-            : $this->data;
-            $this->template->data = $this->getListData();
-            //$this->template->data[$id]=$this->tourManager->readTour($this->data[$id]["id"]);
-            //$this->tourManager->renameTour($this->template->data[$id]["id"],"AJAX");
-            //$this->template->data[$id] = $this->tourManager->readTour($this->template->data[$id]["id"]);
-            
-            
-            
+            : $data;
+            $this->tourManager->setTourPublished($data[$id]["id"]);
+            $this->template->data[$id] = $this->getListData($data[$id]["id"]);
             $this->redrawControl('listContainer');
         }
+
+        public function handleUnpublish($id){
+            $data = $this->getListData();
+            $this->template->data = $this->isAjax()
+            ? []
+            : $data;
+            $this->tourManager->setTourNotPublished($data[$id]["id"]);
+            $this->template->data[$id] = $this->getListData($data[$id]["id"]);
+            $this->redrawControl('listContainer');
+        }
+
 
         public function renderAddTour(){
             if (!$this->getUser()->isAllowed('List', 'addTour')) {

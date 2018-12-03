@@ -28,7 +28,7 @@
                     </small>  
                         <span class="btn-group right" role="group" aria-label="Basic example">
                             {if $user->isInRole('admin')}
-                                <a class="btn btn-dark" href="#"><i class="fas fa-qrcode"></i> QR</a>
+                                <a class="btn btn-dark" href="{$row['qr']}"><i class="fas fa-qrcode"></i> QR</a>
                             {/if}     
                             {if $user->isInRole('admin') || ($user->isInRole('editor') && $row['author'] == $user->getIdentity()->username)}
                                 <a class="btn btn-warning" href="#"><i class="fas fa-pen"></i> Upravit</a>
@@ -36,11 +36,11 @@
                             <a class="btn btn-primary" data-toggle="collapse" data-target="#collapse{$row['id']}" aria-expanded="true" aria-controls="collapse{$row['id']}"><i class="fas fa-chevron-down"></i> Více</a>  
                         </span>    
                         {if ($row['published'] == 'no' && $user->isInRole('admin'))}
-                            <a class="btn btn-success right ajax" n:href="update! $row['id']"><i class="fas fa-check"></i> Zveřejnit</a>
+                            <a class="btn btn-success right ajax" n:href="publish! $id"><i class="fas fa-check"></i> Zveřejnit</a>
                         {elseif ($row['published'] == 'yes' && $user->isInRole('admin'))}
-                            <a class="btn btn-danger right ajax" n:href="update! $row['id']"><i class="fas fa-times"></i> Stáhnout</a>
+                            <a class="btn btn-danger right ajax" n:href="unpublish! $id"><i class="fas fa-times"></i> Stáhnout</a>
                         {elseif ($row['published'] == 'wip' && $row['author'] == $user->getIdentity()->username)}   
-                            <a class="btn btn-secondary right ajax" n:href="update! $row['id']"><i class="fas fa-flag-checkered"></i> Dokončit</a> 
+                            <a class="btn btn-secondary right ajax" n:href="publish! $id"><i class="fas fa-flag-checkered"></i> Dokončit</a> 
                         {/if}   
                         {if $row['author'] != $user->getIdentity()->username && !$user->isInRole('admin')}
                             <i class="rightText">Nejste autorem této stezky, nemůžete provádět úpravy.</i>
