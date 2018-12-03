@@ -42,6 +42,7 @@ class ListPresenter extends BasePresenter
             $this->template->data = $this->isAjax()
             ? []
             : $this->data;
+            $this->template->data = $this->getListData();
             //$this->template->data[$id]=$this->tourManager->readTour($this->data[$id]["id"]);
             //$this->tourManager->renameTour($this->template->data[$id]["id"],"AJAX");
             //$this->template->data[$id] = $this->tourManager->readTour($this->template->data[$id]["id"]);
