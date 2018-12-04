@@ -20,6 +20,10 @@ p {
     margin-top: 20px;
 }
 
+.head-logo {
+    width: 2vw;
+}
+
 .sign {
     font-style: italic !important;
 }

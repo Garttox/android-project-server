@@ -1,126 +1,81 @@
-{** * @param string $basePath web base path * @param array $flashes flash messages *}
+<?php
+// source: C:\xampp\htdocs\android-project-server\app\presenters/templates/@layout.latte
+
+use Latte\Runtime as LR;
+
+class Templateaab9a57d16 extends Latte\Runtime\Template
+{
+	public $blocks = [
+		'head' => 'blockHead',
+		'header' => 'blockHeader',
+		'footer' => 'blockFooter',
+		'scripts' => 'blockScripts',
+	];
+
+	public $blockTypes = [
+		'head' => 'html',
+		'header' => 'html',
+		'footer' => 'html',
+		'scripts' => 'html',
+	];
+
+
+	function main()
+	{
+		extract($this->params);
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
 
-    <title>{ifset title}{include title|stripHtml} | {/ifset}Opava Tourist</title>
+    <title><?php
+		if (isset($this->blockQueue["title"])) {
+			$this->renderBlock('title', $this->params, function ($s, $type) {
+				$_fi = new LR\FilterInfo($type);
+				return LR\Filters::convertTo($_fi, 'html', $this->filters->filterContent('striphtml', $_fi, $s));
+			});
+			?> | <?php
+		}
+?>Opava Tourist</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{$basePath}/css/style.css">
+    <link rel="stylesheet" href="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 11 */ ?>/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
         crossorigin="anonymous">
     <link rel="icon" 
       type="image/png" 
-      href="{$basePath}/images/logoMini.png">    
-         {block head}{/block}
+      href="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 18 */ ?>/images/logoMini.png">    
+         <?php
+		if ($this->getParentName()) return get_defined_vars();
+		$this->renderBlock('head', get_defined_vars());
+?>
 </head>
 
 
 <body>
     <div class="wrapper d-flex flex-column">
-        {block header}
-        <header class="bg-primary text-center text-white">
-            <!-- Desktop Navbar -->
-            <nav class="navbar navbar-expand-sm bg-primary text-white d-none d-md-flex">
-                <!-- Brand -->
-                <a class="navbar-brand text-white" n:href="Homepage:default"><i class="far fa-circle"></i></a>
-
-                <!-- Links -->
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" n:href="Homepage:default"><i class="fas fa-home"></i> Domů</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" n:href="Homepage:howItWorks"><i class="fas fa-book"></i> Jak to funguje?</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" n:href="Homepage:faq"><i class="fas fa-question"></i> FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="https://play.google.com/store" target="_blank"><i class="fas fa-download"></i> Stáhnout</a>
-                    </li>
-                </ul>
-                <!-- Dropdown -->
-                <ul class="navbar-nav ml-auto">
-                    {if $user->isLoggedIn()}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown"><i class="fas fa-user"></i> {$user->getIdentity()->username}</a>
-                        <div class="dropdown-menu dropdown-menu-right bg-primary text-center">
-                            {if $user->isAllowed('List', 'default')}
-                            <a class="dropdown-item text-white" n:href="List:default"> Seznam Stezek</a>
-                            <hr> 
-                            {/if} 
-                            {if $user->isAllowed('List', 'addTour')}
-                            <a class="dropdown-item text-white" n:href="List:addTour"> Přidat Stezku</a>
-                            <hr> 
-                            {/if}
-                            {if $user->isAllowed('Sign', 'up')}
-                            <a class="dropdown-item text-white" n:href="Sign:up"> Přidat Editora</a>
-                            <hr> 
-                            {/if}
-                            <a n:href="Sign:out" class="btn btn-primary login-button"><i class="fas fa-sign-in-alt"></i> Odhlásit se</a>
-                        </div>
-                    </li>
-                    {/if}
-                </ul>
-            </nav>
-            <!-- End Desktop Navbar -->
-
-            <!-- Mobile Navbar -->
-            <nav class="navbar bg-primary text-center text-white d-md-none">
-                <!-- Dropdown -->
-                <a class="nav-link navbar-toggle text-white btn login-button" href="#" data-toggle="collapse" data-target="#myNavbar"><i class="fas fa-bars"></i></a>
-
-                <div class="collapse navbar-collapse text-center" id="myNavbar">
-                    <!-- Links -->
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" n:href="Homepage:default"><i class="fas fa-home"></i> Domů</a>
-                        </li>
-                        <hr class="menuhr">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" n:href="Homepage:howItWorks"><i class="fas fa-book"></i> Jak to funguje?</a>
-                        </li>
-                        <hr class="menuhr">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" n:href="Homepage:faq"><i class="fas fa-question"></i> FAQ</a>
-                        </li>
-                        <hr class="menuhr">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="https://play.google.com/store" target="_blank"><i class="fas fa-download"></i> Stáhnout</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <!-- End Mobile Navbar -->
-            <div class="bg-primary container-fluid">
-                <img src="{$basePath}/images/logo.png" class="head-logo img-responsive">
-            </div>
-        </header>
-        {/block}
-        <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+<?php
+		$this->renderBlock('header', get_defined_vars());
+		$iterations = 0;
+		foreach ($flashes as $flash) {
+			?>        <div<?php if ($_tmp = array_filter(['flash', $flash->type])) echo ' class="', LR\Filters::escapeHtmlAttr(implode(" ", array_unique($_tmp))), '"' ?>><?php
+			echo LR\Filters::escapeHtmlText($flash->message) /* line 105 */ ?></div>
+<?php
+			$iterations++;
+		}
+?>
         <main class="flex-fill">
-        {include content} 
+<?php
+		$this->renderBlock('content', $this->params, 'html');
+?>
         </main>
-        {block footer}
-        <footer class="footer bg-primary text-center text-white">
-            <span><i class="fas fa-users"></i> <a href="https://github.com/Garttox" target="_blank" class="text-white">Michal Trlica</a> & <a href="https://github.com/Drag0n0idus" target="_blank" class="text-white">Richard Míček</a> &copy; 2018</span>
-        </footer>
-        {/block} {block scripts}
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-        <script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
-        <!--<script src="{$basePath}/js/main.js"></script>-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-            crossorigin="anonymous"></script>
-        <script src="{$basePath}/js/nette.ajax.js"></script> 
-        <script src="{$basePath}/js/main.js"></script>
-        {/block}
+<?php $this->renderBlock('footer', get_defined_vars()) ?>         <?php
+		$this->renderBlock('scripts', get_defined_vars());
+?>
     </div>
 </body>
 <!-- 
@@ -228,4 +183,144 @@ dddddhhhddddhhhhdddddddhddhhhhhddddhhdddddhhhhhhhhhhhhhhhhhhhhyhhhddhhhhhyhhdddd
 ddddhhhhddddhhhhddddddhhhhhhhhdddddhhdddddhhhhhhhhhhhhhhhhhhhhhhhhddhhhhhyyhhdddddhhhhhhhhhhhhhhhhhhyyyyyyyyyyhyyhhhhhhhhhhhhhyhhhhhhhyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyhddddhhyyyyyyyyyyyyyyyyy
 -->
 
-</html>
+</html><?php
+		return get_defined_vars();
+	}
+
+
+	function prepare()
+	{
+		extract($this->params);
+		if (isset($this->params['flash'])) trigger_error('Variable $flash overwritten in foreach on line 105');
+		Nette\Bridges\ApplicationLatte\UIRuntime::initialize($this, $this->parentName, $this->blocks);
+		
+	}
+
+
+	function blockHead($_args)
+	{
+		
+	}
+
+
+	function blockHeader($_args)
+	{
+		extract($_args);
+?>
+        <header class="bg-primary text-center text-white">
+            <!-- Desktop Navbar -->
+            <nav class="navbar navbar-expand-sm bg-primary text-white d-none d-md-flex">
+                <!-- Brand -->
+                <a class="navbar-brand text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:default")) ?>"><i class="far fa-circle"></i></a>
+
+                <!-- Links -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:default")) ?>"><i class="fas fa-home"></i> Domů</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:howItWorks")) ?>"><i class="fas fa-book"></i> Jak to funguje?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:faq")) ?>"><i class="fas fa-question"></i> FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="https://play.google.com/store" target="_blank"><i class="fas fa-download"></i> Stáhnout</a>
+                    </li>
+                </ul>
+                <!-- Dropdown -->
+                <ul class="navbar-nav ml-auto">
+<?php
+		if ($user->isLoggedIn()) {
+?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown"><i class="fas fa-user"></i> <?php
+			echo LR\Filters::escapeHtmlText($user->getIdentity()->username) /* line 51 */ ?></a>
+                        <div class="dropdown-menu dropdown-menu-right bg-primary text-center">
+<?php
+			if ($user->isAllowed('List', 'default')) {
+				?>                            <a class="dropdown-item text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:default")) ?>"> Seznam Stezek</a>
+                            <hr> 
+<?php
+			}
+			if ($user->isAllowed('List', 'addTour')) {
+				?>                            <a class="dropdown-item text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:addTour")) ?>"> Přidat Stezku</a>
+                            <hr> 
+<?php
+			}
+			if ($user->isAllowed('Sign', 'up')) {
+				?>                            <a class="dropdown-item text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:up")) ?>"> Přidat Editora</a>
+                            <hr> 
+<?php
+			}
+			?>                            <a class="btn btn-primary login-button" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:out")) ?>"><i class="fas fa-sign-in-alt"></i> Odhlásit se</a>
+                        </div>
+                    </li>
+<?php
+		}
+?>
+                </ul>
+            </nav>
+            <!-- End Desktop Navbar -->
+
+            <!-- Mobile Navbar -->
+            <nav class="navbar bg-primary text-center text-white d-md-none">
+                <!-- Dropdown -->
+                <a class="nav-link navbar-toggle text-white btn login-button" href="#" data-toggle="collapse" data-target="#myNavbar"><i class="fas fa-bars"></i></a>
+
+                <div class="collapse navbar-collapse text-center" id="myNavbar">
+                    <!-- Links -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:default")) ?>"><i class="fas fa-home"></i> Domů</a>
+                        </li>
+                        <hr class="menuhr">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:howItWorks")) ?>"><i class="fas fa-book"></i> Jak to funguje?</a>
+                        </li>
+                        <hr class="menuhr">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:faq")) ?>"><i class="fas fa-question"></i> FAQ</a>
+                        </li>
+                        <hr class="menuhr">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="https://play.google.com/store" target="_blank"><i class="fas fa-download"></i> Stáhnout</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- End Mobile Navbar -->
+            <div class="bg-primary container-fluid">
+                <img src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 101 */ ?>/images/logo.png" class="head-logo img-responsive">
+            </div>
+        </header>
+<?php
+	}
+
+
+	function blockFooter($_args)
+	{
+?>        <footer class="footer bg-primary text-center text-white">
+            <span><i class="fas fa-users"></i> <a href="https://github.com/Garttox" target="_blank" class="text-white">Michal Trlica</a> & <a href="https://github.com/Drag0n0idus" target="_blank" class="text-white">Richard Míček</a> &copy; 2018</span>
+        </footer>
+<?php
+	}
+
+
+	function blockScripts($_args)
+	{
+		extract($_args);
+?>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
+        <!--<script src="<?php echo LR\Filters::escapeHtmlComment($basePath) /* line 116 */ ?>/js/main.js"></script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+        <script src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 121 */ ?>/js/nette.ajax.js"></script> 
+        <script src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 122 */ ?>/js/main.js"></script>
+<?php
+	}
+
+}
