@@ -98,7 +98,15 @@ class UserManager implements Nette\Security\IAuthenticator
 		
 		public function getId($username){
             return $this->database->table(self::TABLE_NAME)->where('username',$username)->fetch()->id;
-        }
+		}
+		
+		public function setUserAdmin($id){
+            $this->database->table(self::TOUR_TABLE_NAME)->where('id',$id)->update(['role'=>'admin']);
+		}
+
+		public function setUserEditor($id){
+            $this->database->table(self::TOUR_TABLE_NAME)->where('id',$id)->update(['role'=>'editor']);
+		}
 }
 
 

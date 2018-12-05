@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="accordion" id="accordion">
-        <div n:snippet="listContainer">
+        <div n:snippet="toursListContainer">
             {foreach $data as $id => $row}
             <div n:snippet="row-$id" class="card">
                 {if $row['author'] == $user->getIdentity()->username}
@@ -38,7 +38,7 @@
                         {if ($row['published'] == 'no' && $user->isInRole('admin'))}
                             <a class="btn btn-success right ajax" n:href="publish! $id"><i class="fas fa-check"></i> Zveřejnit</a>
                         {elseif ($row['published'] == 'yes' && $user->isInRole('admin'))}
-                            <a class="btn btn-danger right ajax" n:href="unpublish! $id"><i class="fas fa-times"></i> Stáhnout</a>
+                            <a class="btn btn-danger right ajax" n:href="publish! $id"><i class="fas fa-times"></i> Stáhnout</a>
                         {elseif ($row['published'] == 'wip' && $row['author'] == $user->getIdentity()->username)}   
                             <a class="btn btn-secondary right ajax" n:href="publish! $id"><i class="fas fa-flag-checkered"></i> Dokončit</a> 
                         {/if}   

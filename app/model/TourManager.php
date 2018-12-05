@@ -54,7 +54,12 @@ class TourManager
         
         public function readAllTourPoints($id){
             $points= $this->database->table(self::TOUR_TABLE_NAME)->get($id);
-            return $points->related(self::POINT_TABLE_NAME, self::POINT_TOUR_ID)->order(self::POINT_ORDER)->fetchAll();
+            if($points==null){
+                return false;
+            }
+            else{
+                return $points->related(self::POINT_TABLE_NAME, self::POINT_TOUR_ID)->order(self::POINT_ORDER)->fetchAll();
+            }
         }
         
         public function readPoint($id){

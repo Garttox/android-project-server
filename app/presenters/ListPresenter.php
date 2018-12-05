@@ -64,21 +64,32 @@ class ListPresenter extends BasePresenter
             $this->template->data = $this->isAjax()
             ? []
             : $data;
-            $this->tourManager->setTourPublished($data[$id]["id"]);
+            if($data["published"] == "yes"){
+                $this->tourManager->setTourNotPublished($data[$id]["id"]);
+            }
+            else{
+                $this->tourManager->setTourPublished($data[$id]["id"]);
+            }
             $this->template->data[$id] = $this->getListData($data[$id]["id"]);
-            $this->redrawControl('listContainer');
+            $this->redrawControl('toursListContainer');
         }
 
-        public function handleUnpublish($id){
-            $data = $this->getListData();
+        public function handleRole($id){
+            $users = $this->getUserData();
             $this->template->data = $this->isAjax()
             ? []
-            : $data;
-            $this->tourManager->setTourNotPublished($data[$id]["id"]);
-            $this->template->data[$id] = $this->getListData($data[$id]["id"]);
-            $this->redrawControl('listContainer');
+            : $users;
+            if($this->getUser()->getIdentity()->getRoles() == "admin"){
+                if($data["role"] == "admin"){
+                    $this->userManager->setUserEditor($users[$id]["id"]);
+                }
+                else{
+                    $this->userManager->setUserAdmin($users[$id]["id"]);
+                }
+                $this->template->data[$id] = $this->getUserData($users[$id]["id"]);
+            }
+            $this->redrawControl('usersListContainer');
         }
-
 
         public function renderAddTour(){
             if (!$this->getUser()->isAllowed('List', 'addTour')) {

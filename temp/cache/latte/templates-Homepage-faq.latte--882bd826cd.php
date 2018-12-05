@@ -1,6 +1,40 @@
-{* Latte template *}
+<?php
+// source: D:\stranky\www\android-project-server\app\presenters/templates/Homepage/faq.latte
 
-{block content}
+use Latte\Runtime as LR;
+
+class Template882bd826cd extends Latte\Runtime\Template
+{
+	public $blocks = [
+		'content' => 'blockContent',
+	];
+
+	public $blockTypes = [
+		'content' => 'html',
+	];
+
+
+	function main()
+	{
+		extract($this->params);
+		if ($this->getParentName()) return get_defined_vars();
+		$this->renderBlock('content', get_defined_vars());
+		return get_defined_vars();
+	}
+
+
+	function prepare()
+	{
+		extract($this->params);
+		Nette\Bridges\ApplicationLatte\UIRuntime::initialize($this, $this->parentName, $this->blocks);
+		
+	}
+
+
+	function blockContent($_args)
+	{
+		extract($_args);
+?>
 
     <div class="container text-center">
         <hr>
@@ -43,7 +77,7 @@
                         <div class="col-md-6">
                             <p><hr><strong>Richard Míček - Hlavní vývojář aplikace, tvůrce projektu</strong><hr></p>
                             <p class="text-justify">
-                                <img src="{$basePath}/images/richard.webp" class="floated" align="left">
+                                <img src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 46 */ ?>/images/richard.webp" class="floated" align="left">
                                 Student Informačních a komunikačních 
                                 technologií na Střední Škole Průmyslové a Umělecké v Opavě.
                                 O programování se zajímá od 8. třídy základní školy, kdy 
@@ -53,7 +87,7 @@
                         <div class="col-md-6">
                             <p><hr><strong>Michal Trlica - Hlavní vývojář webu, spolutvůrce projektu</strong><hr></p>
                             <p class="text-justify">
-                                <img src="{$basePath}/images/michal.webp" class="floated" align="left">
+                                <img src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 56 */ ?>/images/michal.webp" class="floated" align="left">
                                 Student Informačních a komunikačních 
                                 technologií na Střední Škole Průmyslové a Umělecké v Opavě.
                                 </p>
@@ -82,4 +116,7 @@
         </div>
     </div>
 
-{/block}
+<?php
+	}
+
+}
