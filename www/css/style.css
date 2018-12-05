@@ -20,8 +20,20 @@ p {
     margin-top: 20px;
 }
 
-.head-logo {
-    width: 2vw;
+@media screen and (max-width: 575px) {
+    .head-logo {
+        width: 50vw;
+    }
+}
+
+@media screen and (min-width: 577px) {
+    .head-logo {
+        width: 20vw;
+    }
+}
+
+.brandLogo {
+    width: 50px;
 }
 
 .sign {
@@ -56,6 +68,13 @@ p {
     padding-bottom: 15px;
 }
 
+.errors {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
 .menuhr {
     border: 1px solid white;
     width: 100%;
@@ -67,7 +86,7 @@ p {
 }
 
 .dropdown .dropdown-menu .dropdown-item:active, .dropdown .dropdown-menu .dropdown-item:hover{
-    background-color: #006fe8 !important;
+    background-color: #D13140 !important;
 }
 
 .right {

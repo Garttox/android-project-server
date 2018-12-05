@@ -1,0 +1,28 @@
+{block content}
+<div class="container">
+    
+       
+            <table class="table">
+                <thead>
+                    <th>Uživatelské jméno</th>
+                    <th>E-mail</th>
+                    <th>Role</th>
+                    <th>Akce</th>
+                </thead>
+                <tbody>
+                    <div n:snippet="listContainer">
+                    {foreach $data as $id => $row}
+                        <div n:snippet="row-$id" class="table">
+                            <td>{$row->username}</td>
+                            <td>{$row->email}</td>
+                            <td>{$row->role}</td>
+                            <td>
+                                <a href="#" class="btn btn-primary">Placeholder</a>
+                            </td>
+                        </div> 
+                    {/foreach}
+                    </div>
+                </tbody>
+            </table>  
+</div>
+{/block}

@@ -5,6 +5,11 @@
 {define bootstrap-up-form $form}
 <div class="container">
 	<form n:name=$form class="form">
+		<div class="errors text-center bg-warning col-md-4 offset-md-4" n:if="$form->hasErrors()">
+			<div n:foreach="$form->errors as $error">
+				{$error}
+			</div>
+		</div>
 		<div class="form-group row">
 			{label username class => "col-md-2 offset-md-3 col-form-label"}{input username class => "form-control col-md-4"}
 		</div>

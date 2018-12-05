@@ -34,6 +34,22 @@ class ListPresenter extends BasePresenter
         return $value;
     }
 
+    public function getUserData($id = -1){
+        $value=array();
+        if($id <0){
+            $data = $this->userManager->readAllUsers();
+            foreach($data as $user){
+                $x = array('id'=>$user->id, 'username'=>$user->username,'email' =>$user->email, 'role'=> $user->role);
+                array_push($value,$x);
+            }
+        }
+        else{
+            $user = $this->userManager->readUser($id);
+            $value = array('id'=>$user->id, 'username'=>$user->username,'email' =>$user->email, 'role'=> $user->role);
+        }
+        return $value;
+    }
+
 	public function renderDefault(){
             if (!$this->getUser()->isAllowed('List', 'default')) {
                 $this->redirect('Homepage:');
@@ -67,6 +83,15 @@ class ListPresenter extends BasePresenter
         public function renderAddTour(){
             if (!$this->getUser()->isAllowed('List', 'addTour')) {
                 $this->redirect('Homepage:');
+            }
+        }
+
+        public function renderUsers(){
+            if (!$this->getUser()->isAllowed('List', 'users')) {
+                $this->redirect('Homepage:');
+            }
+            if(!isset($this->template->data)) {
+                $this->template->data = $this->getUserData();
             }
         }
         
