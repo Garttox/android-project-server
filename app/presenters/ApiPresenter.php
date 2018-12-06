@@ -44,7 +44,18 @@ class ApiPresenter extends BasePresenter
                 foreach($points as $row){
                     array_push($a, array('id'=>$row->id,'order'=>$row->order,'name'=>$row->name,'latitude'=>$row->latitude,'longitude'=>$row->longitude));
                 }
-                $this->sendJsonResponce($a);
+                for($i=0;$i<count($a);$i++){
+                    if($i>=1){
+                        $result[$i+1]=$a[$i];
+                    }
+                    else{
+                        $result[$i]=$a[$i];
+                    }
+                    
+                }
+                $result[1]=end($a);
+                unset($result[count($result)-1]);
+                $this->sendJsonResponce($result);
             }
         }
 	}
