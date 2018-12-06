@@ -1,0 +1,16 @@
+{block content}
+    <div class="container">
+        <h1>{$tour['title']}</h1>
+        <a class="btn btn-primary" n:href="List:editTour $tour['id']">Přejmenovat</a>
+        <table class="table">
+            {foreach $points as $point}
+                <tr>
+                    <th scope="col">{$point->order}</th>
+                    <th scope="col">{$point->name}</th>
+                    <th scope="col">{$point->longitude}</th>
+                    <th scope="col">{$point->latitude}</th>
+                </tr>
+            {/foreach}
+        </table>
+    </div>
+{/block}

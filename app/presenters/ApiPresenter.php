@@ -19,7 +19,7 @@ class ApiPresenter extends BasePresenter
         }
         else{
             $tour=$this->tourManager->readTour($id);
-            if($tour==null){
+            if($tour == null ||$tour->published != "yes"){
                 $this->sendError();
             }
             else{
@@ -35,8 +35,9 @@ class ApiPresenter extends BasePresenter
             $this->sendError();
         }
         else{
+            $tour=$this->tourManager->readTour($id);
             $points=$this->tourManager->readAllTourPoints($id);
-                if($points==null){
+            if(!$points || $tour->published != "yes"){
                 $this->sendError();
             }
             else{
@@ -66,7 +67,7 @@ class ApiPresenter extends BasePresenter
         }
         else{
             $point=$this->tourManager->readPoint($id);
-            if($point==null){
+            if($point == null){
                 $this->sendError();
             }
             else{

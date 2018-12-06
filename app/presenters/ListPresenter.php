@@ -64,7 +64,7 @@ class ListPresenter extends BasePresenter
             $this->template->data = $this->isAjax()
             ? []
             : $data;
-            if($data["published"] == "yes"){
+            if($data[$id]["published"] == "yes"){
                 $this->tourManager->setTourNotPublished($data[$id]["id"]);
             }
             else{
@@ -80,7 +80,7 @@ class ListPresenter extends BasePresenter
             ? []
             : $users;
             if($this->getUser()->getIdentity()->getRoles() == "admin"){
-                if($data["role"] == "admin"){
+                if($data[$id]["role"] == "admin"){
                     $this->userManager->setUserEditor($users[$id]["id"]);
                 }
                 else{
@@ -106,6 +106,16 @@ class ListPresenter extends BasePresenter
             }
         }
         
+        public function renderDetail($id){
+            if(false){
+                $this->error('Nemáte oprávění editovat tuto stezku');
+            }else{
+                $this->template->tour=$this->getListData($id);
+                $this->template->points=$this->tourManager->readAllTourPoints($id);
+            }
+
+        }
+
         public function renderAddPoints($id){
             if (!$this->getUser()->isAllowed('List', 'addPoints')) {
                 $this->redirect('Homepage:');
@@ -113,13 +123,13 @@ class ListPresenter extends BasePresenter
         }
         
         public function renderEditTour(){
-
+            
         }
 
         public function actionEditTour($id){
             $tour = $this->tourManager->readTour($id);
             if(!$tour) {
-                $this->error('Příspěvek nebyl nalezen');
+                $this->error('Stezka nebyla nalezena');
             }
             else if($this->getUser()->getIdentity()->getId() != $tour->users_id){
                 $this->error('Nemáte oprávění editovat tuto stezku');
@@ -132,7 +142,7 @@ class ListPresenter extends BasePresenter
         protected function createComponentTourForm(){
             $form = new Form;
             $form->addText("title","Název:");
-            $form->addSubmit('submit', 'Vytvořit');
+            $form->addSubmit('submit', 'OK');
             $form->onSuccess[] = array($this, 'tourFormSucceeded');
             return $form;
         }
@@ -143,11 +153,13 @@ class ListPresenter extends BasePresenter
             if($tour_id){
                 $tour = $this->tourManager->readTour($tour_id);
                 $tour->update($values);
+                $this->redirect('List:detail',$tour_id);
             }
             else{
                 $this->tourManager->insertTour($values['title'],$this->getUser()->getId());
+                $this->redirect('List:');
             }
-            $this->redirect('List:');
+            
         }
 
         public function generateQRcodeURL($tour_id){
