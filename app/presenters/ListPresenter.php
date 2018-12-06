@@ -107,7 +107,9 @@ class ListPresenter extends BasePresenter
         }
         
         public function renderDetail($id){
-            if(false){
+            $author_id=$this->tourManager->readTour($id)->users_id;
+            dump($this->getUser()->getIdentity()->getId());
+            if($this->getUser()->getIdentity()->getId() != $author_id){
                 $this->error('Nemáte oprávění editovat tuto stezku');
             }else{
                 $this->template->tour=$this->getListData($id);
@@ -116,17 +118,34 @@ class ListPresenter extends BasePresenter
 
         }
 
-        public function renderAddPoints($id){
-            if (!$this->getUser()->isAllowed('List', 'addPoints')) {
+        public function renderAddPoint($tour){
+            if (!$this->getUser()->isAllowed('List', 'addPoint')) {
                 $this->redirect('Homepage:');
+            }
+            $tourFetch=$this->tourManager->readTour($tour);
+            if($this->getUser()->getIdentity()->getId() != $tourFetch->users_id){
+                $this->error('Nemáte oprávění editovat tuto stezku');
             }
         }
         
-        public function renderEditTour(){
-            
+        public function renderEditPoint($id){
+            if (!$this->getUser()->isAllowed('List', 'editPoint')) {
+                $this->redirect('Homepage:');
+            }
+            $point = $this->tourManager->readPoint($id);
+            $tour=$this->tourManager->readTour($point->tour_id);
+            if(!$tour) {
+                $this->error('Bod nebyl nalezen');
+            }
+            else if($this->getUser()->getIdentity()->getId() != $tour->users_id){
+                $this->error('Nemáte oprávění editovat tuto stezku');
+            }
+            else{
+                $this['pointForm']->setDefaults($point->toArray());
+            }
         }
 
-        public function actionEditTour($id){
+        public function renderEditTour($id){
             $tour = $this->tourManager->readTour($id);
             if(!$tour) {
                 $this->error('Stezka nebyla nalezena');
@@ -158,6 +177,32 @@ class ListPresenter extends BasePresenter
             else{
                 $this->tourManager->insertTour($values['title'],$this->getUser()->getId());
                 $this->redirect('List:');
+            }
+            
+        }
+
+        protected function createComponentPointForm(){
+            $form = new Form;
+            $form->addText("name","Název bodu:");
+            $form->addtext("longitude","Longitude:");
+            $form->addtext("latitude","Latitude:");
+            $form->addTextArea('text', 'Popis:');
+            $form->addSubmit('submit', 'OK');
+            $form->onSuccess[] = array($this, 'pointFormSucceeded');
+            return $form;
+        }
+
+        public function pointFormSucceeded(Form $form, $values){
+            $point_id = $this->getParameter('id');
+
+            if($point_id){
+                $point = $this->tourManager->readPoint($point_id);
+                $point->update($values);
+                $this->redirect('List:detail',$point->tour_id);
+            }
+            else{
+                $this->tourManager->insertPoint($values["name"],$values["longitude"],$values["latitude"],$this->getParameter('tour'));
+                $this->redirect('List:detail',$this->getParameter('tour'));
             }
             
         }

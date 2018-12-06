@@ -55,6 +55,7 @@ class Template0cbd0481a2 extends Latte\Runtime\Template
 		}
 ?>
         </table>
+        <a class="btn btn-primary" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:")) ?>">Zpět</a>
     </div>
 <?php
 	}

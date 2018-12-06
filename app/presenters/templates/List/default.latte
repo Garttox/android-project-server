@@ -31,7 +31,7 @@
                                 <a class="btn btn-dark" href="{$row['qr']}"><i class="fas fa-qrcode"></i> QR</a>
                             {/if}     
                             {if $user->isInRole('admin') || ($user->isInRole('editor') && $row['author'] == $user->getIdentity()->username)}
-                                <a class="btn btn-warning" href="#"><i class="fas fa-pen"></i> Upravit</a>
+                                <a class="btn btn-warning" n:href="List:detail $row['id']"><i class="fas fa-pen"></i> Upravit</a>
                             {/if}
                             <a class="btn btn-primary" data-toggle="collapse" data-target="#collapse{$row['id']}" aria-expanded="true" aria-controls="collapse{$row['id']}"><i class="fas fa-chevron-down"></i> Více</a>  
                         </span>    

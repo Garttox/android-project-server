@@ -17,7 +17,7 @@ class TourManager
 		TOUR_ID = 'id',
 		TOUR_TITLE = 'title',
 		TOUR_PUBLISHED = 'published',
-                TOUR_USERS_ID = 'users_id';
+        TOUR_USERS_ID = 'users_id';
 
         const
 		POINT_TABLE_NAME = 'point',
@@ -62,6 +62,10 @@ class TourManager
             }
         }
         
+        public function swapPointOrder(){
+            
+        }
+
         public function readPoint($id){
             return $this->database->table(self::POINT_TABLE_NAME)->get($id);
         }
@@ -85,12 +89,14 @@ class TourManager
             ]);
         }
 
-        public function insertPoint($name,$long,$lat,$order,$tour_id){
+        public function insertPoint($name,$long,$lat,$tour_id){
+            $order=count($this->database->table(self::POINT_TABLE_NAME)->where('tour_id',$tour_id))+1;
             $this->database->table(self::POINT_TABLE_NAME)->insert(array(
                 'name'=>$name,
                 'latitude'=>$lat,
                 'longitude'=>$long,
-                'order'=>$order
+                'order'=>$order,
+                'tour_id'=>$tour_id
             ));
         }
         

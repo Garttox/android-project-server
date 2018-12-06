@@ -7,11 +7,6 @@ return array (
       'file' => '/home/michal/www/android-project-server/app/acl/Acl.php',
       'time' => 1544080261,
     ),
-    'App\\Model\\TourManager' => 
-    array (
-      'file' => '/home/michal/www/android-project-server/app/model/TourManager.php',
-      'time' => 1544080261,
-    ),
     'App\\Model\\UserManager' => 
     array (
       'file' => '/home/michal/www/android-project-server/app/model/UserManager.php',
@@ -80,7 +75,12 @@ return array (
     'App\\Presenters\\ListPresenter' => 
     array (
       'file' => '/home/michal/www/android-project-server/app/presenters/ListPresenter.php',
-      'time' => 1544097535,
+      'time' => 1544136867,
+    ),
+    'App\\Model\\TourManager' => 
+    array (
+      'file' => '/home/michal/www/android-project-server/app/model/TourManager.php',
+      'time' => 1544136987,
     ),
   ),
   1 => 

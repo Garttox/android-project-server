@@ -111,8 +111,7 @@ class Templatefa7aed85e9 extends Latte\Runtime\Template
 <?php
 			}
 			if ($user->isInRole('admin') || ($user->isInRole('editor') && $row['author'] == $user->getIdentity()->username)) {
-?>
-                                <a class="btn btn-warning" href="#"><i class="fas fa-pen"></i> Upravit</a>
+				?>                                <a class="btn btn-warning" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:detail", [$row['id']])) ?>"><i class="fas fa-pen"></i> Upravit</a>
 <?php
 			}
 			?>                            <a class="btn btn-primary" data-toggle="collapse" data-target="#collapse<?php
