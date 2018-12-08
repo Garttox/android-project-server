@@ -1,7 +1,5 @@
 {block content}
-<div class="container">
-    
-       
+<div class="container">       
             <table class="table">
                 <thead>
                     <th>Uživatelské jméno</th>
@@ -13,9 +11,9 @@
                     <div n:snippet="usersListContainer">
                     {foreach $data as $id => $row}
                         <div n:snippet="row-$id" class="table">
-                            <td>{$row->username}</td>
-                            <td>{$row->email}</td>
-                            <td>{$row->role}</td>
+                            <td>{$row['username']}</td>
+                            <td>{$row['email']}</td>
+                            <td>{$row['role']}</td>
                             <td>
                                 <a href="#" class="btn btn-primary">Placeholder</a>
                             </td>

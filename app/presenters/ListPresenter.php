@@ -108,14 +108,27 @@ class ListPresenter extends BasePresenter
         
         public function renderDetail($id){
             $author_id=$this->tourManager->readTour($id)->users_id;
-            dump($this->getUser()->getIdentity()->getId());
             if($this->getUser()->getIdentity()->getId() != $author_id){
                 $this->error('Nemáte oprávění editovat tuto stezku');
             }else{
+                if(!isset($this->template->points)) {
+                    $this->template->points=$this->tourManager->readAllTourPoints($id);
+                }
                 $this->template->tour=$this->getListData($id);
-                $this->template->points=$this->tourManager->readAllTourPoints($id);
+                $this->template->last=$this->tourManager->pointsCount($id);
             }
 
+        }
+
+        public function handleSwap($id_first, $id_second, $id){
+            $points = $this->tourManager->readAllTourPoints($id);
+            $this->template->points = $this->isAjax()
+            ? []
+            : $points;
+            $this->tourManager->swapPointOrder($points[$id_first]['id'], $points[$id_second]['id']);
+            $this->template->points[$id_second]=$this->tourManager->readPoint($points[$id_first]['id']);
+            $this->template->points[$id_first]=$this->tourManager->readPoint($points[$id_second]['id']);
+            $this->redrawControl('pointsListContainer');
         }
 
         public function renderAddPoint($tour){

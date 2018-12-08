@@ -22,13 +22,13 @@ class TourManager
         const
 		POINT_TABLE_NAME = 'point',
 		POINT_ID = 'id',
-                POINT_ORDER = 'order',
+        POINT_ORDER = 'order',
 		POINT_COORDINATE_E = 'longitude',
 		POINT_COORDINATE_N = 'latitude',
-                POINT_TEXT = 'text',
-                POINT_FOTO = 'fotoURL',
-                POINT_NAME = 'name',
-                POINT_TOUR_ID = 'tour_id';
+        POINT_TEXT = 'text',
+        POINT_FOTO = 'fotoURL',
+        POINT_NAME = 'name',
+        POINT_TOUR_ID = 'tour_id';
 
 	/** @var Nette\Database\Context */
 	private $database;
@@ -58,12 +58,16 @@ class TourManager
                 return false;
             }
             else{
-                return $points->related(self::POINT_TABLE_NAME, self::POINT_TOUR_ID)->order(self::POINT_ORDER)->fetchAll();
+                return $points->related(self::POINT_TABLE_NAME, self::POINT_TOUR_ID)->order(self::POINT_ORDER)->fetchAssoc('order=');
             }
         }
         
-        public function swapPointOrder(){
-            
+        public function swapPointOrder($id_first,$id_second){
+            if($this->database->table(self::POINT_TABLE_NAME)->get($id_first)->tour_id == $this->database->table(self::POINT_TABLE_NAME)->get($id_second)->tour_id){
+                $first_point_order=$this->database->table(self::POINT_TABLE_NAME)->get($id_first)->order;
+                $this->database->table(self::POINT_TABLE_NAME)->where('id',$id_first)->update(['order'=>$this->database->table(self::POINT_TABLE_NAME)->get($id_second)->order]);
+                $this->database->table(self::POINT_TABLE_NAME)->where('id',$id_second)->update(['order'=>$first_point_order]);
+            }
         }
 
         public function readPoint($id){
@@ -116,4 +120,7 @@ class TourManager
             return $this->database->table(self::TOUR_TABLE_NAME)->where('users_id',$author_id)->fetchAll();
         }
 
+        public function pointsCount($id){
+            return $this->database->table(self::POINT_TABLE_NAME)->where('tour_id',$id)->count();
+        }
 }
