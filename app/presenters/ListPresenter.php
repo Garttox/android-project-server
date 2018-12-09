@@ -107,7 +107,7 @@ class ListPresenter extends BasePresenter
         }
         
         public function renderDetail($id){
-            $author_id=$this->tourManager->readTour($id)->users_id;
+            $author_id = $this->tourManager->readTour($id)->users_id;
             if($this->getUser()->getIdentity()->getId() != $author_id){
                 $this->error('Nemáte oprávění editovat tuto stezku');
             }else{
@@ -135,7 +135,7 @@ class ListPresenter extends BasePresenter
             if (!$this->getUser()->isAllowed('List', 'addPoint')) {
                 $this->redirect('Homepage:');
             }
-            $tourFetch=$this->tourManager->readTour($tour);
+            $tourFetch = $this->tourManager->readTour($tour);
             if($this->getUser()->getIdentity()->getId() != $tourFetch->users_id){
                 $this->error('Nemáte oprávění editovat tuto stezku');
             }
@@ -197,10 +197,10 @@ class ListPresenter extends BasePresenter
         protected function createComponentPointForm(){
             $form = new Form;
             $form->addText("name","Název bodu:");
-            $form->addtext("longitude","Longitude:");
-            $form->addtext("latitude","Latitude:");
+            $form->addtext("longitude","Zeměpisná délka:");
+            $form->addtext("latitude","Zeměpisná šířka:");
             $form->addTextArea('text', 'Popis:');
-            $form->addSubmit('submit', 'OK');
+            $form->addSubmit('submit', 'Přidat');
             $form->onSuccess[] = array($this, 'pointFormSucceeded');
             return $form;
         }

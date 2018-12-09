@@ -1,10 +1,6 @@
 {block content}
-<div class="container">
-    <div class="card bg-dark text-white">
-        <div class="card-header card-header-title text-center align-middle" id="heading">
-            <p>Seznam Stezek</p>
-        </div>
-    </div>
+<div class="container text-center">
+    <h1><hr>Seznam Stezek<hr></h1>
     <div class="accordion" id="accordion">
         <div n:snippet="toursListContainer">
             {foreach $data as $id => $row}
@@ -28,19 +24,19 @@
                     </small>  
                         <span class="btn-group right" role="group" aria-label="Basic example">
                             {if $user->isInRole('admin')}
-                                <a class="btn btn-dark" href="{$row['qr']}"><i class="fas fa-qrcode"></i> QR</a>
+                                <a class="btn btn-dark list-button text-white" data-toggle="modal" data-target="#exampleModal" data-whatever="{$row['qr']}" data-name="{$row['title']}"><i class="fas fa-qrcode"></i> QR</a>
                             {/if}     
                             {if $user->isInRole('admin') || ($user->isInRole('editor') && $row['author'] == $user->getIdentity()->username)}
-                                <a class="btn btn-warning" n:href="List:detail $row['id']"><i class="fas fa-pen"></i> Upravit</a>
+                                <a class="btn btn-warning list-button" n:href="List:detail $row['id']"><i class="fas fa-pen"></i> Upravit</a>
                             {/if}
-                            <a class="btn btn-primary" data-toggle="collapse" data-target="#collapse{$row['id']}" aria-expanded="true" aria-controls="collapse{$row['id']}"><i class="fas fa-chevron-down"></i> Více</a>  
+                            <a class="btn btn-primary list-button" data-toggle="collapse" data-target="#collapse{$row['id']}" aria-expanded="true" aria-controls="collapse{$row['id']}"><i class="fas fa-chevron-down"></i> Více</a>  
                         </span>    
                         {if ($row['published'] == 'no' && $user->isInRole('admin'))}
-                            <a class="btn btn-success right ajax" n:href="publish! $id"><i class="fas fa-check"></i> Zveřejnit</a>
+                            <a class="btn btn-success right ajax list-button" n:href="publish! $id"><i class="fas fa-check"></i> Zveřejnit</a>
                         {elseif ($row['published'] == 'yes' && $user->isInRole('admin'))}
-                            <a class="btn btn-danger right ajax" n:href="publish! $id"><i class="fas fa-times"></i> Stáhnout</a>
+                            <a class="btn btn-danger right ajax list-button" n:href="publish! $id"><i class="fas fa-times"></i> Stáhnout</a>
                         {elseif ($row['published'] == 'wip' && $row['author'] == $user->getIdentity()->username)}   
-                            <a class="btn btn-secondary right ajax" n:href="publish! $id"><i class="fas fa-flag-checkered"></i> Dokončit</a> 
+                            <a class="btn btn-secondary right ajax list-button" n:href="publish! $id"><i class="fas fa-flag-checkered"></i> Dokončit</a> 
                         {/if}   
                         {if $row['author'] != $user->getIdentity()->username && !$user->isInRole('admin')}
                             <i class="rightText">Nejste autorem této stezky, nemůžete provádět úpravy.</i>
@@ -59,5 +55,26 @@
             {/foreach}
         </div>
     </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">QR</h5>
+        <a class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </a>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-secondary" data-dismiss="modal">Zavřít</a>
+        <a class="btn btn-primary text-white">Vytisknout</a>
+      </div>
+    </div>
+  </div>
 </div>
 {/block}

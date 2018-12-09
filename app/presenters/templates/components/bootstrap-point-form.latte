@@ -1,0 +1,35 @@
+{define bootstrap-head}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous"> 
+{/define} 
+{define bootstrap-point-form $form}
+<div class="container">
+	<form n:name=$form class="form">
+		<div class="errors text-center bg-warning col-md-4 offset-md-4" n:if="$form->hasErrors()">
+			<div n:foreach="$form->errors as $error">
+				{$error}
+			</div>
+		</div>
+		<div class="form-group row">
+			{label name class => "col-md-2 offset-md-5 col-form-label"}{input name class => "form-control offset-md-1 col-md-10"}
+		</div>
+
+		<div class="form-group row">
+			{label longitude class => "col-md-2 offset-md-3 col-form-label"}{label latitude class => "col-md-2 offset-md-2 col-form-label"}
+			{input longitude class => "form-control col-md-5 offset-md-1"}{input latitude class => "form-control col-md-5"}
+			<div class="offset-md-1 col-md-10">
+			In excepteur cupidatat occaecat aliquip est enim fugiat consequat Lorem eiusmod commodo consequat est. Quis voluptate irure pariatur Lorem et officia. Minim nostrud cupidatat dolor sunt minim dolore aliqua enim exercitation ipsum. Nisi mollit officia officia enim magna labore aute minim mollit deserunt. Cillum laborum proident reprehenderit incididunt fugiat anim veniam est laboris qui pariatur esse eiusmod. Qui exercitation in magna excepteur sunt Lorem culpa occaecat laborum labore minim cupidatat pariatur ex. Sit non minim exercitation pariatur et nulla commodo deserunt ut eu.
+			</div>
+			
+
+		</div>
+
+		<div class="form-group row">
+			{label text class => "col-md-2 offset-md-5 col-form-label"}{input text class => "form-control offset-md-1 col-md-10"}
+		</div>
+		<div class="form-group row">
+			{input submit class => "btn btn-primary offset-md-5 col-md-2"}
+		</div>
+	</form>
+</div>
+{/define}

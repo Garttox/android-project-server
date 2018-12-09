@@ -3,8 +3,8 @@ body, .wrapper {
 }
 
 footer {
-    height: 60px;
-    line-height: 60px;
+    height: 5.5vh;
+    line-height: 5.5vh;
     margin-top: 5vh;
 }
 
@@ -105,16 +105,12 @@ p {
 }
 
 .card-header {
-    height: 60px;
-    line-height: 35px;
+    height: 6.5vh;
+    line-height: 3.5vh;
 }
 
 .collapse {
     margin-top: 0px !important;
-}
-
-.list-button {
-    border-color: black !important;
 }
 
 .legend {
