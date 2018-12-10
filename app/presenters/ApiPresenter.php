@@ -43,7 +43,7 @@ class ApiPresenter extends BasePresenter
             else{
                 $a=array();
                 foreach($points as $row){
-                    array_push($a, array('id'=>$row->id,'order'=>$row->order,'name'=>$row->name,'latitude'=>$row->latitude,'longitude'=>$row->longitude));
+                    array_push($a, array('id'=>$row['id'],'order'=>$row['order'],'name'=>$row['name'],'latitude'=>$row['latitude'],'longitude'=>$row['longitude']));
                 }
                 for($i=0;$i<count($a);$i++){
                     if($i>=1){
