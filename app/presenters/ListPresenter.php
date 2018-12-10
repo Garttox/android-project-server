@@ -39,8 +39,10 @@ class ListPresenter extends BasePresenter
         if($id <0){
             $data = $this->userManager->readAllUsers();
             foreach($data as $user){
-                $x = array('id'=>$user->id, 'username'=>$user->username,'email' =>$user->email, 'role'=> $user->role);
-                array_push($value,$x);
+                if($user->id != $this->getUser()->getIdentity()->getId()){
+                    $x = array('id'=>$user->id, 'username'=>$user->username,'email' =>$user->email, 'role'=> $user->role);
+                    array_push($value,$x);
+                }
             }
         }
         else{
@@ -79,8 +81,8 @@ class ListPresenter extends BasePresenter
             $this->template->data = $this->isAjax()
             ? []
             : $users;
-            if($this->getUser()->getIdentity()->getRoles() == "admin"){
-                if($data[$id]["role"] == "admin"){
+            if($this->getUser()->getIdentity()->getRoles()[0] == "admin"){
+                if($users[$id]["role"] == "admin"){
                     $this->userManager->setUserEditor($users[$id]["id"]);
                 }
                 else{

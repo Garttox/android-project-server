@@ -75,11 +75,11 @@ class TourManager
         }
         
         public function insertTour($title,$author_id){
-            $this->database->table(self::TOUR_TABLE_NAME)->insert(array(
+            $this->database->table(self::TOUR_TABLE_NAME)->insert([
                 'title'=>$title,
                 'published'=>'wip',
                 'users_id'=>$author_id
-            ));
+            ]);
         }
         
         public function renameTour($id, $title){
@@ -87,7 +87,8 @@ class TourManager
         }
 
         public function updatePoint($id,$name,$long,$lat){
-            $this->database->table(self::POINT_TABLE_NAME)->where('id',$id)->update(['name'=>$name,
+            $this->database->table(self::POINT_TABLE_NAME)->where('id',$id)->update([
+            'name'=>$name,
             'latitude'=>$lat,
             'longitude'=>$long
             ]);
@@ -95,13 +96,13 @@ class TourManager
 
         public function insertPoint($name,$long,$lat,$tour_id){
             $order=count($this->database->table(self::POINT_TABLE_NAME)->where('tour_id',$tour_id))+1;
-            $this->database->table(self::POINT_TABLE_NAME)->insert(array(
+            $this->database->table(self::POINT_TABLE_NAME)->insert([
                 'name'=>$name,
                 'latitude'=>$lat,
                 'longitude'=>$long,
                 'order'=>$order,
                 'tour_id'=>$tour_id
-            ));
+            ]);
         }
         
         public function setTourPublished($id){

@@ -18,10 +18,12 @@
                         <th scope="col">{$point['name']}</th>
                         <th scope="col">{$point['longitude']}</th>
                         <th scope="col">{$point['latitude']}</th>
+                        <th scope="col"><a class="btn btn-primary" n:href="List:editPoint $point['id']">Edit point</a></th>
                     </tr>
                 {/foreach}
             </div>
         </table>
+        <a class="btn btn-primary" n:href="List:addPoint $tour['id']">Add point</a>
         <a class="btn btn-primary" n:href="List:">Zpět</a>
     </div>
 {/block}

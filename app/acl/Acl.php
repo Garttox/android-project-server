@@ -17,14 +17,15 @@ class Acl extends Permission {
         $this->addResource('List');
         $this->addResource('Admin');
         // privileges
+        $this->allow('admin',Permission::ALL,Permission::ALL);
         $this->allow(Permission::ALL, 'Homepage', Permission::ALL);
-        $this->allow('admin', 'List', Permission::ALL);
         $this->allow('editor', 'List', 'default');
         $this->allow('editor', 'List', 'addTour');
-        $this->allow('admin', 'Sign', Permission::ALL);
+        $this->allow('editor', 'List', 'editPoint');
+        $this->allow('editor', 'List', 'addPoint');
+        $this->allow('editor', 'List', 'editTour');
         $this->allow('editor', 'Sign', 'in');
         $this->allow('guest', 'Sign', 'in');
-        $this->allow('admin', 'Admin', Permission::ALL);
         $this->allow('editor', 'Admin', 'default');
 
     }
