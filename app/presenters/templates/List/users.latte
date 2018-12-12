@@ -10,14 +10,14 @@
                 <tbody>
                     <div n:snippet="usersListContainer">
                         {foreach $data as $id => $row}
-                            <div n:snippet="row-$id" class="table">
+                            <tr n:snippet="row-$id" class="table">
                                 <td>{$row['username']}</td>
                                 <td>{$row['email']}</td>
                                 <td>{$row['role']}</td>
                                 <td>
-                                    <a n:href="role! $id" class="btn btn-primary ajax">Change role</a>
+                                    <a n:href="role! $id" class="btn btn-primary ajax">{if $row['role'] == 'admin'}Demote{else}Promote{/if}</a>
                                 </td>
-                            </div> 
+                            </tr> 
                         {/foreach}
                     </div>
                 </tbody>

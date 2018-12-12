@@ -36,11 +36,13 @@ class Templatead9c9172e0 extends Latte\Runtime\Template
 		extract($_args);
 ?>
 <div class="container text-center">
+    <h1><hr>Přidat Bod<hr></h1>
 <?php
-		$this->createTemplate('../components/bootstrap-form.latte', $this->params, "import")->render();
-		$this->renderBlock('bootstrap-form', ['pointForm'] + $this->params, 'html');
+		$this->createTemplate('../components/bootstrap-point-form.latte', $this->params, "import")->render();
+		$this->renderBlock('bootstrap-point-form', ['pointForm'] + $this->params, 'html');
 ?>
 </div>
+
 <?php
 	}
 

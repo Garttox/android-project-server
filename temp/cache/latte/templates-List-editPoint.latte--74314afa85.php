@@ -37,8 +37,8 @@ class Template74314afa85 extends Latte\Runtime\Template
 ?>
 <div class="container text-center">
 <?php
-		$this->createTemplate('../components/bootstrap-form.latte', $this->params, "import")->render();
-		$this->renderBlock('bootstrap-form', ['tourForm'] + $this->params, 'html');
+		$this->createTemplate('../components/bootstrap-point-form.latte', $this->params, "import")->render();
+		$this->renderBlock('bootstrap-point-form', ['pointForm'] + $this->params, 'html');
 ?>
 </div>
 <?php

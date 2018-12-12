@@ -28,8 +28,8 @@ class Templatefa7aed85e9 extends Latte\Runtime\Template
 	function prepare()
 	{
 		extract($this->params);
-		if (isset($this->params['id'])) trigger_error('Variable $id overwritten in foreach on line 10');
-		if (isset($this->params['row'])) trigger_error('Variable $row overwritten in foreach on line 10');
+		if (isset($this->params['id'])) trigger_error('Variable $id overwritten in foreach on line 6');
+		if (isset($this->params['row'])) trigger_error('Variable $row overwritten in foreach on line 6');
 		Nette\Bridges\ApplicationLatte\UIRuntime::initialize($this, $this->parentName, $this->blocks);
 		
 	}
@@ -39,17 +39,34 @@ class Templatefa7aed85e9 extends Latte\Runtime\Template
 	{
 		extract($_args);
 ?>
-<div class="container">
-    <div class="card bg-dark text-white">
-        <div class="card-header card-header-title text-center align-middle" id="heading">
-            <p>Seznam Stezek</p>
-        </div>
-    </div>
+<div class="container text-center">
+    <h1><hr>Seznam Stezek<hr></h1>
     <div class="accordion" id="accordion">
         <div<?php echo ' id="' . htmlSpecialChars($this->global->snippetDriver->getHtmlId('toursListContainer')) . '"' ?>>
 <?php $this->renderBlock('_toursListContainer', $this->params) ?>
         </div>
     </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">QR</h5>
+        <a class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </a>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-secondary" data-dismiss="modal">Zavřít</a>
+        <a class="btn btn-primary text-white">Vytisknout</a>
+      </div>
+    </div>
+  </div>
 </div>
 <?php
 	}
@@ -71,17 +88,17 @@ class Templatefa7aed85e9 extends Latte\Runtime\Template
 			if ($row['author'] == $user->getIdentity()->username) {
 ?>
 
-                <div class="card-header bg-own" id="heading<?php echo LR\Filters::escapeHtmlAttr($row['id']) /* line 13 */ ?>">
+                <div class="card-header bg-own" id="heading<?php echo LR\Filters::escapeHtmlAttr($row['id']) /* line 9 */ ?>">
 <?php
 			}
 			else {
-				?>                <div class="card-header" id="heading<?php echo LR\Filters::escapeHtmlAttr($row['id']) /* line 15 */ ?>">
+				?>                <div class="card-header" id="heading<?php echo LR\Filters::escapeHtmlAttr($row['id']) /* line 11 */ ?>">
 <?php
 			}
 ?>
                     <p class="card-title text-left">
-                    <strong class="leftText"><?php echo LR\Filters::escapeHtmlText($row['title']) /* line 18 */ ?></strong> <strong>|</strong> <em class="card-subtitle mb-2 text-muted"><?php
-			echo LR\Filters::escapeHtmlText($row['author']) /* line 18 */ ?></em> <strong>|</strong> 
+                    <strong class="leftText"><?php echo LR\Filters::escapeHtmlText($row['title']) /* line 14 */ ?></strong> <strong>|</strong> <em class="card-subtitle mb-2 text-muted"><?php
+			echo LR\Filters::escapeHtmlText($row['author']) /* line 14 */ ?></em> <strong>|</strong> 
                     <small class="text-muted">
 <?php
 			$this->global->switch[] = ($row['published']);
@@ -107,28 +124,29 @@ class Templatefa7aed85e9 extends Latte\Runtime\Template
                         <span class="btn-group right" role="group" aria-label="Basic example">
 <?php
 			if ($user->isInRole('admin')) {
-				?>                                <a class="btn btn-dark" href="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($row['qr'])) /* line 31 */ ?>"><i class="fas fa-qrcode"></i> QR</a>
+				?>                                <a class="btn btn-dark list-button text-white" data-toggle="modal" data-target="#exampleModal" data-whatever="<?php
+				echo LR\Filters::escapeHtmlAttr($row['qr']) /* line 27 */ ?>" data-name="<?php echo LR\Filters::escapeHtmlAttr($row['title']) /* line 27 */ ?>"><i class="fas fa-qrcode"></i> QR</a>
 <?php
 			}
 			if ($user->isInRole('admin') || ($user->isInRole('editor') && $row['author'] == $user->getIdentity()->username)) {
-				?>                                <a class="btn btn-warning" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:detail", [$row['id']])) ?>"><i class="fas fa-pen"></i> Upravit</a>
+				?>                                <a class="btn btn-warning list-button" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:detail", [$row['id']])) ?>"><i class="fas fa-pen"></i> Upravit</a>
 <?php
 			}
-			?>                            <a class="btn btn-primary" data-toggle="collapse" data-target="#collapse<?php
-			echo LR\Filters::escapeHtmlAttr($row['id']) /* line 36 */ ?>" aria-expanded="true" aria-controls="collapse<?php
-			echo LR\Filters::escapeHtmlAttr($row['id']) /* line 36 */ ?>"><i class="fas fa-chevron-down"></i> Více</a>  
+			?>                            <a class="btn btn-primary list-button" data-toggle="collapse" data-target="#collapse<?php
+			echo LR\Filters::escapeHtmlAttr($row['id']) /* line 32 */ ?>" aria-expanded="true" aria-controls="collapse<?php
+			echo LR\Filters::escapeHtmlAttr($row['id']) /* line 32 */ ?>"><i class="fas fa-chevron-down"></i> Více</a>  
                         </span>    
 <?php
 			if (($row['published'] == 'no' && $user->isInRole('admin'))) {
-				?>                            <a class="btn btn-success right ajax" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("publish!", [$id])) ?>"><i class="fas fa-check"></i> Zveřejnit</a>
+				?>                            <a class="btn btn-success right ajax list-button" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("publish!", [$id])) ?>"><i class="fas fa-check"></i> Zveřejnit</a>
 <?php
 			}
 			elseif (($row['published'] == 'yes' && $user->isInRole('admin'))) {
-				?>                            <a class="btn btn-danger right ajax" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("publish!", [$id])) ?>"><i class="fas fa-times"></i> Stáhnout</a>
+				?>                            <a class="btn btn-danger right ajax list-button" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("publish!", [$id])) ?>"><i class="fas fa-times"></i> Stáhnout</a>
 <?php
 			}
 			elseif (($row['published'] == 'wip' && $row['author'] == $user->getIdentity()->username)) {
-				?>                            <a class="btn btn-secondary right ajax" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("publish!", [$id])) ?>"><i class="fas fa-flag-checkered"></i> Dokončit</a> 
+				?>                            <a class="btn btn-secondary right ajax list-button" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("publish!", [$id])) ?>"><i class="fas fa-flag-checkered"></i> Dokončit</a> 
 <?php
 			}
 			if ($row['author'] != $user->getIdentity()->username && !$user->isInRole('admin')) {
@@ -149,8 +167,8 @@ class Templatefa7aed85e9 extends Latte\Runtime\Template
                 </div>
 <?php
 			}
-			?>                 <div id="collapse<?php echo LR\Filters::escapeHtmlAttr($row['id']) /* line 54 */ ?>" class="collapse card-body" aria-labelledby="heading<?php
-			echo LR\Filters::escapeHtmlAttr($row['id']) /* line 54 */ ?>" data-parent="#accordion">
+			?>                 <div id="collapse<?php echo LR\Filters::escapeHtmlAttr($row['id']) /* line 50 */ ?>" class="collapse card-body" aria-labelledby="heading<?php
+			echo LR\Filters::escapeHtmlAttr($row['id']) /* line 50 */ ?>" data-parent="#accordion">
                     <p>Duis duis duis tempor et elit eiusmod irure do eu minim sint. Id aliqua nostrud et eu excepteur ad dolore commodo incididunt aliqua commodo id non. Exercitation voluptate laborum elit commodo mollit pariatur. Ad aliquip excepteur voluptate laboris excepteur. Aliquip in mollit ipsum excepteur. Qui ad ad veniam mollit consequat incididunt non id laborum fugiat consectetur officia proident.</p>
                 </div> 
                 

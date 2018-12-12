@@ -47,6 +47,7 @@ class Template0cbd0481a2 extends Latte\Runtime\Template
 <?php $this->renderBlock('_pointsListContainer', $this->params) ?>
             </div>
         </table>
+        <a class="btn btn-primary" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:addPoint", [$tour['id']])) ?>">Add point</a>
         <a class="btn btn-primary" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:")) ?>">Zpět</a>
     </div>
 <?php
@@ -81,6 +82,7 @@ class Template0cbd0481a2 extends Latte\Runtime\Template
                         <th scope="col"><?php echo LR\Filters::escapeHtmlText($point['name']) /* line 18 */ ?></th>
                         <th scope="col"><?php echo LR\Filters::escapeHtmlText($point['longitude']) /* line 19 */ ?></th>
                         <th scope="col"><?php echo LR\Filters::escapeHtmlText($point['latitude']) /* line 20 */ ?></th>
+                        <th scope="col"><a class="btn btn-primary" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:editPoint", [$point['id']])) ?>">Edit point</a></th>
 <?php
 			$this->global->snippetDriver->leave();
 ?>                    </tr>

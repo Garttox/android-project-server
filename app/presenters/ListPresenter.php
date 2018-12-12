@@ -66,7 +66,7 @@ class ListPresenter extends BasePresenter
             $this->template->data = $this->isAjax()
             ? []
             : $data;
-            if($data[$id]["published"] == "yes"){
+            if($data[$id]["published"] == "yes" || $data[$id]["published"] =="wip"){
                 $this->tourManager->setTourNotPublished($data[$id]["id"]);
             }
             else{
@@ -199,8 +199,8 @@ class ListPresenter extends BasePresenter
         protected function createComponentPointForm(){
             $form = new Form;
             $form->addText("name","Název bodu:");
-            $form->addtext("longitude","Zeměpisná délka:");
-            $form->addtext("latitude","Zeměpisná šířka:");
+            $form->addtext("longitude","Zeměpisná délka:")->setHtmlAttribute('onchange', 'setMarker()');
+            $form->addtext("latitude","Zeměpisná šířka:")->setHtmlAttribute('onchange', 'setMarker()');
             $form->addTextArea('text', 'Popis:');
             $form->addSubmit('submit', 'Přidat');
             $form->onSuccess[] = array($this, 'pointFormSucceeded');

@@ -18,7 +18,7 @@
 			{label longitude class => "col-md-2 offset-md-3 col-form-label"}{label latitude class => "col-md-2 offset-md-2 col-form-label"}
 			{input longitude class => "form-control col-md-5 offset-md-1"}{input latitude class => "form-control col-md-5"}
 			<div class="offset-md-1 col-md-10">
-			In excepteur cupidatat occaecat aliquip est enim fugiat consequat Lorem eiusmod commodo consequat est. Quis voluptate irure pariatur Lorem et officia. Minim nostrud cupidatat dolor sunt minim dolore aliqua enim exercitation ipsum. Nisi mollit officia officia enim magna labore aute minim mollit deserunt. Cillum laborum proident reprehenderit incididunt fugiat anim veniam est laboris qui pariatur esse eiusmod. Qui exercitation in magna excepteur sunt Lorem culpa occaecat laborum labore minim cupidatat pariatur ex. Sit non minim exercitation pariatur et nulla commodo deserunt ut eu.
+				<div class="iframe-container" id="map"></div>
 			</div>
 			
 
@@ -32,4 +32,72 @@
 		</div>
 	</form>
 </div>
+        <script type="text/javascript">
+        var map;
+        var markers = [];
+        var marker;
+
+        function initMap() {      
+            var latitude = 49.938875; // YOUR LATITUDE VALUE
+            var longitude = 17.902430; // YOUR LONGITUDE VALUE
+            
+            var myLatLng = { lat: latitude, lng: longitude };
+            
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: myLatLng,
+              zoom: 16,
+              disableDoubleClickZoom: true, // disable the default map zoom on double click
+            });
+            
+            // Update lat/long value of div when anywhere in the map is clicked    
+            google.maps.event.addListener(map,'click',function(event) {                
+                document.getElementById('frm-pointForm-latitude').value = event.latLng.lat();
+                document.getElementById('frm-pointForm-longitude').value =  event.latLng.lng();
+                markers.forEach(function(marker) {
+                    marker.setMap(null);
+                });
+                markers = [];
+                marker = new google.maps.Marker({
+                  position: event.latLng, 
+                  map: map, 
+                  title: event.latLng.lat()+', '+event.latLng.lng()
+                });
+                markers.push(marker);
+                setMapOnAll(map);
+            }); 
+
+			if(document.getElementById('frm-pointForm-latitude').value != "" && document.getElementById('frm-pointForm-longitude').value != ""){
+				var lat=parseFloat(document.getElementById('frm-pointForm-latitude').value);
+				var lng=parseFloat(document.getElementById('frm-pointForm-longitude').value);
+				marker = new google.maps.Marker({
+					position: { lat : lat, lng: lng },
+					map: map,
+					title: lat+', '+lng
+				});
+				markers.push(marker);
+			}
+			
+
+        }
+
+		function setMarker(){
+			if(document.getElementById('frm-pointForm-latitude').value != "" && document.getElementById('frm-pointForm-longitude').value != ""){
+				var lat=parseFloat(document.getElementById('frm-pointForm-latitude').value);
+				var lng=parseFloat(document.getElementById('frm-pointForm-longitude').value);
+				markers.forEach(function(marker) {
+                    marker.setMap(null);
+                });
+                markers = [];
+				marker = new google.maps.Marker({
+					position: { lat : lat, lng: lng },
+					map: map,
+					title: lat+', '+lng
+				});
+				markers.push(marker);
+			}
+		}
+
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcPVxWn2Izh5rGaJKt1ooP-WffiST-jbo&callback=initMap"
+    async defer></script>
 {/define}

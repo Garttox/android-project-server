@@ -63,7 +63,7 @@ class Template343055180e extends Latte\Runtime\Template
 		$iterations = 0;
 		foreach ($flashes as $flash) {
 			?>        <div<?php if ($_tmp = array_filter(['flash', $flash->type])) echo ' class="', LR\Filters::escapeHtmlAttr(implode(" ", array_unique($_tmp))), '"' ?>><?php
-			echo LR\Filters::escapeHtmlText($flash->message) /* line 105 */ ?></div>
+			echo LR\Filters::escapeHtmlText($flash->message) /* line 109 */ ?></div>
 <?php
 			$iterations++;
 		}
@@ -191,7 +191,7 @@ ddddhhhhddddhhhhddddddhhhhhhhhdddddhhdddddhhhhhhhhhhhhhhhhhhhhhhhhddhhhhhyyhhddd
 	function prepare()
 	{
 		extract($this->params);
-		if (isset($this->params['flash'])) trigger_error('Variable $flash overwritten in foreach on line 105');
+		if (isset($this->params['flash'])) trigger_error('Variable $flash overwritten in foreach on line 109');
 		Nette\Bridges\ApplicationLatte\UIRuntime::initialize($this, $this->parentName, $this->blocks);
 		
 	}
@@ -240,17 +240,22 @@ ddddhhhhddddhhhhddddddhhhhhhhhdddddhhdddddhhhhhhhhhhhhhhhhhhhhhhhhddhhhhhyyhhddd
                         <div class="dropdown-menu dropdown-menu-right bg-danger text-center">
 <?php
 			if ($user->isAllowed('List', 'default')) {
-				?>                            <a class="dropdown-item text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:default")) ?>"> Seznam Stezek</a>
+				?>                            <a class="dropdown-item text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:default")) ?>"><i class="fas fa-list-ul"></i> Seznam Stezek</a>
                             <hr> 
 <?php
 			}
 			if ($user->isAllowed('List', 'addTour')) {
-				?>                            <a class="dropdown-item text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:addTour")) ?>"> Přidat Stezku</a>
+				?>                            <a class="dropdown-item text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:addTour")) ?>"><i class="far fa-plus-square"></i> Přidat Stezku</a>
+                            <hr> 
+<?php
+			}
+			if ($user->isAllowed('List', 'users')) {
+				?>                            <a class="dropdown-item text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:users")) ?>"><i class="fas fa-list-ul"></i> Seznam Editorů</a>
                             <hr> 
 <?php
 			}
 			if ($user->isAllowed('Sign', 'up')) {
-				?>                            <a class="dropdown-item text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:up")) ?>"> Přidat Editora</a>
+				?>                            <a class="dropdown-item text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:up")) ?>"><i class="far fa-plus-square"></i> Přidat Editora</a>
                             <hr> 
 <?php
 			}
@@ -292,7 +297,7 @@ ddddhhhhddddhhhhddddddhhhhhhhhdddddhhdddddhhhhhhhhhhhhhhhhhhhhhhhhddhhhhhyyhhddd
             </nav>
             <!-- End Mobile Navbar -->
             <div class="bg-danger container-fluid">
-                <img src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 101 */ ?>/images/logoRed.png" class="head-logo img-responsive">
+                <img src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 105 */ ?>/images/logoRed.png" class="head-logo img-responsive">
             </div>
         </header>
 <?php
@@ -314,13 +319,25 @@ ddddhhhhddddhhhhddddddhhhhhhhhdddddhhdddddhhhhhhhhhhhhhhhhhhhhhhhhddhhhhhyyhhddd
 ?>
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
-        <!--<script src="<?php echo LR\Filters::escapeHtmlComment($basePath) /* line 116 */ ?>/js/main.js"></script>-->
+        <!--<script src="<?php echo LR\Filters::escapeHtmlComment($basePath) /* line 120 */ ?>/js/main.js"></script>-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
             crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
-        <script src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 121 */ ?>/js/nette.ajax.js"></script> 
-        <script src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 122 */ ?>/js/main.js"></script>
+        <script src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 125 */ ?>/js/nette.ajax.js"></script> 
+        <script src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 126 */ ?>/js/main.js"></script>
+        <script>
+$('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var qr = button.data('whatever') // Extract info from data-* attributes
+  var name = button.data('name');
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text(name)
+  modal.find('.modal-body').html('<img src="' + qr + '">')
+})
+</script>
 <?php
 	}
 
