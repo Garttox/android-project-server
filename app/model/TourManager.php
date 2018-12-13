@@ -94,17 +94,25 @@ class TourManager
             ]);
         }
 
-        public function insertPoint($name,$long,$lat,$tour_id){
+        public function insertPoint($name,$long,$lat,$tour_id,$text=null){
             $order=count($this->database->table(self::POINT_TABLE_NAME)->where('tour_id',$tour_id))+1;
-            $this->database->table(self::POINT_TABLE_NAME)->insert([
+            $point=$this->database->table(self::POINT_TABLE_NAME)->insert([
                 'name'=>$name,
                 'latitude'=>$lat,
                 'longitude'=>$long,
                 'order'=>$order,
-                'tour_id'=>$tour_id
+                'tour_id'=>$tour_id,
+                'text'=>$text
             ]);
+            return $point->id;
         }
         
+        public function insertPointImage($id,$img){
+            $this->database->table(self::POINT_TABLE_NAME)->where('id',$id)->update([
+                'fotoURL'=>$img
+                ]);
+        }
+
         public function setTourPublished($id){
             $this->database->table(self::TOUR_TABLE_NAME)->where('id',$id)->update(['published'=>'yes']);
         }

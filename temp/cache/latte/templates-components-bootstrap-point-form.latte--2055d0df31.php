@@ -101,7 +101,13 @@ class Template2055d0df31 extends Latte\Runtime\Template
 
 		</div>
 		<div class="form-group row">
-			<?php echo end($this->global->formsStack)["submit"]->getControl()->addAttributes(['class' => "btn btn-primary offset-md-5 col-md-2"]) /* line 31 */ ?>
+			<?php
+		if ($_label = end($this->global->formsStack)["fotoURL"]->getLabel()) echo $_label;
+		echo end($this->global->formsStack)["fotoURL"]->getControl() /* line 31 */ ?>
+
+		</div>
+		<div class="form-group row">
+			<?php echo end($this->global->formsStack)["submit"]->getControl()->addAttributes(['class' => "btn btn-primary offset-md-5 col-md-2"]) /* line 34 */ ?>
 
 		</div>
 <?php

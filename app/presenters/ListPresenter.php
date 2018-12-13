@@ -198,10 +198,26 @@ class ListPresenter extends BasePresenter
 
         protected function createComponentPointForm(){
             $form = new Form;
-            $form->addText("name","Název bodu:");
-            $form->addtext("longitude","Zeměpisná délka:")->setHtmlAttribute('onchange', 'setMarker()');
-            $form->addtext("latitude","Zeměpisná šířka:")->setHtmlAttribute('onchange', 'setMarker()');
+            $form->addText("name","Název bodu:")
+            ->setRequired();
+
+            $form->addtext("longitude","Zeměpisná délka:")
+            ->setHtmlAttribute('onchange', 'setMarker()')
+            ->setRequired()
+            ->addRule(Form::FLOAT,"Zadaná hodnota není souřadnice.")
+            ->addRule(Form::MIN,"Neplatná hodnota. <-180;180>",-180)
+            ->addRule(Form::MAX,"Neplatná hodnota. <-180;180>",180);
+
+            $form->addtext("latitude","Zeměpisná šířka:")
+            ->setHtmlAttribute('onchange', 'setMarker()')
+            ->setRequired()
+            ->addRule(Form::FLOAT,"Zadaná hodnota není souřadnice.")
+            ->addRule(Form::MIN,"Neplatná hodnota. <-90;90>",-90)
+            ->addRule(Form::MAX,"Neplatná hodnota. <-90;90>",90);
             $form->addTextArea('text', 'Popis:');
+            $form->addUpload('fotoURL','Obrázek')
+            ->setRequired(false)
+            ->addRule(Form::IMAGE, 'Obrázek musí být JPEG, PNG nebo GIF.');
             $form->addSubmit('submit', 'Přidat');
             $form->onSuccess[] = array($this, 'pointFormSucceeded');
             return $form;
@@ -209,14 +225,20 @@ class ListPresenter extends BasePresenter
 
         public function pointFormSucceeded(Form $form, $values){
             $point_id = $this->getParameter('id');
-
             if($point_id){
                 $point = $this->tourManager->readPoint($point_id);
                 $point->update($values);
                 $this->redirect('List:detail',$point->tour_id);
+                if(null !== $values->fotoURL->getName()){
+                    saveImage($values->fotoURL->getName(),$point->id);
+                }
             }
             else{
-                $this->tourManager->insertPoint($values["name"],$values["longitude"],$values["latitude"],$this->getParameter('tour'));
+
+                $id=$this->tourManager->insertPoint($values["name"],$values["longitude"],$values["latitude"],$this->getParameter('tour'),$values['text']);
+                if(null !== $values->fotoURL->getName()){
+                    $this->saveImage($values->fotoURL,$id);
+                }
                 $this->redirect('List:detail',$this->getParameter('tour'));
             }
             
@@ -224,6 +246,33 @@ class ListPresenter extends BasePresenter
 
         public function generateQRcodeURL($tour_id){
             return "https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=OpavaTour|".$tour_id."&choe=UTF-8";
+        }
+
+        private function saveImage($image,$point_id){
+        
+            if (!file_exists("obrazky/".strval($point_id))) {
+                mkdir("obrazky/".strval($point_id), 0777, true);
+                mkdir("thumbs/".strval($point_id), 0777, true);
+            }
+    
+            $accepted_extensions = array("jpg","png","gif","jpeg","JPG");
+            $info = pathinfo($image->name);
+                //kontrola pripon obrazku
+            if (in_array($info["extension"],$accepted_extensions)) {
+    
+                $image = $image->getName();
+
+                $image->save("images/".$point_id);
+                $image->resize(null, 300);
+                //thumbnail
+                $image->save("thumbs/".$point_id);
+                
+                $values= array("src" => $generated_name, "inzerat_id" => $point_id);
+                $this->inzeratManager->insertPointImage($values);
+                //dump($values);
+            }
+    
+            
         }
         
 }
