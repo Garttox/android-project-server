@@ -29,7 +29,7 @@
                             {if $user->isInRole('admin') || ($user->isInRole('editor') && $row['author'] == $user->getIdentity()->username)}
                                 <a class="btn btn-warning list-button" n:href="List:detail $row['id']"><i class="fas fa-pen"></i> Upravit</a>
                             {/if}
-                            <a class="btn btn-primary list-button" data-toggle="collapse" data-target="#collapse{$row['id']}" aria-expanded="true" aria-controls="collapse{$row['id']}"><i class="fas fa-chevron-down"></i> Více</a>  
+                            <a class="btn btn-primary list-button" data-toggle="collapse" data-target="#collapse{$row['id']}" aria-expanded="true" aria-controls="collapse{$row['id']}"><i class="fas fa-thumbtack"></i> Body cesty</a>  
                         </span>    
                         {if ($row['published'] == 'no' && $user->isInRole('admin'))}
                             <a class="btn btn-success right ajax list-button" n:href="publish! $id"><i class="fas fa-check"></i> Zveřejnit</a>
@@ -48,7 +48,28 @@
                 </div>
                 {/if}
                  <div id="collapse{$row['id']}" class="collapse card-body" aria-labelledby="heading{$row['id']}" data-parent="#accordion">
-                    <p>Duis duis duis tempor et elit eiusmod irure do eu minim sint. Id aliqua nostrud et eu excepteur ad dolore commodo incididunt aliqua commodo id non. Exercitation voluptate laborum elit commodo mollit pariatur. Ad aliquip excepteur voluptate laboris excepteur. Aliquip in mollit ipsum excepteur. Qui ad ad veniam mollit consequat incididunt non id laborum fugiat consectetur officia proident.</p>
+                    {if empty($points[$row['id']]['points'])}
+                        <p>Tato stezka nemá přiřazeny žádné body.</p>
+                    {else}
+                    <table class="table">
+                        <tr>
+                            <th scope="col">Pořadí</th>
+                            <th scope="col">Název</th>
+                            <th scope="col">Zeměpisná délka</th>
+                            <th scope="col">Zeměpisná šířka</th>
+                            <th scope="col">Popis</th>
+                        </tr>
+                        {foreach $points[$row['id']]['points'] as $point}
+                        <tr>
+                            <td scope="col">{$point['order']} </td>
+                            <td scope="col">{$point['name']}</td>
+                            <td scope="col">{$point['longitude']}</td>
+                            <td scope="col">{$point['latitude']}</td>
+                            <td scope="col">{$point['text']}</td>
+                        </tr>
+                        {/foreach}
+                    </table>
+                    {/if}
                 </div> 
                 
             </div> 

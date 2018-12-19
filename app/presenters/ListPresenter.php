@@ -58,6 +58,11 @@ class ListPresenter extends BasePresenter
             }
             if(!isset($this->template->data)) {
                 $this->template->data = $this->getListData();
+                $points = array();
+                foreach($this->template->data as $tour) {
+                    $points[$tour['id']] = array('id'=>$tour['id'], 'points'=> $this->tourManager->readAllTourPoints($tour['id']));
+                }
+                $this->template->points = $points;
             }
         }
 
