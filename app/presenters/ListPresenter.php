@@ -138,9 +138,14 @@ class ListPresenter extends BasePresenter
             $this->redrawControl('pointsListContainer');
         }
 
-        public function actionRemovePoint($id,$point_id, $order){
+        public function actionDeletePoint($id,$point_id, $order){
             $this->tourManager->deletePoint($point_id);
             $this->redirect("List:detail",$id);
+        }
+
+        public function actionDeleteTour($id){
+            $this->tourManager->deleteTour($id);
+            $this->redirect("List:default");
         }
 
         public function renderAddPoint($tour){
@@ -183,6 +188,7 @@ class ListPresenter extends BasePresenter
                 $this['tourForm']->setDefaults($tour->toArray());
             }
         }
+
 
         protected function createComponentTourForm(){
             $form = new Form;
@@ -239,10 +245,10 @@ class ListPresenter extends BasePresenter
             if($point_id){
                 $point = $this->tourManager->readPoint($point_id);
                 $point->update($values);
-                $this->redirect('List:detail',$point->tour_id);
                 if(null !== $values->fotoURL->getName()){
-                    saveImage($values->fotoURL->getName(),$point->id);
+                    $this->saveImage($values->fotoURL,$point_id);
                 }
+                $this->redirect('List:detail',$point->tour_id);
             }
             else{
 
@@ -260,27 +266,14 @@ class ListPresenter extends BasePresenter
         }
 
         private function saveImage($image,$point_id){
-        
-            if (!file_exists("obrazky/".strval($point_id))) {
-                mkdir("obrazky/".strval($point_id), 0777, true);
-                mkdir("thumbs/".strval($point_id), 0777, true);
-            }
-    
             $accepted_extensions = array("jpg","png","gif","jpeg","JPG");
             $info = pathinfo($image->name);
                 //kontrola pripon obrazku
             if (in_array($info["extension"],$accepted_extensions)) {
     
-                $image = $image->getName();
-
-                $image->save("images/".$point_id);
-                $image->resize(null, 300);
-                //thumbnail
-                $image->save("thumbs/".$point_id);
+                $image->move("images/".$point_id);        
+                $this->tourManager->insertPointImage($point_id,"images/".$point_id);
                 
-                $values= array("src" => $generated_name, "inzerat_id" => $point_id);
-                $this->inzeratManager->insertPointImage($values);
-                //dump($values);
             }
     
             

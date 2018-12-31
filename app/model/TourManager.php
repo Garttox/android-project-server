@@ -146,4 +146,10 @@ class TourManager
             }
             $this->database->table(self::POINT_TABLE_NAME)->where('id',$id)->delete();
         }
+
+        public function deleteTour($id){
+            $this->database->table(self::POINT_TABLE_NAME)->where('tour_id',$id)->delete();
+            $this->database->table(self::TOUR_TABLE_NAME)->where('id',$id)->delete();
+            
+        }
 }

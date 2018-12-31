@@ -41,7 +41,8 @@ class Templateaacb4dc547 extends Latte\Runtime\Template
 ?>
     <div class="container">
         <h1 class=" text-center"><hr><?php echo LR\Filters::escapeHtmlText($tour['title']) /* line 3 */ ?><hr></h1>
-        <a class="btn btn-primary" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:editTour", [$tour['id']])) ?>">Přejmenovat</a>
+        <a class="btn btn-primary" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:editTour", [$tour['id']])) ?>">Přejmenovat</a><a class="btn btn-primary" href="<?php
+		echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:deleteTour", [$tour['id']])) ?>">Smazat</a>
         <table class="table">
             <div<?php echo ' id="' . htmlSpecialChars($this->global->snippetDriver->getHtmlId('pointsListContainer')) . '"' ?>>
 <?php $this->renderBlock('_pointsListContainer', $this->params) ?>
@@ -83,7 +84,7 @@ class Templateaacb4dc547 extends Latte\Runtime\Template
                         <th scope="col"><?php echo LR\Filters::escapeHtmlText($point['longitude']) /* line 19 */ ?></th>
                         <th scope="col"><?php echo LR\Filters::escapeHtmlText($point['latitude']) /* line 20 */ ?></th>
                         <th scope="col"><a class="btn btn-primary" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:editPoint", [$point['id']])) ?>">Edit point</a> <a class="btn btn-primary" href="<?php
-			echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:removePoint", [$tour['id'], $point['id'], $point['order']])) ?>">Remove point</a></th>
+			echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:deletePoint", [$tour['id'], $point['id'], $point['order']])) ?>">Remove point</a></th>
 <?php
 			$this->global->snippetDriver->leave();
 ?>                    </tr>

@@ -1,7 +1,7 @@
 {block content}
     <div class="container">
         <h1 class=" text-center"><hr>{$tour['title']}<hr></h1>
-        <a class="btn btn-primary" n:href="List:editTour $tour['id']">Přejmenovat</a>
+        <a class="btn btn-primary" n:href="List:editTour $tour['id']">Přejmenovat</a><a class="btn btn-primary" n:href="List:deleteTour $tour['id']">Smazat</a>
         <table class="table">
             <div n:snippet="pointsListContainer">
                 {foreach $points as $id => $point}
@@ -18,7 +18,7 @@
                         <th scope="col">{$point['name']}</th>
                         <th scope="col">{$point['longitude']}</th>
                         <th scope="col">{$point['latitude']}</th>
-                        <th scope="col"><a class="btn btn-primary" n:href="List:editPoint $point['id']">Edit point</a> <a class="btn btn-primary" n:href="List:removePoint $tour['id'], $point['id'], $point['order']">Remove point</a></th>
+                        <th scope="col"><a class="btn btn-primary" n:href="List:editPoint $point['id']">Edit point</a> <a class="btn btn-primary" n:href="List:deletePoint $tour['id'], $point['id'], $point['order']">Remove point</a></th>
                     </tr>
                 {/foreach}
             </div>
