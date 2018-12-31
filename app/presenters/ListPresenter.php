@@ -138,6 +138,11 @@ class ListPresenter extends BasePresenter
             $this->redrawControl('pointsListContainer');
         }
 
+        public function actionRemovePoint($id,$point_id, $order){
+            $this->tourManager->deletePoint($point_id);
+            $this->redirect("List:detail",$id);
+        }
+
         public function renderAddPoint($tour){
             if (!$this->getUser()->isAllowed('List', 'addPoint')) {
                 $this->redirect('Homepage:');
@@ -164,6 +169,7 @@ class ListPresenter extends BasePresenter
                 $this['pointForm']->setDefaults($point->toArray());
             }
         }
+
 
         public function renderEditTour($id){
             $tour = $this->tourManager->readTour($id);

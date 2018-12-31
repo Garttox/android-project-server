@@ -132,4 +132,18 @@ class TourManager
         public function pointsCount($id){
             return $this->database->table(self::POINT_TABLE_NAME)->where('tour_id',$id)->count();
         }
+
+        public function deletePoint($id){
+            $deleted_point=$this->database->table(self::POINT_TABLE_NAME)->where('id',$id)->fetch();
+            $points=$this->readAllTourPoints($deleted_point->tour_id);
+            $count=count($points);
+            for($i=1;$i<$count+1;$i++){
+                if($points[$i]['order'] > $deleted_point->order){
+                    $this->database->table(self::POINT_TABLE_NAME)->where('id',$points[$i]['id'])->update([
+                            'order'=>($points[$i]['order'])-1
+                        ]);
+                }
+            }
+            $this->database->table(self::POINT_TABLE_NAME)->where('id',$id)->delete();
+        }
 }

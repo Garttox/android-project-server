@@ -18,7 +18,7 @@
                         <th scope="col">{$point['name']}</th>
                         <th scope="col">{$point['longitude']}</th>
                         <th scope="col">{$point['latitude']}</th>
-                        <th scope="col"><a class="btn btn-primary" n:href="List:editPoint $point['id']">Edit point</a> <a class="btn btn-primary" n:href="List:editPoint $point['id']">Remove point</a></th>
+                        <th scope="col"><a class="btn btn-primary" n:href="List:editPoint $point['id']">Edit point</a> <a class="btn btn-primary" n:href="List:removePoint $tour['id'], $point['id'], $point['order']">Remove point</a></th>
                     </tr>
                 {/foreach}
             </div>

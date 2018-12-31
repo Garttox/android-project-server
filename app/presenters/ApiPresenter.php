@@ -13,12 +13,15 @@ class ApiPresenter extends BasePresenter
             $this->tourManager = $tourManager;
 	}
     
+    /* Přečte název a autora stezky se zadaným id $id a po ověření vypíše */
 	public function actiontour($id){
+        /* kontrola, zda byl parametr zadán */
         if(!isset($id)){
             $this->sendError();
         }
         else{
             $tour=$this->tourManager->readTour($id);
+            /* kontouje zda stezka s id $id existuje a jestli je published */
             if($tour == null ||$tour->published != "yes"){
                 $this->sendError();
             }
@@ -29,14 +32,17 @@ class ApiPresenter extends BasePresenter
             }
         }
 	}
-        
+    
+    /* Přečte pole bodů stezky se zadaným id $id a po ověření vypíše */
     public function actionpoints($id){
+        /* kontrola, zda byl parametr zadán */
         if(!isset($id)){
             $this->sendError();
         }
         else{
             $tour=$this->tourManager->readTour($id);
             $points=$this->tourManager->readAllTourPoints($id);
+            /* kontouje zda stezka s id $id existuje a jestli je published */
             if(!$points || $tour->published != "yes"){
                 $this->sendError();
             }
@@ -60,8 +66,10 @@ class ApiPresenter extends BasePresenter
             }
         }
 	}
-        
+    
+    /* Přečte detaily bodu s id $id a po ověření vypíše */
     public function actionpointdetail($id){
+        /* kontrola, zda byl parametr zadán */
         if(!isset($id)){
             $this->sendError();
         }
@@ -76,23 +84,28 @@ class ApiPresenter extends BasePresenter
             }
         }
 	}
-        
+    
+    /* Výpis error JSON */
     private function sendError(){
         $a = array( "status" => "error");
         $this->sendResponse(new JsonResponse($a));
     }
     
+    /* Výpis JSON souboru z asociativního pole $data */
     private function sendJsonResponce($data){
         $this->sendResponse(new JsonResponse($data));
     }
 
+    /* Vypíše zda stezka existuje a je published */
     public function actionexist($id){
+        /* kontrola, zda byl parametr zadán */
         if(!isset($id)){
             $this->sendError();
         }
         else{
             $tour=$this->tourManager->readTour($id);
             $points=$this->tourManager->readAllTourPoints($id);
+            /* kontroluje zda stezka s id $id existuje, jestli je stezka published a jestli má nějaké existující body */
             if($tour == null || !$points || $tour->published != "yes"){
                 $a = array("status" => "not_avaible");
             }
