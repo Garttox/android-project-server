@@ -27,7 +27,7 @@
                                 <a class="btn btn-dark list-button text-white" data-toggle="modal" data-target="#exampleModal" data-whatever="{$row['qr']}" data-name="{$row['title']}"><i class="fas fa-qrcode"></i> QR</a>
                             {/if}     
                             {if $user->isInRole('admin') || ($user->isInRole('editor') && $row['author'] == $user->getIdentity()->username)}
-                                <a class="btn btn-warning list-button" n:href="List:detail $row['id']"><i class="fas fa-pen"></i> Upravit</a>
+                                <a class="btn btn-warning list-button" n:href="List:detail $row['id']"><i class="fas fa-search"></i> Podrobnosti</a>
                             {/if}
                             <a class="btn btn-primary list-button" data-toggle="collapse" data-target="#collapse{$row['id']}" aria-expanded="true" aria-controls="collapse{$row['id']}"><i class="fas fa-thumbtack"></i> Body cesty</a>  
                         </span>    

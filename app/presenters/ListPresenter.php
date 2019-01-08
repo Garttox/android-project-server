@@ -139,7 +139,7 @@ class ListPresenter extends BasePresenter
         }
 
         public function actionDeletePoint($id,$point_id, $order){
-            $this->tourManager->deletePoint($point_id);
+            $this->tourManager->deletePoint($point_id, $this->getHttpRequest()->getUrl()->getBasePath());
             $this->redirect("List:detail",$id);
         }
 
@@ -232,7 +232,7 @@ class ListPresenter extends BasePresenter
             ->addRule(Form::MIN,"Neplatná hodnota. <-90;90>",-90)
             ->addRule(Form::MAX,"Neplatná hodnota. <-90;90>",90);
             $form->addTextArea('text', 'Popis:');
-            $form->addUpload('fotoURL','Obrázek')
+            $form->addUpload('fotoURL','Obrázek:')
             ->setRequired(false)
             ->addRule(Form::IMAGE, 'Obrázek musí být JPEG, PNG nebo GIF.');
             $form->addSubmit('submit', 'Přidat');

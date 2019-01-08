@@ -105,6 +105,10 @@ p {
     float: left;
 }
 
+.top {
+    margin-top: 2vh;
+}
+
 .rightText {
     float: right;
     margin-left: 10px;

@@ -1,8 +1,8 @@
 {block content}
     <div class="container">
         <h1 class=" text-center"><hr>{$tour['title']}<hr></h1>
-        <a class="btn btn-primary" n:href="List:editTour $tour['id']">Přejmenovat</a><a class="btn btn-primary" n:href="List:deleteTour $tour['id']">Smazat</a>
-        <table class="table">
+        <a class="btn btn-primary" n:href="List:editTour $tour['id']"><i class="fas fa-file-signature"></i> Přejmenovat stezku</a> <a class="btn btn-danger" n:href="List:deleteTour $tour['id']"><i class="fas fa-trash-alt"></i> Smazat stezku</a>
+        <table class="table top">
             <div n:snippet="pointsListContainer">
                 {foreach $points as $id => $point}
                     <tr n:snippet="point-$id">
@@ -18,12 +18,41 @@
                         <th scope="col">{$point['name']}</th>
                         <th scope="col">{$point['longitude']}</th>
                         <th scope="col">{$point['latitude']}</th>
-                        <th scope="col"><a class="btn btn-primary" n:href="List:editPoint $point['id']">Edit point</a> <a class="btn btn-primary" n:href="List:deletePoint $tour['id'], $point['id'], $point['order']">Remove point</a></th>
+                        <th scope="col"><a class="btn btn-dark list-button text-white" data-toggle="modal" data-target="#exampleModal2" data-whatever="{$point['text']}" data-img="{$basePath}/{$point['fotoURL']}" data-name="{$point['name']}"><i class="fas fa-qrcode"></i> QR</a> <a class="btn btn-warning" n:href="List:editPoint $point['id']"><i class="fas fa-edit"></i> Upravit bod</a> <a class="btn btn-danger" n:href="List:deletePoint $tour['id'], $point['id'], $point['order']"><i class="fas fa-eraser"></i> Odstranit bod</a></th>
                     </tr>
                 {/foreach}
+                <tr>
+                    <td class="text-center" colspan="6"><a class="btn btn-success" n:href="List:addPoint $tour['id']"><i class="far fa-plus-square"></i> Přidat bod</a></td>
+                </tr>
             </div>
         </table>
-        <a class="btn btn-primary" n:href="List:addPoint $tour['id']">Add point</a>
-        <a class="btn btn-primary" n:href="List:">Zpět</a>
+        <a class="btn btn-primary" n:href="List:"><i class="fas fa-arrow-left"></i> Zpět</a>
     </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">QR</h5>
+        <a class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </a>
+      </div>
+      <div class="modal-body">
+        <div class="text-body">
+        
+        </div>
+        <div class="image-body">
+        
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-secondary" data-dismiss="modal">Zavřít</a>
+        <a class="btn btn-primary text-white">Vytisknout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 {/block}
