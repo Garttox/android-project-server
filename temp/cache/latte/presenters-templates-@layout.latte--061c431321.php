@@ -226,7 +226,7 @@ ddddhhhhddddhhhhddddddhhhhhhhhdddddhhdddddhhhhhhhhhhhhhhhhhhhhhhhhddhhhhhyyhhddd
                         <a class="nav-link text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:faq")) ?>"><i class="fas fa-question"></i> FAQ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="https://play.google.com/store" target="_blank"><i class="fas fa-download"></i> Stáhnout</a>
+                        <a class="nav-link text-white" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:download")) ?>"><i class="fas fa-download"></i> Ke Stažení</a>
                     </li>
                 </ul>
                 <!-- Dropdown -->
@@ -336,6 +336,18 @@ $('#exampleModal').on('show.bs.modal', function (event) {
   var modal = $(this);
   modal.find('.modal-title').text(name);
   modal.find('.modal-body').html('<img src="' + qr + '">');
+})
+$('#exampleModal2').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget); // Button that triggered the modal
+  var text = button.data('whatever'); // Extract info from data-* attributes
+  var name = button.data('name');
+  var img = button.data('img');
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this);
+  modal.find('.modal-title').text(name);
+  modal.find('.text-body').text(text);
+  modal.find('.image-body').html('<img src="' + img + '">');
 })
 </script>
 <?php

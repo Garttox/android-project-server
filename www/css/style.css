@@ -32,6 +32,15 @@ p {
     }
 }
 
+.screen {
+    height: 40vh;
+    width: 10vw !important;
+}
+
+.image-body {
+    width: inherit;
+}
+
 .map {
     margin-top: 2vh;
     border: 1px solid black;

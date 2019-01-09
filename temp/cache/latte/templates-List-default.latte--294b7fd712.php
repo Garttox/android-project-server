@@ -130,7 +130,7 @@ class Template294b7fd712 extends Latte\Runtime\Template
 <?php
 			}
 			if ($user->isInRole('admin') || ($user->isInRole('editor') && $row['author'] == $user->getIdentity()->username)) {
-				?>                                <a class="btn btn-warning list-button" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:detail", [$row['id']])) ?>"><i class="fas fa-pen"></i> Upravit</a>
+				?>                                <a class="btn btn-warning list-button" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:detail", [$row['id']])) ?>"><i class="fas fa-search"></i> Podrobnosti</a>
 <?php
 			}
 			?>                            <a class="btn btn-primary list-button" data-toggle="collapse" data-target="#collapse<?php

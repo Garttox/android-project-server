@@ -17,9 +17,6 @@ class Template30dfcbf119 extends Latte\Runtime\Template
 	function main()
 	{
 		extract($this->params);
-?>
-
-<?php
 		if ($this->getParentName()) return get_defined_vars();
 		$this->renderBlock('content', get_defined_vars());
 ?>
@@ -39,8 +36,16 @@ class Template30dfcbf119 extends Latte\Runtime\Template
 
 	function blockContent($_args)
 	{
-?>    <div class="container text-center">
-    
+		extract($_args);
+?>
+
+    <div class="container text-center">
+        <hr>
+        <h2>Vítejte na oficiálních stránkách OpavaTourist</h2>
+        <hr>
+        <p>Zde naleznete <a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:howItWorks")) ?>">informace o aplikaci</a>, <a href="<?php
+		echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:faq")) ?>">často kladené otázky</a> a také odkaz ke <a href="<?php
+		echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Homepage:download")) ?>">stažení aplikace</a>.</p>
     </div>
 
 <?php

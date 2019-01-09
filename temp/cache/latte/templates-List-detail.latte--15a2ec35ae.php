@@ -41,15 +41,42 @@ class Template15a2ec35ae extends Latte\Runtime\Template
 ?>
     <div class="container">
         <h1 class=" text-center"><hr><?php echo LR\Filters::escapeHtmlText($tour['title']) /* line 3 */ ?><hr></h1>
-        <a class="btn btn-primary" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:editTour", [$tour['id']])) ?>">Přejmenovat</a>
-        <table class="table">
+        <a class="btn btn-primary" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:editTour", [$tour['id']])) ?>"><i class="fas fa-file-signature"></i> Přejmenovat stezku</a> <a class="btn btn-danger" href="<?php
+		echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:deleteTour", [$tour['id']])) ?>"><i class="fas fa-trash-alt"></i> Smazat stezku</a>
+        <table class="table top">
             <div<?php echo ' id="' . htmlSpecialChars($this->global->snippetDriver->getHtmlId('pointsListContainer')) . '"' ?>>
 <?php $this->renderBlock('_pointsListContainer', $this->params) ?>
             </div>
         </table>
-        <a class="btn btn-primary" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:addPoint", [$tour['id']])) ?>">Add point</a>
-        <a class="btn btn-primary" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:")) ?>">Zpět</a>
+        <a class="btn btn-primary" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:")) ?>"><i class="fas fa-arrow-left"></i> Zpět</a>
     </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">QR</h5>
+        <a class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </a>
+      </div>
+      <div class="modal-body">
+        <div class="text-body">
+        
+        </div>
+        <div class="image-body">
+        
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-secondary" data-dismiss="modal">Zavřít</a>
+        <a class="btn btn-primary text-white">Vytisknout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <?php
 	}
 
@@ -82,14 +109,22 @@ class Template15a2ec35ae extends Latte\Runtime\Template
                         <th scope="col"><?php echo LR\Filters::escapeHtmlText($point['name']) /* line 18 */ ?></th>
                         <th scope="col"><?php echo LR\Filters::escapeHtmlText($point['longitude']) /* line 19 */ ?></th>
                         <th scope="col"><?php echo LR\Filters::escapeHtmlText($point['latitude']) /* line 20 */ ?></th>
-                        <th scope="col"><a class="btn btn-primary" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:editPoint", [$point['id']])) ?>">Edit point</a> <a class="btn btn-primary" href="<?php
-			echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:editPoint", [$point['id']])) ?>">Remove point</a></th>
+                        <th scope="col"><a class="btn btn-dark list-button text-white" data-toggle="modal" data-target="#exampleModal2" data-whatever="<?php
+			echo LR\Filters::escapeHtmlAttr($point['text']) /* line 21 */ ?>" data-img="<?php echo LR\Filters::escapeHtmlAttr($basePath) /* line 21 */ ?>/<?php
+			echo LR\Filters::escapeHtmlAttr($point['fotoURL']) /* line 21 */ ?>" data-name="<?php echo LR\Filters::escapeHtmlAttr($point['name']) /* line 21 */ ?>"><i class="fas fa-qrcode"></i> QR</a> <a class="btn btn-warning" href="<?php
+			echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:editPoint", [$point['id']])) ?>"><i class="fas fa-edit"></i> Upravit bod</a> <a class="btn btn-danger" href="<?php
+			echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:deletePoint", [$tour['id'], $point['id'], $point['order']])) ?>"><i class="fas fa-eraser"></i> Odstranit bod</a></th>
 <?php
 			$this->global->snippetDriver->leave();
 ?>                    </tr>
 <?php
 			$iterations++;
 		}
+?>
+                <tr>
+                    <td class="text-center" colspan="6"><a class="btn btn-success" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:addPoint", [$tour['id']])) ?>"><i class="far fa-plus-square"></i> Přidat bod</a></td>
+                </tr>
+<?php
 		$this->global->snippetDriver->leave();
 		
 	}
