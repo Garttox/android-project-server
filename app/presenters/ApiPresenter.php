@@ -79,7 +79,7 @@ class ApiPresenter extends BasePresenter
                 $this->sendError();
             }
             else{
-                $a = array("foto" => $point->fotoURL, "text" => $point->text);
+                $a = array("foto" => $point->fotoURL, "text" => $point->text, "title" => $point->name);
                 $this->sendJsonResponce($a);
             }
         }
