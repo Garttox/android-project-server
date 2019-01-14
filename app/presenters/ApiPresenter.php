@@ -106,7 +106,7 @@ class ApiPresenter extends BasePresenter
             $tour=$this->tourManager->readTour($id);
             $points=$this->tourManager->readAllTourPoints($id);
             /* kontroluje zda stezka s id $id existuje, jestli je stezka published a jestli má nějaké existující body */
-            if($tour == null || !$points || $tour->published != "yes"){
+            if($tour == null || !$points || $tour->published != "yes" || count($points) < 3){
                 $a = array("status" => "not_avaible");
             }
             else{
