@@ -22,11 +22,6 @@ return array (
       'file' => 'D:\\www\\android-project-server\\app\\forms\\SignUpFormFactory.php',
       'time' => 1545046622,
     ),
-    'App\\Model\\TourManager' => 
-    array (
-      'file' => 'D:\\www\\android-project-server\\app\\model\\TourManager.php',
-      'time' => 1547030482,
-    ),
     'App\\Model\\UserManager' => 
     array (
       'file' => 'D:\\www\\android-project-server\\app\\model\\UserManager.php',
@@ -41,11 +36,6 @@ return array (
     array (
       'file' => 'D:\\www\\android-project-server\\app\\presenters\\AdminPresenter.php',
       'time' => 1545046622,
-    ),
-    'App\\Presenters\\ApiPresenter' => 
-    array (
-      'file' => 'D:\\www\\android-project-server\\app\\presenters\\ApiPresenter.php',
-      'time' => 1547030482,
     ),
     'App\\Presenters\\BasePresenter' => 
     array (
@@ -86,6 +76,16 @@ return array (
     array (
       'file' => 'D:\\www\\android-project-server\\app\\presenters\\HomepagePresenter.php',
       'time' => 1547034417,
+    ),
+    'App\\Model\\TourManager' => 
+    array (
+      'file' => 'D:\\www\\android-project-server\\app\\model\\TourManager.php',
+      'time' => 1547467359,
+    ),
+    'App\\Presenters\\ApiPresenter' => 
+    array (
+      'file' => 'D:\\www\\android-project-server\\app\\presenters\\ApiPresenter.php',
+      'time' => 1547466200,
     ),
   ),
   1 => 

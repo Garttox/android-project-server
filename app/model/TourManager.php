@@ -102,7 +102,8 @@ class TourManager
                 'longitude'=>$long,
                 'order'=>$order,
                 'tour_id'=>$tour_id,
-                'text'=>$text
+                'text'=>$text,
+                'fotoURL'=>""
             ]);
             return $point->id;
         }

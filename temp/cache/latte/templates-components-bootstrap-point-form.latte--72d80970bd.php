@@ -101,13 +101,13 @@ class Template72d80970bd extends Latte\Runtime\Template
 
 		</div>
 		<div class="form-group row">
-			<?php
-		if ($_label = end($this->global->formsStack)["fotoURL"]->getLabel()) echo $_label;
-		echo end($this->global->formsStack)["fotoURL"]->getControl() /* line 31 */ ?>
+			<?php if ($_label = end($this->global->formsStack)["fotoURL"]->getLabel()) echo $_label->addAttributes(['class' => "col-md-2 offset-md-5 col-form-label"]) ?>
+
+			<?php echo end($this->global->formsStack)["fotoURL"]->getControl()->addAttributes(['class' => "offset-md-1 col-md-10"]) /* line 32 */ ?>
 
 		</div>
 		<div class="form-group row">
-			<?php echo end($this->global->formsStack)["submit"]->getControl()->addAttributes(['class' => "btn btn-primary offset-md-5 col-md-2"]) /* line 34 */ ?>
+			<?php echo end($this->global->formsStack)["submit"]->getControl()->addAttributes(['class' => "btn btn-primary offset-md-5 col-md-2"]) /* line 35 */ ?>
 
 		</div>
 <?php
