@@ -18,7 +18,7 @@
                         <th scope="col">{$point['name']}</th>
                         <th scope="col">{$point['longitude']}</th>
                         <th scope="col">{$point['latitude']}</th>
-                        <th scope="col"><a class="btn btn-dark list-button text-white" data-toggle="modal" data-target="#exampleModal2" data-whatever="{$point['text']}" data-img="{$basePath}/{$point['fotoURL']}" data-name="{$point['name']}"><i class="fas fa-qrcode"></i> QR</a> <a class="btn btn-warning" n:href="List:editPoint $point['id']"><i class="fas fa-edit"></i> Upravit bod</a> <a class="btn btn-danger" n:href="List:deletePoint $tour['id'], $point['id'], $point['order']"><i class="fas fa-eraser"></i> Odstranit bod</a></th>
+                        <th scope="col"><a class="btn btn-dark list-button text-white" data-toggle="modal" data-target="#exampleModal2" data-whatever="{$point['text']}" data-img="{$basePath}/{$point['fotoURL']}" data-name="{$point['name']}"><i class="fas fa-search-plus"></i> Náhled</a> <a class="btn btn-warning" n:href="List:editPoint $point['id']"><i class="fas fa-edit"></i> Upravit bod</a> <a class="btn btn-danger" n:href="List:deletePoint $tour['id'], $point['id'], $point['order']"><i class="fas fa-eraser"></i> Odstranit bod</a></th>
                     </tr>
                 {/foreach}
                 <tr>
@@ -34,7 +34,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content text-center">
       <div class="modal-header">
-        <h5 class="modal-title text-center" id="exampleModalLabel">QR</h5>
+        <h5 class="modal-title text-center" id="exampleModalLabel">Náhled</h5>
         <a class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </a>

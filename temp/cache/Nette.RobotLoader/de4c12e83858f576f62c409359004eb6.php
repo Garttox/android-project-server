@@ -22,11 +22,6 @@ return array (
       'file' => 'D:\\stranky\\www\\android-project-server\\app\\forms\\SignUpFormFactory.php',
       'time' => 1544017811,
     ),
-    'App\\Model\\TourManager' => 
-    array (
-      'file' => 'D:\\stranky\\www\\android-project-server\\app\\model\\TourManager.php',
-      'time' => 1546969604,
-    ),
     'App\\Model\\UserManager' => 
     array (
       'file' => 'D:\\stranky\\www\\android-project-server\\app\\model\\UserManager.php',
@@ -77,10 +72,15 @@ return array (
       'file' => 'D:\\stranky\\www\\android-project-server\\app\\router\\RouterFactory.php',
       'time' => 1540321993,
     ),
+    'App\\Model\\TourManager' => 
+    array (
+      'file' => 'D:\\stranky\\www\\android-project-server\\app\\model\\TourManager.php',
+      'time' => 1547502720,
+    ),
     'App\\Presenters\\ApiPresenter' => 
     array (
       'file' => 'D:\\stranky\\www\\android-project-server\\app\\presenters\\ApiPresenter.php',
-      'time' => 1547415776,
+      'time' => 1547502720,
     ),
   ),
   1 => 

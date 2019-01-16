@@ -56,7 +56,7 @@ class Template3e3d80d3e9 extends Latte\Runtime\Template
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content text-center">
       <div class="modal-header">
-        <h5 class="modal-title text-center" id="exampleModalLabel">QR</h5>
+        <h5 class="modal-title text-center" id="exampleModalLabel">Náhled</h5>
         <a class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </a>
@@ -111,7 +111,7 @@ class Template3e3d80d3e9 extends Latte\Runtime\Template
                         <th scope="col"><?php echo LR\Filters::escapeHtmlText($point['latitude']) /* line 20 */ ?></th>
                         <th scope="col"><a class="btn btn-dark list-button text-white" data-toggle="modal" data-target="#exampleModal2" data-whatever="<?php
 			echo LR\Filters::escapeHtmlAttr($point['text']) /* line 21 */ ?>" data-img="<?php echo LR\Filters::escapeHtmlAttr($basePath) /* line 21 */ ?>/<?php
-			echo LR\Filters::escapeHtmlAttr($point['fotoURL']) /* line 21 */ ?>" data-name="<?php echo LR\Filters::escapeHtmlAttr($point['name']) /* line 21 */ ?>"><i class="fas fa-qrcode"></i> QR</a> <a class="btn btn-warning" href="<?php
+			echo LR\Filters::escapeHtmlAttr($point['fotoURL']) /* line 21 */ ?>" data-name="<?php echo LR\Filters::escapeHtmlAttr($point['name']) /* line 21 */ ?>"><i class="fas fa-search-plus"></i> Náhled</a> <a class="btn btn-warning" href="<?php
 			echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:editPoint", [$point['id']])) ?>"><i class="fas fa-edit"></i> Upravit bod</a> <a class="btn btn-danger" href="<?php
 			echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("List:deletePoint", [$tour['id'], $point['id'], $point['order']])) ?>"><i class="fas fa-eraser"></i> Odstranit bod</a></th>
 <?php
